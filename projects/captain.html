@@ -596,7 +596,6 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
         <div class="wrist-row">
           <div class="wrist-img-cell fade-right">
             <img src="../img/CTH_Image/CTH_ProjectImage02.png" alt="Wrist interaction concept V1"/>
-            <div class="wrist-ver-tag">// CONCEPT V1</div>
           </div>
           <div class="wrist-text-cell">
             <div class="wrist-bullet">
@@ -633,69 +632,99 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
 
     </div><!-- /wrist-outer -->
 
-    <!-- ALERT SYSTEM -->
-    <div class="explore-group-label" style="margin-top:1rem;">Alert System</div>
-    <div class="alert-grid">
-      <div class="alert-img-wrap">
-        <div class="img-ph" style="min-height:340px;">[ ALERT SYSTEM IMAGE ]</div>
-      </div>
-      <div class="alert-cards">
-        <div class="alert-card">
-          <div class="alert-card-num">// 01</div>
-          <div class="alert-card-title">Extended to the HUD</div>
-          <div class="alert-card-text">Alerts were extended to the HUD to increase visibility and ensure players could recognize sector changes in real time.</div>
-        </div>
-        <div class="alert-card">
-          <div class="alert-card-num">// 02</div>
-          <div class="alert-card-title">Always within view</div>
-          <div class="alert-card-text">This allowed critical information to stay within the player's field of view without requiring additional actions.</div>
-        </div>
-        <div class="alert-card">
-          <div class="alert-card-num">// 03</div>
-          <div class="alert-card-title">Inform, not navigate</div>
-          <div class="alert-card-text">The system was designed to inform, not to navigate — keeping decision-making in the player's control.</div>
-        </div>
-      </div>
-    </div>
+    <!-- ═══ ALERT SYSTEM — mismo frame que wrist ═══ -->
+    <div class="wrist-outer" style="margin-top:2rem;">
 
-    <!-- SECTOR ROOM INTERFACE -->
-    <div class="explore-group-label" style="margin-top:3rem;">Sector Room Interface</div>
+      <!-- header full-width con textura -->
+      <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#051a45 0%,#08306e 40%,#0a1a4d 70%,#050d35 100%);border-bottom:1px solid rgba(0,210,240,.35);">
+        <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
+        <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
+        <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
+          <span style="width:22px;height:1px;background:#00d2f0;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(0,210,240,.6);"></span>
+          <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(0,210,240,.5);">ALERT SYSTEM</span>
+        </div>
+      </div>
 
-    <!-- Image 01 — bullets to the right -->
-    <div class="proto-item">
-      <div class="proto-img-wrap">
-        <img src="../img/CTH_Image/CTH_ProjectImage04.png" alt="Sector Room early layout"/>
-        <div class="proto-img-label">// EARLY LAYOUT</div>
-      </div>
-      <div class="proto-bullets-wrap">
-        <div class="proto-bullet">
-          <div class="proto-bullet-dot"></div>
-          <div class="proto-bullet-text">The Sector Room was introduced as a dedicated space where players could step out of combat and assess the state of the game.</div>
+      <!-- 1 paralelogramo: imagen izquierda, 3 cards derecha -->
+      <div class="wrist-para">
+        <div class="wrist-row">
+          <div class="wrist-img-cell fade-right">
+            <img src="../img/CTH_Image/CTH_ProjectImage06.png" alt="Alert system in game"/>
+          </div>
+          <div class="wrist-text-cell" style="gap:1rem;">
+            <div class="alert-card">
+              <div class="alert-card-num">// 01</div>
+              <div class="alert-card-title">Extended to the HUD</div>
+              <div class="alert-card-text">Alerts were extended to the HUD to increase visibility and ensure players could recognize sector changes in real time.</div>
+            </div>
+            <div class="alert-card">
+              <div class="alert-card-num">// 02</div>
+              <div class="alert-card-title">Always within view</div>
+              <div class="alert-card-text">This allowed critical information to stay within the player's field of view without requiring additional actions.</div>
+            </div>
+            <div class="alert-card">
+              <div class="alert-card-num">// 03</div>
+              <div class="alert-card-title">Inform, not navigate</div>
+              <div class="alert-card-text">The system was designed to inform, not to navigate — keeping decision-making in the player's control.</div>
+            </div>
+          </div>
         </div>
-        <div class="proto-bullet">
-          <div class="proto-bullet-dot"></div>
-          <div class="proto-bullet-text">It acts as a central hub to understand multiple sectors without the pressure of real-time action.</div>
-        </div>
       </div>
-    </div>
 
-    <!-- Image 02 — bullets to the left -->
-    <div class="proto-item bullets-left">
-      <div class="proto-img-wrap">
-        <img src="../img/CTH_Image/CTH_ProjectImage05.png" alt="Sector Room final design"/>
-        <div class="proto-img-label">// FINAL DESIGN</div>
-      </div>
-      <div class="proto-bullets-wrap">
-        <div class="proto-bullet">
-          <div class="proto-bullet-dot"></div>
-          <div class="proto-bullet-text">Players can view each sector's layout, enemy types, and incoming waves, allowing them to evaluate threats at a glance.</div>
-        </div>
-        <div class="proto-bullet">
-          <div class="proto-bullet-dot"></div>
-          <div class="proto-bullet-text">From this space, players can choose a sector and instantly teleport, connecting awareness directly with action.</div>
+    </div><!-- /alert-outer -->
+
+    <!-- ═══ SECTOR ROOM INTERFACE — mismo frame que wrist ═══ -->
+    <div class="wrist-outer" style="margin-top:2rem;">
+
+      <!-- header full-width con textura — violeta más cálido -->
+      <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(190,50,255,.04) 8px,rgba(190,50,255,.04) 9px),linear-gradient(110deg,#1a0545 0%,#2a0870 40%,#0d1a4a 70%,#0a0e35 100%);border-bottom:1px solid rgba(190,50,255,.35);">
+        <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
+        <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
+        <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
+          <span style="width:22px;height:1px;background:#be32ff;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(190,50,255,.6);"></span>
+          <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(190,50,255,.5);">SECTOR ROOM INTERFACE</span>
         </div>
       </div>
-    </div>
+
+      <!-- Parallelogram 1: Image left, text right -->
+      <div class="wrist-para">
+        <div class="wrist-row">
+          <div class="wrist-img-cell fade-right">
+            <img src="../img/CTH_Image/CTH_ProjectImage07.png" alt="Sector Room early layout"/>
+          </div>
+          <div class="wrist-text-cell">
+            <div class="wrist-bullet">
+              <div class="wrist-bullet-dot"></div>
+              <div class="wrist-bullet-text">The Sector Room was introduced as a dedicated space where players could step out of combat and assess the state of the game.</div>
+            </div>
+            <div class="wrist-bullet">
+              <div class="wrist-bullet-dot"></div>
+              <div class="wrist-bullet-text">It acts as a central hub to understand multiple sectors without the pressure of real-time action.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parallelogram 2: Text left, image right -->
+      <div class="wrist-para">
+        <div class="wrist-row">
+          <div class="wrist-text-cell">
+            <div class="wrist-bullet">
+              <div class="wrist-bullet-dot"></div>
+              <div class="wrist-bullet-text">Players can view each sector's layout, enemy types, and incoming waves, allowing them to evaluate threats at a glance.</div>
+            </div>
+            <div class="wrist-bullet">
+              <div class="wrist-bullet-dot"></div>
+              <div class="wrist-bullet-text">From this space, players can choose a sector and instantly teleport, connecting awareness directly with action.</div>
+            </div>
+          </div>
+          <div class="wrist-img-cell fade-left">
+            <img src="../img/CTH_Image/CTH_ProjectImage08.png" alt="Sector Room final design"/>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sector-room-outer -->
 
   </div><!-- /exploration -->
 
@@ -706,10 +735,10 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
       <div class="q-label-line"></div>
     </div>
     <div class="final-img-wrap">
-      <div class="img-ph" style="min-height:400px;">[ FINAL UI PLACEHOLDER ]</div>
+      <img src="../img/CTH_Image/CTH_ProjectImage07.png" alt="Final UI design"/>
     </div>
     <div class="final-img-wrap" style="margin-top:1.4rem;">
-      <div class="img-ph" style="min-height:400px;">[ HUD IN ACTION — GIF PLACEHOLDER ]</div>
+      <img src="../img/CTH_Image/CTH_ProjectImage08.png" alt="HUD in action"/>
     </div>
   </div>
 
