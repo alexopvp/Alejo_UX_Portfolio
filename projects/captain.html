@@ -220,102 +220,117 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
 .sub-img img,.sub-img .img-ph{width:100%;display:block;}
 
 /* ═══════════════════════════════════
-   WRIST INTERACTION — parallelogram frames
+   WRIST INTERACTION — vertical box + 2 parallelograms
 ═══════════════════════════════════ */
 
-/* outer container */
-.wrist-frame{
+/* outer vertical container */
+.wrist-outer{
   position:relative;
-  background:rgba(8,3,18,.6);
-  border:1px solid rgba(190,50,255,.18);
-  clip-path:polygon(18px 0%, 100% 0%, calc(100% - 18px) 100%, 0% 100%);
-  padding:2.2rem 2.8rem;
-  margin-bottom:2rem;
-  overflow:hidden;
-}
-.wrist-frame::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg, transparent, rgba(190,50,255,.5), rgba(0,210,240,.3), transparent);
-}
-.wrist-frame::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg, transparent, rgba(190,50,255,.25), transparent);
-}
-
-/* two parallelogram cards side by side */
-.wrist-cards{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1.6rem;
-  align-items:stretch;
-}
-
-/* each card — parallelogram shape */
-.wrist-card{
-  position:relative;
-  clip-path:polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
-  background:#03010a;
-  border:1px solid rgba(190,50,255,.22);
-  overflow:hidden;
   display:flex;
   flex-direction:column;
+  gap:1.2rem;
+  padding:2rem 1rem;
+  background:rgba(8,3,18,.55);
+  border:1px solid rgba(190,50,255,.14);
 }
-.wrist-card:nth-child(2){
-  border-color:rgba(0,210,240,.22);
+.wrist-outer::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(190,50,255,.45),rgba(0,210,240,.25),transparent);
+}
+.wrist-outer::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(190,50,255,.2),transparent);
 }
 
-/* image fills top portion */
-.wrist-card-img{
+/* each parallelogram — very wide skew */
+.wrist-para{
   position:relative;
-  flex-shrink:0;
+  clip-path:polygon(36px 0%, 100% 0%, calc(100% - 36px) 100%, 0% 100%);
+  background:#04010e;
   overflow:hidden;
 }
-.wrist-card-img img{
-  width:100%;display:block;
-  object-fit:cover;
-  min-height:220px;
+.wrist-para:nth-child(1){border:1px solid rgba(190,50,255,.28);}
+.wrist-para:nth-child(2){border:1px solid rgba(0,210,240,.22);}
+
+/* top accent line per para */
+.wrist-para:nth-child(1)::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 5%,rgba(190,50,255,.7) 30%,rgba(190,50,255,.4) 70%,transparent 95%);
+  z-index:2;
 }
-/* subtle dark overlay on image */
-.wrist-card-img::after{
+.wrist-para:nth-child(2)::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 5%,rgba(0,210,240,.6) 30%,rgba(0,210,240,.35) 70%,transparent 95%);
+  z-index:2;
+}
+
+/* horizontal row inside each para */
+.wrist-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:stretch;
+  min-height:260px;
+}
+
+/* image cell */
+.wrist-img-cell{
+  position:relative;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.wrist-img-cell img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+}
+/* right-side fade for image (when image is left) */
+.wrist-img-cell.fade-right::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom, transparent 55%, rgba(3,1,10,.85) 100%);
+  background:linear-gradient(to right, transparent 55%, rgba(4,1,14,.95) 100%);
   pointer-events:none;
 }
-/* version tag inside image */
-.wrist-card-tag{
-  position:absolute;bottom:0;left:0;right:0;z-index:2;
-  padding:.45rem 1rem;
-  font-family:'Share Tech Mono',monospace;font-size:9px;
-  color:#be32ff;letter-spacing:.16em;
+/* left-side fade for image (when image is right) */
+.wrist-img-cell.fade-left::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to left, transparent 55%, rgba(4,1,14,.95) 100%);
+  pointer-events:none;
 }
-.wrist-card:nth-child(2) .wrist-card-tag{color:#00d2f0;}
+/* version tag */
+.wrist-ver-tag{
+  position:absolute;z-index:3;
+  font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.16em;
+  padding:4px 10px;
+  background:rgba(4,1,14,.75);
+}
+.wrist-para:nth-child(1) .wrist-ver-tag{
+  top:10px;left:10px;
+  color:#be32ff;border:1px solid rgba(190,50,255,.3);
+}
+.wrist-para:nth-child(2) .wrist-ver-tag{
+  top:10px;right:10px;
+  color:#00d2f0;border:1px solid rgba(0,210,240,.3);
+}
 
-/* text area */
-.wrist-card-body{
-  padding:1.2rem 1.4rem 1.6rem;
-  display:flex;flex-direction:column;gap:.75rem;
-  flex:1;
-  background:rgba(6,2,14,.7);
-  border-top:1px solid rgba(190,50,255,.12);
-}
-.wrist-card:nth-child(2) .wrist-card-body{
-  border-top-color:rgba(0,210,240,.12);
+/* text cell */
+.wrist-text-cell{
+  padding:1.6rem 1.8rem;
+  display:flex;flex-direction:column;justify-content:center;gap:.9rem;
+  background:rgba(4,1,14,.5);
 }
 
 .wrist-bullet{display:flex;align-items:flex-start;gap:10px;}
 .wrist-bullet-dot{
   width:5px;height:5px;border-radius:50%;
-  flex-shrink:0;margin-top:6px;
+  flex-shrink:0;margin-top:7px;
 }
-.wrist-card:nth-child(1) .wrist-bullet-dot{
-  background:#be32ff;box-shadow:0 0 5px rgba(190,50,255,.7);
+.wrist-para:nth-child(1) .wrist-bullet-dot{
+  background:#be32ff;box-shadow:0 0 6px rgba(190,50,255,.8);
 }
-.wrist-card:nth-child(2) .wrist-bullet-dot{
-  background:#00d2f0;box-shadow:0 0 5px rgba(0,210,240,.7);
+.wrist-para:nth-child(2) .wrist-bullet-dot{
+  background:#00d2f0;box-shadow:0 0 6px rgba(0,210,240,.8);
 }
 .wrist-bullet-text{
-  font-family:'Roboto',sans-serif;font-size:12.5px;
-  color:#8070a0;line-height:1.7;
+  font-family:'Roboto',sans-serif;font-size:13px;
+  color:#8878a8;line-height:1.72;
 }
 
 /* section group label */
@@ -551,16 +566,16 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
     <!-- WRIST INTERACTION -->
     <div class="explore-group-label">Wrist Interaction</div>
 
-    <div class="wrist-frame">
-      <div class="wrist-cards">
+    <div class="wrist-outer">
 
-        <!-- Card 1 — purple accent -->
-        <div class="wrist-card">
-          <div class="wrist-card-img">
+      <!-- Parallelogram 1: Image left, text right -->
+      <div class="wrist-para">
+        <div class="wrist-row">
+          <div class="wrist-img-cell fade-right">
             <img src="../img/CTH_Image/CTH_ProjectImage02.png" alt="Wrist interaction concept V1"/>
-            <div class="wrist-card-tag">// CONCEPT V1</div>
+            <div class="wrist-ver-tag">// CONCEPT V1</div>
           </div>
-          <div class="wrist-card-body">
+          <div class="wrist-text-cell">
             <div class="wrist-bullet">
               <div class="wrist-bullet-dot"></div>
               <div class="wrist-bullet-text">Explored a physical wrist interaction, allowing players to press a button directly in VR rather than relying on a traditional input.</div>
@@ -571,14 +586,12 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Card 2 — cyan accent -->
-        <div class="wrist-card">
-          <div class="wrist-card-img">
-            <img src="../img/CTH_Image/CTH_ProjectImage03.png" alt="Wrist interaction concept V6"/>
-            <div class="wrist-card-tag">// CONCEPT V6</div>
-          </div>
-          <div class="wrist-card-body">
+      <!-- Parallelogram 2: Text left, image right -->
+      <div class="wrist-para">
+        <div class="wrist-row">
+          <div class="wrist-text-cell">
             <div class="wrist-bullet">
               <div class="wrist-bullet-dot"></div>
               <div class="wrist-bullet-text">Alerts were introduced on the wrist to turn it into a reference point players could check during gameplay.</div>
@@ -588,9 +601,13 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
               <div class="wrist-bullet-text">However, players often missed these alerts while focused on combat, revealing that this alone was not enough to maintain awareness.</div>
             </div>
           </div>
+          <div class="wrist-img-cell fade-left">
+            <img src="../img/CTH_Image/CTH_ProjectImage03.png" alt="Wrist interaction concept V6"/>
+            <div class="wrist-ver-tag">// CONCEPT V6</div>
+          </div>
         </div>
-
       </div>
+
     </div>
 
     <!-- ALERT SYSTEM -->
