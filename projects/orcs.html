@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Orcs Must Die! By the Blade — Alejandro Mora</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#07050d;color:#d8c8f0;font-family:'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(190,50,255,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,240,0.055) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0;mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,transparent 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.6) 75%,black 100%);-webkit-mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,transparent 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.6) 75%,black 100%);}
+.page{position:relative;z-index:1;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;border-bottom:1px solid rgba(190,50,255,.16);background:rgba(7,5,13,.97);position:sticky;top:0;z-index:100;}
+.nav-back{display:flex;align-items:center;gap:8px;color:#be32ff;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;text-decoration:none;border:1px solid rgba(190,50,255,.35);background:rgba(190,50,255,.07);padding:6px 14px;border-radius:3px;clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%);transition:all .2s;}
+.nav-back:hover{background:rgba(190,50,255,.16);border-color:#be32ff;}
+.nav-meta{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a2848;letter-spacing:.08em;}
+.nav-meta span{color:#be32ff;}
+.kicker{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00d2f0;letter-spacing:.2em;margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
+.kicker::before{content:'';width:24px;height:1px;background:#00d2f0;}
+h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight:700;color:#f4ecff;line-height:1.15;}
+h1 em{color:#be32ff;font-style:normal;}
+.tag{font-family:'Share Tech Mono',monospace;font-size:9px;padding:4px 12px;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);}
+.tag-p{color:#be32ff;border:1px solid rgba(190,50,255,.4);background:rgba(190,50,255,.07);}
+.tag-c{color:#00d2f0;border:1px solid rgba(0,210,240,.35);background:rgba(0,210,240,.07);}
+.tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem;}
+/* Section divider — same as main portfolio */
+.sec-div{display:flex;align-items:center;gap:1rem;padding:.6rem 0;}
+.sdl{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.35));}
+.sdl:first-child{background:linear-gradient(90deg,rgba(190,50,255,.35),transparent);}
+.sdt{font-family:'Share Tech Mono',monospace;font-size:10px;color:#be32ff;letter-spacing:.2em;white-space:nowrap;}
+
+.hero{padding:3.5rem 2.5rem 2rem;max-width:900px;margin:0 auto;}
+.genre-label{font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.18em;margin-top:.5rem;}
+
+/* ── VIDEO ── */
+.video-section{max-width:900px;margin:0 auto;padding:0 2.5rem;}
+.video-label{font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.15em;margin-bottom:.6rem;}
+.video-wrap{position:relative;width:100%;padding-bottom:56.25%;background:#000;border:1px solid rgba(190,50,255,.22);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,12px 100%,0 calc(100% - 12px));overflow:hidden;cursor:pointer;}
+.video-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s;}
+.play-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(7,5,13,.45);transition:background .3s;}
+.video-wrap:hover .play-overlay{background:rgba(7,5,13,.25);}
+.play-btn{width:64px;height:64px;background:rgba(190,50,255,.15);border:2px solid rgba(190,50,255,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.video-wrap:hover .play-btn{background:rgba(190,50,255,.3);border-color:#be32ff;transform:scale(1.08);}
+.play-arrow{width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid #be32ff;margin-left:5px;}
+.play-text{font-family:'Share Tech Mono',monospace;font-size:10px;color:#be32ff;letter-spacing:.2em;}
+.iframe-wrap{position:absolute;inset:0;display:none;}
+.iframe-wrap iframe{width:100%;height:100%;border:none;}
+
+/* ── DIVIDER + TEXT ── */
+.divider-bar{max-width:900px;margin:2.5rem auto 0;padding:0 2.5rem;}
+.content{max-width:900px;margin:1.5rem auto 4rem;padding:0 2.5rem;}
+.desc{font-family:'Roboto',sans-serif;font-size:13.5px;color:#8070a0;line-height:1.9;margin-top:1.5rem;}
+.desc strong{color:#d8c8f0;font-weight:500;}
+</style>
+</head>
+<body>
+<div class="page">
+<nav>
+  <a href="javascript:window.close()" class="nav-back">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    BACK TO PORTFOLIO
+  </a>
+  <div class="nav-meta">ALEJANDRO MORA — <span>UX DESIGNER</span></div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="kicker">// PROJECT CASE STUDY</div>
+  <h1>Orcs Must Die! By the Blade</h1>
+  <div class="genre-label">// VR Action-Adventure</div>
+  <div class="tags-row"><span class="tag tag-p">UX Design</span><span class="tag tag-c">VR Combat Systems</span><span class="tag tag-p">FTUX</span><span class="tag tag-c">Interaction Design</span><span class="tag tag-p">UI Systems</span></div>
+</div>
+
+<!-- TRAILER -->
+<div class="video-section">
+  <div class="video-label">// OFFICIAL TRAILER</div>
+  <div class="video-wrap" id="vwrap" onclick="loadVideo()">
+    <img class="video-thumb" src="https://img.youtube.com/vi/1cTftd4pNaY/maxresdefault.jpg" alt="Trailer thumbnail" onerror="this.style.display='none'"/>
+    <div class="play-overlay" id="povl">
+      <div class="play-btn"><div class="play-arrow"></div></div>
+      <div class="play-text">WATCH TRAILER</div>
+    </div>
+    <div class="iframe-wrap" id="ifwrap">
+      <iframe id="ytframe" src="" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER + MY ROLE -->
+<div class="divider-bar">
+  <div class="sec-div">
+    <div class="sdl"></div>
+    <div class="sdt">MY ROLE</div>
+    <div class="sdl"></div>
+  </div>
+</div>
+
+<div class="content">
+  <p class="desc">A VR action-adventure title within the Orcs Must Die franchise, reimagined with a strong focus on melee combat rather than traditional tower defense. As the UX Designer for the project, I led the design of core interaction systems, including object handling, inventory, weapon upgrades, and armory flows, as well as the full FTUX. I also developed the combat language—defining clear visual and systemic signifiers to guide players on when to attack, block, or parry—ensuring combat felt intuitive, responsive, and satisfying within VR.</p>
+</div>
+
+</div>
+<script>
+function loadVideo() {
+  var ifwrap = document.getElementById('ifwrap');
+  var povl = document.getElementById('povl');
+  var frame = document.getElementById('ytframe');
+  if (ifwrap.style.display === 'block') return;
+  frame.src = 'https://www.youtube.com/embed/1cTftd4pNaY?autoplay=1&rel=0&modestbranding=1';
+  ifwrap.style.display = 'block';
+  povl.style.display = 'none';
+  document.querySelector('.video-thumb').style.display = 'none';
+}
+</script>
+</body>
+</html>

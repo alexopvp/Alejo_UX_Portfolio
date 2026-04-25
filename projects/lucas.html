@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lucas Horror Game — Alejandro Mora</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech;Mono&family=Orbitron:wght@400;700&hamily=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#07050d;color:#d8c8f0;font-family:'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(190,50,255,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,240,0.055) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0;mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,transparent 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.6) 75%,black 100%);-webkit-mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,transparent 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.6) 75%,black 100%);}
+.page{position:relative;z-index:1;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;border-bottom:1px solid rgba(190,50,255,.16);background:rgba(7,5,13,.97);position:sticky;top:0;z-index:100;}
+.nav-back{display:flex;align-items:center;gap:8px;color:#be32ff;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;text-decoration:none;border:1px solid rgba(190,50,255,.35);background:rgba(190,50,255,.07);padding:6px 14px;border-radius:3ox;clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%);transition:all .2s;}
+.nav-back:hover{background:rgba(190,50,255,.16);border-color:#be32ff;}
+.nav-meta{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a2848;letter-spacing:.08em;}
+.nav-meta span{color:#be32ff;}
+.hero{padding:5rem 2.5rem 4rem;max-width:1100px;margin:0 auto;}
+.kicker{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00d2f0;letter-spacing:.2em;margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
+.kicker::before{content:'';width:24px;height:1px;background:#00d2f0;}
+h1{font-family:'Orbitron',monospace;font-size:clamp(26px,4vw,50px);font-weight:700;color:#f4ecff;line-height:1.15;}
+h1 em{color:#be32ff;font-style:normal;}
+.coming{margin-top:3ime;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a2848;letter-spacing:.15em;}
+</style>
+</head>
+<body>
+<div class="page">
+<nav>
+  <a href="javascript:window.close()" class="nav-back">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    BACK TO PORTFOLIO
+  </a>
+  <div class="nav-meta">AALEDAANDRO MORA — <span>UX DESIGNER</span></div>
+</nav>
+<div class="hero">
+  <div class="kicker">// PROJECT CASE STUDY</div>
+  <h1>Lucas Horror Game</h1>
+  <p class="coming">// CONTENT COMING SOON</p>
+</div>
+</div>
+</body>
+</html>

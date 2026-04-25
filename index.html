@@ -1,0 +1,1026 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alejandro Mora — Game UX Designer</title>
+<meta name="description" content="Portfolio of Alejandro Mora — UX & Level Designer for video games. VR, immersive systems, player feedback design.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+
+/* ═══════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════ */
+:root{
+  /* Hue components for hsl(var(--*) / alpha) */
+  --bg-h: 252 45% 4%;
+  --accent-h: 285 100% 60%;
+  --cyan-h: 188 100% 47%;
+
+  /* Backgrounds */
+  --bg:                #07050d;
+  --bg-2:              #08040e;
+  --bg-3:              #09040f;
+  --bg-deep:           #05030b;
+  --bg-deeper:         #03010a;
+  --bg-cyan-dark:      #03060a;
+  --bg-blueblack:      #040810;
+  --bg-violetblack:    #06020e;
+  --bg-violet-deep:    #14082a;
+  --bg-card-deep:      #0c0616;
+  --surface:           #0a0614;
+  --surface-2:         #0e0819;
+  --surface-3:         #100818;
+
+  /* Brand */
+  --accent:            #be32ff;
+  --accent-dark:       #8010c0;
+  --accent-mute:       #7018b0;
+  --accent-mute-2:     #8020c0;
+  --cyan:              #00d2f0;
+  --cyan-dark:         #0080b0;
+  --cyan-mute:         #007080;
+  --cyan-mute-2:       #008898;
+
+  /* Text */
+  --text:              #d8c8f0;
+  --text-bright:       #f4ecff;
+  --text-bright-2:     #f0e8ff;
+  --text-bright-3:     #f0e4ff;
+  --text-mute:         #8070a0;
+  --text-dim:          #6a5880;
+  --text-dim-2:        #5a4870;
+  --text-faint:        #3a2848;
+  --text-fainter:      #221530;
+
+  /* Typography */
+  --font-display: var(--font-display);
+  --font-mono:    var(--font-mono);
+  --font-body:    'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* ═══════════════════════════════════════
+   CONTACT FRAME (formerly inline)
+═══════════════════════════════════════ */
+.contact-wrap{padding:0 1.5rem 3rem;max-width:900px;margin:0 auto;}
+.contact-frame{
+  position:relative;background:var(--surface);
+  border:1px solid hsl(var(--accent-h) / .28);
+  clip-path:polygon(18px 0%,100% 0%,calc(100% - 18px) 100%,0% 100%);
+  display:grid;grid-template-columns:1fr 1fr;overflow:hidden;
+}
+.contact-frame::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--cyan));z-index:2;}
+.contact-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,hsl(var(--accent-h) / .4),hsl(var(--cyan-h) / .4));z-index:2;}
+.cf-divider{position:absolute;left:50%;top:10%;bottom:10%;width:1px;background:linear-gradient(to bottom,transparent,hsl(var(--accent-h) / .3) 30%,hsl(var(--cyan-h) / .3) 70%,transparent);z-index:2;}
+.cf-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 25% 60%,hsl(var(--accent-h) / .07) 0%,transparent 55%),radial-gradient(ellipse at 78% 40%,hsl(var(--cyan-h) / .07) 0%,transparent 55%);pointer-events:none;}
+.cf-corner{position:absolute;width:16px;height:16px;z-index:3;}
+.cf-corner.tl{top:10px;left:24px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan);}
+.cf-corner.tr{top:10px;right:10px;border-top:2px solid var(--cyan);border-right:2px solid var(--cyan);}
+.cf-corner.bl{bottom:10px;left:24px;border-bottom:2px solid hsl(var(--accent-h) / .6);border-left:2px solid hsl(var(--accent-h) / .6);}
+.cf-corner.br{bottom:10px;right:10px;border-bottom:2px solid hsl(var(--accent-h) / .6);border-right:2px solid hsl(var(--accent-h) / .6);}
+
+.cf-left{padding:2rem 2rem 2rem 2.5rem;display:flex;flex-direction:column;gap:.9rem;}
+.cf-right{padding:2rem;display:flex;flex-direction:column;justify-content:center;gap:1.2rem;}
+.cf-head{display:flex;align-items:center;gap:10px;margin-bottom:.4rem;padding-bottom:.9rem;border-bottom:1px solid rgba(255,255,255,.05);}
+.cf-avatar{width:38px;height:38px;background:linear-gradient(135deg,var(--accent),var(--cyan));clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--bg);}
+.cf-name{font-size:13px;font-weight:500;color:var(--text-bright-2);font-family:var(--font-body);}
+.cf-role{font-family:var(--font-mono);font-size:9px;color:var(--accent);margin-top:1px;}
+
+/* Skill bar (shared with avatar overlay) */
+.skill-bar{margin-bottom:4px;}
+.skill-bar .row{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;color:var(--text-dim-2);margin-bottom:4px;}
+.skill-bar .row.first{color:var(--text-bright-2);}
+.skill-bar .row .v-p{color:var(--accent);}
+.skill-bar .row .v-c{color:var(--cyan);}
+.skill-bar .track{height:3px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;}
+.skill-bar .fill{height:100%;border-radius:2px;}
+.skill-bar .fill-p{background:linear-gradient(90deg,var(--accent),var(--accent-dark));}
+.skill-bar .fill-c{background:linear-gradient(90deg,var(--cyan),var(--cyan-dark));}
+.skill-divider{height:1px;background:hsl(var(--accent-h) / .18);margin:.4rem 0 .6rem;}
+.cf-xp{margin-top:.4rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.05);}
+.cf-xp .row{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:9px;color:var(--text-dim-2);margin-bottom:5px;}
+.cf-xp .row .label{color:var(--text-bright-2);}
+.cf-xp .track{height:4px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;}
+.cf-xp .fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--cyan));border-radius:3px;}
+
+.cf-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--text-bright);letter-spacing:.06em;margin-bottom:.3rem;}
+.cf-desc{font-family:var(--font-body);font-size:12px;color:var(--text-dim-2);line-height:1.6;}
+.cf-sep{width:100%;height:1px;background:linear-gradient(90deg,hsl(var(--accent-h) / .3),hsl(var(--cyan-h) / .2),transparent);}
+.cf-links{display:flex;flex-direction:column;gap:.65rem;}
+.cf-link{font-family:var(--font-mono);font-size:11px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;}
+.cf-link.mail{color:var(--accent);}
+.cf-link.li{color:var(--cyan);}
+.cf-link:hover{color:var(--text-bright);}
+.cf-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:.2rem;}
+.cf-tag{font-family:var(--font-mono);font-size:9px;padding:3px 10px;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);}
+.cf-tag.p{border:1px solid hsl(var(--accent-h) / .45);color:var(--accent);background:hsl(var(--accent-h) / .08);}
+.cf-tag.c{border:1px solid hsl(var(--cyan-h) / .35);color:var(--cyan);background:hsl(var(--cyan-h) / .07);}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(190,50,255,0.10) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,240,0.07) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0;-webkit-mask-image:radial-gradient(ellipse 70% 65% at 50% 45%, transparent 30%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.6) 75%, black 100%);mask-image:radial-gradient(ellipse 70% 65% at 50% 45%, transparent 30%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.6) 75%, black 100%);}
+.wrap{position:relative;z-index:1;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.12}}
+@keyframes ppulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.65);opacity:0}}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}  }
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── NAV ─── */
+nav{display:flex;justify-content:center;align-items:center;padding:1rem 2rem;border-bottom:1px solid hsl(var(--accent-h) / .16);background:hsl(var(--bg-h) / .98);position:sticky;top:0;z-index:100;}
+.navl{display:flex;gap:.5rem;list-style:none;align-items:center;}
+.navl a{
+  color:var(--text);
+  font-size:10px;
+  text-decoration:none;
+  font-family:var(--font-mono);
+  letter-spacing:.08em;
+  transition:all .2s;
+  padding:6px 13px;
+  border:1px solid hsl(var(--accent-h) / .18);
+  border-radius:3px;
+  background:rgba(190,50,255,.05);
+  clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%);
+}
+.navl a:hover{color:var(--accent);border-color:hsl(var(--accent-h) / .55);background:hsl(var(--accent-h) / .12);}
+.navl a.nav-contact{color:var(--cyan);border-color:hsl(var(--cyan-h) / .3);background:hsl(var(--cyan-h) / .06);}
+.navl a.nav-contact:hover{border-color:var(--cyan);background:hsl(var(--cyan-h) / .12);}
+.navl a.nav-home{color:var(--accent);border-color:hsl(var(--accent-h) / .45);background:hsl(var(--accent-h) / .08);}
+.navl a.nav-home:hover{border-color:var(--accent);background:hsl(var(--accent-h) / .18);color:var(--accent);}
+.nstat{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:10px;color:var(--cyan);}
+.nsd{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 1.8s ease-in-out infinite;}
+
+/* ─── TICKER ─── */
+.ticker{background:var(--surface-3);border-bottom:1px solid hsl(var(--accent-h) / .12);overflow:hidden;padding:6px 0;position:relative;width:100%;}
+.ticker-inner{display:flex;gap:0;white-space:nowrap;width:max-content;animation:ticker 28s linear infinite;will-change:transform;}
+.tick{font-family:var(--font-mono);font-size:10px;color:var(--text-faint);padding:0 2rem;letter-spacing:.1em;}
+.tick span{color:var(--accent);}
+.tick.c span{color:var(--cyan);}
+
+/* ─── HERO ─── */
+.hero3{padding:4rem 2rem 3rem;text-align:center;border-bottom:1px solid hsl(var(--accent-h) / .1);position:relative;overflow:hidden;}
+.hero3::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,hsl(var(--accent-h) / .08) 0%,transparent 65%);pointer-events:none;}
+.hero3-kicker{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:.22em;margin-bottom:1.2rem;}
+.hero3 h1{font-family:var(--font-display);font-size:clamp(28px,5vw,54px);font-weight:700;line-height:1.1;color:var(--text-bright);margin-bottom:.8rem;}
+.hero3 h1 .cu{color:var(--accent);}
+.hero3 h1 .cy{color:var(--cyan);}
+.hero3-desc{font-size:14px;color:var(--text-mute);line-height:1.75;max-width:520px;margin:0 auto 1.8rem;}
+.tags3{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-bottom:1.8rem;}
+.tag3{font-family:var(--font-mono);font-size:10px;padding:3px 10px;border-radius:3px;border:1px solid;}
+.t3p{color:var(--accent);border-color:hsl(var(--accent-h) / .35);background:hsl(var(--accent-h) / .07);}
+.t3c{color:var(--cyan);border-color:hsl(var(--cyan-h) / .3);background:hsl(var(--cyan-h) / .06);}
+.btns3{display:flex;gap:10px;justify-content:center;}
+.bp3{background:var(--accent);color:var(--bg);border:none;padding:11px 22px;font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:.1em;cursor:pointer;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%);transition:opacity .2s;}
+.bp3:hover{opacity:.82;}
+.bs3{background:transparent;color:var(--cyan);border:1px solid hsl(var(--cyan-h) / .3);padding:11px 22px;font-family:var(--font-display);font-size:10px;letter-spacing:.1em;cursor:pointer;transition:all .2s;}
+.bs3:hover{border-color:var(--cyan);}
+
+/* ─── STATS ROW ─── */
+.stats3{display:flex;justify-content:center;gap:0;border-top:1px solid hsl(var(--accent-h) / .1);border-bottom:1px solid hsl(var(--accent-h) / .1);}
+.s3c{padding:1.2rem 2.5rem;text-align:center;border-right:1px solid hsl(var(--accent-h) / .08);}
+.s3c:last-child{border-right:none;}
+.s3n{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--accent);}
+.s3n.cy{color:var(--cyan);}
+.s3l{font-family:var(--font-mono);font-size:10px;color:var(--text-faint);margin-top:2px;letter-spacing:.08em;}
+
+/* ─── REEL ─── */
+.reel3-wrap{padding:2rem;max-width:900px;margin:0 auto;}
+.reel3-label{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:.18em;margin-bottom:.8rem;display:flex;align-items:center;gap:10px;}
+.reel3-label::after{content:'';flex:1;height:1px;background:hsl(var(--accent-h) / .12);}
+.reel3{position:relative;width:100%;aspect-ratio:16/7;background:var(--bg-deep);border:1px solid hsl(var(--accent-h) / .2);border-radius:5px;overflow:hidden;cursor:pointer;}
+.r3bg{position:absolute;inset:0;background:radial-gradient(ellipse at 25% 70%,hsl(var(--accent-h) / .1) 0%,transparent 50%),radial-gradient(ellipse at 75% 30%,hsl(var(--cyan-h) / .08) 0%,transparent 50%);}
+.r3scl{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.07) 3px,rgba(0,0,0,.07) 4px);pointer-events:none;z-index:2;}
+.r3frames{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-around;padding:0 2.5rem;gap:12px;z-index:1;}
+.r3f{flex:1;height:58%;border:1px solid rgba(190,50,255,.15);border-radius:3px;background:rgba(12,6,22,.75);display:flex;align-items:center;justify-content:center;font-size:20px;opacity:.38;position:relative;}
+.r3f span{position:absolute;bottom:5px;left:7px;font-family:var(--font-mono);font-size:8px;color:hsl(var(--accent-h) / .45);}
+.r3play{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.r3pb{width:60px;height:60px;border-radius:50%;background:hsl(var(--accent-h) / .12);border:2px solid hsl(var(--accent-h) / .55);display:flex;align-items:center;justify-content:center;position:relative;}
+.r3pb::before{content:'';position:absolute;inset:-9px;border-radius:50%;border:1px solid hsl(var(--accent-h) / .22);animation:ppulse 2.2s ease-out infinite;}
+.r3pt{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid var(--accent);margin-left:3px;}
+.r3t{font-family:var(--font-display);font-size:13px;color:var(--text-bright-2);letter-spacing:.12em;}
+.r3s{font-family:var(--font-mono);font-size:9px;color:var(--text-faint);}
+.r3c{position:absolute;width:13px;height:13px;z-index:4;}
+.r3c.tl{top:9px;left:9px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan);}
+.r3c.tr{top:9px;right:9px;border-top:2px solid var(--cyan);border-right:2px solid var(--cyan);}
+.r3c.bl{bottom:9px;left:9px;border-bottom:2px solid var(--cyan);border-left:2px solid var(--cyan);}
+.r3c.br{bottom:9px;right:9px;border-bottom:2px solid var(--cyan);border-right:2px solid var(--cyan);}
+
+/* ─── SECTION DIVIDER — CYBERPUNK STICKER ─── */
+.sec-div{display:flex;align-items:center;gap:1rem;margin:2rem 0 1.5rem;padding:0 2rem;max-width:900px;margin-left:auto;margin-right:auto;}
+.sdl{flex:1;height:1px;background:hsl(var(--accent-h) / .1);}
+
+/* Cyberpunk sticker title */
+.sdt{
+  font-family:var(--font-display);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.22em;
+  white-space:nowrap;
+  position:relative;
+  color:var(--bg);
+  padding:6px 22px 6px 16px;
+  background:var(--accent);
+  clip-path:polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  text-shadow:none;
+  display:inline-block;
+  box-shadow:3px 3px 0 rgba(0,0,0,.5), 0 0 18px hsl(var(--accent-h) / .55);
+  transform:skewX(-4deg);
+}
+.sdt::before{
+  content:'';
+  position:absolute;
+  inset:2px;
+  clip-path:polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  border:1px solid rgba(255,255,255,.25);
+  pointer-events:none;
+}
+.sdt.cy{
+  color:var(--bg);
+  background:var(--cyan);
+  box-shadow:3px 3px 0 rgba(0,0,0,.5), 0 0 18px hsl(var(--cyan-h) / .55);
+}
+
+/* ═══════════════════════════════════════
+   ABOUT ME SECTION
+═══════════════════════════════════════ */
+.about-section{padding:0 2rem 2.5rem;max-width:900px;margin:0 auto;}
+.about-inner{display:grid;grid-template-columns:1fr 340px;gap:2.5rem;align-items:center;}
+.about-text{}
+.about-label{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:.2em;margin-bottom:.9rem;}
+.about-text h2{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--text-bright);margin-bottom:1rem;line-height:1.2;}
+.about-text h2 em{color:var(--cyan);font-style:normal;}
+.about-text p{font-size:13px;color:var(--text-mute);line-height:1.85;margin-bottom:.9rem;font-family:var(--font-body);}
+.about-text p strong{color:var(--text);font-weight:500;}
+.cv-btn{display:inline-flex;align-items:center;gap:8px;margin-top:.5rem;background:transparent;color:var(--accent);border:1px solid hsl(var(--accent-h) / .4);padding:10px 20px;font-family:var(--font-display);font-size:10px;letter-spacing:.1em;cursor:pointer;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%);transition:all .22s;text-decoration:none;}
+.cv-btn:hover{background:hsl(var(--accent-h) / .12);border-color:var(--accent);}
+.cv-btn svg{width:14px;height:14px;flex-shrink:0;}
+
+/* ─── Avatar / Stats Card ─── */
+.about-avatar-wrap{position:relative;width:100%;max-width:300px;margin:0 auto;}
+.about-img{
+  width:100%;
+  aspect-ratio:3/4;
+  background:linear-gradient(135deg,var(--surface-2) 0%,var(--bg-violet-deep) 50%,#080c1a 100%);
+  border:1px solid hsl(var(--accent-h) / .3);
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+.about-img::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 40% 35%,hsl(var(--accent-h) / .12) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,hsl(var(--cyan-h) / .08) 0%,transparent 55%);}
+.about-img-placeholder{font-family:var(--font-display);font-size:52px;font-weight:700;color:hsl(var(--accent-h) / .25);letter-spacing:-.02em;position:relative;z-index:1;}
+.about-img-sub{position:absolute;bottom:14px;left:14px;font-family:var(--font-mono);font-size:9px;color:hsl(var(--cyan-h) / .5);letter-spacing:.12em;z-index:2;}
+/* Corner brackets on avatar */
+.about-img .r3c{z-index:3;}
+
+/* Stats overlay on hover */
+.about-stats-overlay{
+  position:absolute;
+  inset:0;
+  background:hsl(var(--bg-h) / .93);
+  border-radius:6px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:1.5rem;
+  opacity:0;
+  transition:opacity .3s ease;
+  z-index:10;
+  backdrop-filter:blur(4px);
+}
+.about-img:hover .about-stats-overlay{opacity:1;}
+.aso-title{font-family:var(--font-display);font-size:11px;color:var(--text-bright);letter-spacing:.12em;margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid hsl(var(--accent-h) / .2);}
+.aso-stat{margin-bottom:.75rem;}
+.aso-row{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-bottom:4px;}
+.aso-label{color:var(--text-mute);}
+.aso-val-p{color:var(--accent);}
+.aso-val-c{color:var(--cyan);}
+.aso-bar{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;}
+.aso-fill-p{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent-dark));}
+.aso-fill-c{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--cyan),var(--cyan-dark));}
+.aso-xp{margin-top:1rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.05);}
+.aso-xp-row{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:9px;color:var(--text-dim-2);margin-bottom:4px;}
+.aso-xp-row span{color:var(--cyan);}
+.aso-xpbar{height:4px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;}
+.aso-xpfill{height:100%;width:72%;background:linear-gradient(90deg,var(--accent),var(--cyan));border-radius:3px;}
+.aso-hint{font-family:var(--font-mono);font-size:8px;color:hsl(var(--cyan-h) / .3);text-align:center;margin-top:1.2rem;letter-spacing:.1em;}
+
+/* CV button below avatar */
+.cv-btn-wrap{margin-top:1rem;text-align:center;}
+
+
+/* ═══════════════════════════════════════
+   PROFESSIONAL PROJECTS
+═══════════════════════════════════════ */
+.proj-section{padding:0 1.5rem 2.5rem;max-width:1200px;margin:0 auto;}
+
+/* ── LAYOUT VARIANT A: Big hero + 2 stacked on right ── */
+.proj-layout-a{display:grid;grid-template-columns:1.6fr 1fr;gap:10px;}
+.pla-main{position:relative;border-radius:5px;overflow:hidden;cursor:pointer;min-height:320px;border:1px solid hsl(var(--accent-h) / .18);background:var(--bg-3);transition:border-color .25s;}
+.pla-main:hover{border-color:hsl(var(--accent-h) / .55);}
+.pla-main:hover .proj-overlay{opacity:1;}
+.pla-side{display:flex;flex-direction:column;gap:10px;}
+.pla-sm{position:relative;border-radius:4px;overflow:hidden;cursor:pointer;flex:1;border:1px solid rgba(255,255,255,.06);background:var(--bg-2);transition:border-color .25s;}
+.pla-sm:hover{border-color:hsl(var(--cyan-h) / .4);}
+.pla-sm:hover .proj-overlay{opacity:1;}
+
+/* ── LAYOUT VARIANT B: Horizontal 3 equal ── */
+.proj-layout-b{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.plb-card{position:relative;border-radius:4px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,.06);background:var(--bg-2);transition:border-color .25s;}
+.plb-card:hover{border-color:hsl(var(--accent-h) / .45);}
+.plb-card:hover .proj-overlay{opacity:1;}
+
+/* ── LAYOUT VARIANT C: Asymmetric mosaic ── */
+.proj-layout-c{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:10px;}
+.plc-tall{grid-row:1/3;position:relative;border-radius:5px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,.06);background:var(--bg-2);min-height:380px;transition:border-color .25s;}
+.plc-tall:hover{border-color:hsl(var(--accent-h) / .5);}
+.plc-tall:hover .proj-overlay{opacity:1;}
+.plc-wide{position:relative;border-radius:4px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,.06);background:var(--bg-2);transition:border-color .25s;}
+.plc-wide:hover{border-color:hsl(var(--cyan-h) / .45);}
+.plc-wide:hover .proj-overlay{opacity:1;}
+
+/* Shared project card inner styles */
+.proj-thumb-bg{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:52px;
+  opacity:.18;
+}
+.proj-thumb-bg.lg{font-size:72px;}
+.proj-grad-a{background:radial-gradient(ellipse at 30% 40%,hsl(var(--accent-h) / .18) 0%,transparent 60%),radial-gradient(ellipse at 75% 75%,hsl(var(--cyan-h) / .1) 0%,transparent 55%);}
+.proj-grad-b{background:radial-gradient(ellipse at 60% 30%,hsl(var(--cyan-h) / .16) 0%,transparent 55%),radial-gradient(ellipse at 25% 80%,hsl(var(--accent-h) / .1) 0%,transparent 50%);}
+.proj-grad-c{background:radial-gradient(ellipse at 50% 50%,hsl(var(--accent-h) / .14) 0%,transparent 65%);}
+
+.proj-info{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:.9rem 1rem;
+  background:linear-gradient(to top,hsl(var(--bg-h) / .95) 0%,hsl(var(--bg-h) / .7) 60%,transparent 100%);
+  z-index:2;
+}
+.proj-years{font-family:var(--font-mono);font-size:9px;color:var(--cyan);letter-spacing:.12em;margin-bottom:4px;}
+.proj-title{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--text-bright);line-height:1.2;margin-bottom:3px;}
+.proj-title.lg{font-size:18px;}
+.proj-type{font-family:var(--font-mono);font-size:9px;color:var(--text-dim);letter-spacing:.08em;}
+
+/* Hover overlay */
+.proj-overlay{
+  position:absolute;inset:0;
+  background:hsl(var(--bg-h) / .55);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;
+  transition:opacity .25s;
+  z-index:3;
+}
+.proj-overlay-btn{
+  font-family:var(--font-display);
+  font-size:9px;
+  color:var(--bg);
+  background:var(--accent);
+  padding:8px 16px;
+  border-radius:3px;
+  letter-spacing:.1em;
+  clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%);
+}
+
+/* Variant label */
+.variant-label{font-family:var(--font-mono);font-size:9px;color:var(--text-faint);letter-spacing:.14em;margin-bottom:.6rem;display:flex;align-items:center;gap:8px;}
+.variant-label::before{content:'';display:inline-block;width:20px;height:1px;background:hsl(var(--accent-h) / .3);}
+.variant-label span{color:var(--accent);}
+
+.variant-block{margin-bottom:2rem;}
+.variant-block:last-child{margin-bottom:0;}
+
+/* minimap decorations inside proj thumbs */
+.mini-map-deco{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.22;}
+
+
+/* ═══════════════════════════════════════
+   PERSONAL PROJECTS (existing style)
+═══════════════════════════════════════ */
+.projects3{padding:0 2rem 2rem;max-width:900px;margin:0 auto;}
+.div3{display:flex;align-items:center;gap:1rem;margin:1.5rem 0 1.2rem;}
+.dl3{flex:1;height:1px;background:hsl(var(--accent-h) / .1);}
+.dlb3{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:.18em;}
+
+.proj-featured{display:grid;grid-template-columns:1fr 1fr;background:var(--surface-2);border:1px solid hsl(var(--accent-h) / .14);border-radius:5px;overflow:hidden;cursor:pointer;transition:border-color .2s;margin-bottom:12px;}
+.proj-featured:hover{border-color:hsl(var(--accent-h) / .4);}
+.pf-thumb{background:var(--bg-3);display:flex;align-items:center;justify-content:center;min-height:220px;}
+.pf-info{padding:1.8rem;}
+.pf-num{font-family:var(--font-display);font-size:10px;color:hsl(var(--accent-h) / .35);letter-spacing:.12em;margin-bottom:.6rem;}
+.pf-type{font-family:var(--font-mono);font-size:10px;color:var(--text-faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+.pf-name{font-size:16px;font-weight:500;color:var(--text-bright-3);margin-bottom:.6rem;line-height:1.25;}
+.pf-desc{font-size:12px;color:var(--text-faint);line-height:1.65;}
+.pftags{display:flex;gap:5px;flex-wrap:wrap;margin-top:1rem;}
+.pft{font-family:var(--font-mono);font-size:9px;padding:2px 7px;border-radius:2px;border:1px solid hsl(var(--accent-h) / .22);color:var(--accent-mute-2);background:hsl(var(--accent-h) / .06);}
+.pft.ct{border-color:hsl(var(--cyan-h) / .22);color:var(--cyan-mute-2);background:hsl(var(--cyan-h) / .06);}
+
+.proj-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;}
+.ptcard{background:var(--surface-2);border:1px solid rgba(255,255,255,.05);border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color .2s;}
+.ptcard:hover{border-color:hsl(var(--cyan-h) / .35);}
+.ptcard.hp:hover{border-color:hsl(var(--accent-h) / .4);}
+.ptthumb{height:100px;display:flex;align-items:center;justify-content:center;}
+.ptt1{background:var(--bg-2);}.ptt2{background:var(--bg-blueblack);}.ptt3{background:var(--bg-violetblack);}
+.ptinfo{padding:.7rem .9rem .9rem;}
+.pttype{font-family:var(--font-mono);font-size:9px;color:var(--text-faint);letter-spacing:.08em;margin-bottom:3px;}
+.ptname{font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.ptdesc{font-size:10px;color:var(--text-faint);line-height:1.45;}
+.pttags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;}
+.ptag3{font-family:var(--font-mono);font-size:9px;padding:1px 5px;border-radius:2px;border:1px solid hsl(var(--accent-h) / .2);color:var(--accent-mute);background:hsl(var(--accent-h) / .06);}
+.ptag3.ct{border-color:hsl(var(--cyan-h) / .2);color:var(--cyan-mute);background:hsl(var(--cyan-h) / .05);}
+
+/* minimap lg */
+.mmlg{width:130px;height:95px;border:1px solid hsl(var(--accent-h) / .3);position:relative;border-radius:2px;overflow:hidden;}
+.mmlg-bg{position:absolute;inset:0;background:var(--bg-deeper);}
+.mmlg-r{position:absolute;border:1px solid hsl(var(--accent-h) / .4);background:hsl(var(--accent-h) / .06);}
+.mmlg-w{position:absolute;background:hsl(var(--accent-h) / .16);}
+.mmlg-p{position:absolute;width:6px;height:6px;background:var(--accent);border-radius:50%;}
+.mmsm{width:76px;height:56px;border:1px solid hsl(var(--accent-h) / .28);position:relative;border-radius:2px;overflow:hidden;}
+.mmsm-bg{position:absolute;inset:0;background:var(--bg-deeper);}
+.mmsm-r{position:absolute;border:1px solid hsl(var(--accent-h) / .36);background:hsl(var(--accent-h) / .06);}
+.mmsm-p{position:absolute;width:4px;height:4px;background:var(--accent);border-radius:50%;}
+.hudsm{width:86px;height:56px;border:1px solid hsl(var(--cyan-h) / .24);border-radius:2px;background:var(--bg-cyan-dark);position:relative;}
+.hsmt{position:absolute;top:0;left:0;right:0;height:12px;background:hsl(var(--cyan-h) / .07);border-bottom:1px solid hsl(var(--cyan-h) / .14);}
+.hsmb1{position:absolute;left:4px;bottom:14px;width:32px;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;}
+.hsmb1f{height:100%;width:68%;background:var(--cyan);border-radius:2px;}
+.hsmb2{position:absolute;left:4px;bottom:8px;width:22px;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;}
+.hsmb2f{height:100%;width:40%;background:var(--accent);border-radius:2px;}
+.hsmm{position:absolute;right:4px;bottom:4px;width:26px;height:26px;border:1px solid hsl(var(--cyan-h) / .28);border-radius:2px;}
+.flowsm{display:flex;align-items:center;gap:4px;padding:0 8px;}
+.fsn{width:32px;height:26px;border:1px solid hsl(var(--accent-h) / .28);border-radius:2px;background:rgba(190,50,255,.05);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:7px;color:var(--accent);text-align:center;line-height:1.15;}
+.fsn.act{border-color:var(--cyan);background:hsl(var(--cyan-h) / .08);color:var(--cyan);}
+.fsa{font-family:var(--font-mono);font-size:9px;color:var(--text-faint);}
+
+/* ─── BOTTOM / CONTACT ─── */
+.bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 2rem 2rem;max-width:900px;margin:0 auto;}
+.pcard3{background:var(--surface-2);border:1px solid hsl(var(--accent-h) / .2);border-radius:4px;padding:1.3rem;position:relative;overflow:hidden;}
+.pcard3::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--cyan));}
+.pc3h{display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding-bottom:.9rem;border-bottom:1px solid rgba(255,255,255,.05);}
+.av3{width:42px;height:42px;background:linear-gradient(135deg,var(--accent),var(--cyan));border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--bg);}
+.pn3{font-size:13px;font-weight:500;color:var(--text-bright-2);}
+.pc3c{font-family:var(--font-mono);font-size:10px;color:var(--accent);margin-top:2px;}
+.sr3{margin-bottom:7px;}
+.slr3{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;color:var(--text-faint);margin-bottom:3px;}
+.sv3p{color:var(--accent);}.sv3c{color:var(--cyan);}
+.bar3{height:3px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;}
+.bf3{height:100%;border-radius:2px;}
+.bf3p{background:linear-gradient(90deg,var(--accent),var(--accent-dark));}
+.bf3c{background:linear-gradient(90deg,var(--cyan),var(--cyan-dark));}
+.xpr3{margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);}
+.xpl3{font-size:10px;color:var(--text-faint);margin-bottom:4px;display:flex;justify-content:space-between;}
+.xpl3 span{color:var(--cyan);}
+.xpb3{height:5px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;}
+.xpf3{height:100%;width:72%;background:linear-gradient(90deg,var(--accent),var(--cyan));border-radius:3px;}
+
+.cbox3{background:var(--surface-2);border:1px solid hsl(var(--cyan-h) / .2);border-radius:4px;padding:1.3rem;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;}
+.cbox3::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--accent));}
+.cbox3 h2{font-family:var(--font-display);font-size:16px;color:var(--text-bright);margin-bottom:.5rem;}
+.cbox3 p{font-size:12px;color:var(--text-faint);line-height:1.6;margin-bottom:1rem;}
+.ce3{color:var(--accent);font-family:var(--font-mono);font-size:12px;text-decoration:none;display:block;margin-bottom:.8rem;}
+.cl3{display:flex;gap:7px;flex-wrap:wrap;}
+.cl3b{background:transparent;color:var(--text-faint);border:1px solid rgba(255,255,255,.07);padding:5px 11px;font-family:var(--font-mono);font-size:10px;cursor:pointer;border-radius:3px;transition:all .2s;}
+.cl3b:hover{color:var(--cyan);border-color:hsl(var(--cyan-h) / .3);}
+.tcr{display:inline-block;width:7px;height:11px;background:var(--accent);vertical-align:middle;animation:blink 1s step-end infinite;margin-left:2px;}
+
+footer{text-align:center;padding:1.2rem;border-top:1px solid hsl(var(--accent-h) / .08);font-family:var(--font-mono);font-size:10px;color:var(--text-fainter);}
+footer span{color:var(--accent);}
+
+/* ─── Minimap decorations for pro projects ─── */
+.mmap-proj{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.25;width:100px;height:72px;border:1px solid hsl(var(--accent-h) / .4);border-radius:2px;overflow:hidden;background:var(--bg-deeper);}
+.mmap-proj .mr{position:absolute;border:1px solid hsl(var(--accent-h) / .5);background:hsl(var(--accent-h) / .08);}
+.mmap-proj .mp{position:absolute;width:5px;height:5px;background:var(--accent);border-radius:50%;}
+.hud-proj{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.25;width:110px;height:72px;border:1px solid hsl(var(--cyan-h) / .35);border-radius:2px;background:var(--bg-cyan-dark);}
+.hud-proj .ht{position:absolute;top:0;left:0;right:0;height:14px;background:hsl(var(--cyan-h) / .08);border-bottom:1px solid hsl(var(--cyan-h) / .18);}
+.hud-proj .hb{position:absolute;left:5px;border-radius:2px;background:rgba(255,255,255,.07);overflow:hidden;}
+.hud-proj .hbf{height:100%;border-radius:2px;}
+.flow-proj{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:5px;opacity:.25;}
+.flow-proj .fn{width:28px;height:22px;border:1px solid hsl(var(--accent-h) / .5);border-radius:2px;background:hsl(var(--accent-h) / .07);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:6px;color:var(--accent);}
+.flow-proj .fn.a{border-color:var(--cyan);background:hsl(var(--cyan-h) / .09);color:var(--cyan);}
+.flow-proj .fa{font-family:var(--font-mono);font-size:8px;color:var(--text-faint);}
+
+/* ═══════════════════════════════════════
+   PRO PROJECTS — 3D CARD TILT GRID
+═══════════════════════════════════════ */
+.pro-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;perspective:1200px;}
+.pro-card{
+  position:relative;border-radius:8px;overflow:hidden;
+  background:#07040e;border:1px solid hsl(var(--accent-h) / .22);
+  transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s,border-color .4s,opacity .4s;
+  opacity:.75;
+  flex-direction:column;
+  display:flex;
+}
+.pro-cards-grid:hover .pro-card{
+  opacity:.4;
+  transform:scale(.975);
+}
+.pro-cards-grid:hover .pro-card:hover{
+  opacity:1;
+  transform:scale(1.035);
+  border-color:hsl(var(--accent-h) / .7);
+  box-shadow:0 22px 55px rgba(190,50,255,.26), 0 0 0 1px hsl(var(--accent-h) / .28);
+  z-index:10;
+}
+.pro-card-img{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/11;
+  overflow:hidden;
+  flex-shrink:0;
+}
+/* corner brackets inside card image */
+.pro-card-corner{position:absolute;width:14px;height:14px;z-index:3;pointer-events:none;}
+.pro-card-corner.tl{top:8px;left:8px;border-top:1.5px solid hsl(var(--cyan-h) / .45);border-left:1.5px solid hsl(var(--cyan-h) / .45);}
+.pro-card-corner.tr{top:8px;right:8px;border-top:1.5px solid hsl(var(--cyan-h) / .45);border-right:1.5px solid hsl(var(--cyan-h) / .45);}
+.pro-card-corner.bl{bottom:8px;left:8px;border-bottom:1.5px solid hsl(var(--accent-h) / .35);border-left:1.5px solid hsl(var(--accent-h) / .35);}
+.pro-card-corner.br{bottom:8px;right:8px;border-bottom:1.5px solid hsl(var(--accent-h) / .35);border-right:1.5px solid hsl(var(--accent-h) / .35);}
+.pro-card-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+.pro-card-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom, transparent 35%, hsl(var(--bg-h) / .97) 100%);
+  z-index:1;
+}
+.pro-card-title{
+  position:absolute;bottom:0;left:0;right:0;
+  z-index:2;
+  padding:.75rem 1rem .6rem;
+}
+.pro-card-game{
+  font-family:var(--font-display);
+  font-size:12px;font-weight:700;
+  color:var(--text-bright);line-height:1.2;
+  margin-bottom:3px;
+}
+.pro-card-genre{
+  font-family:var(--font-mono);
+  font-size:9px;color:var(--accent);letter-spacing:.1em;
+}
+.pro-card-body{
+  padding:.85rem 1rem 1rem;
+  display:flex;flex-direction:column;gap:.65rem;
+  flex:1;
+}
+.pro-skill-tags{display:flex;flex-wrap:wrap;gap:6px;row-gap:5px;}
+.pst-v{
+  font-family:var(--font-mono);font-size:9px;
+  padding:4px 10px;border-radius:3px;
+  color:var(--accent);border:1px solid hsl(var(--accent-h) / .45);
+  background:hsl(var(--accent-h) / .1);letter-spacing:.06em;
+}
+.pst-c{
+  font-family:var(--font-mono);font-size:9px;
+  padding:4px 10px;border-radius:3px;
+  color:var(--cyan);border:1px solid hsl(var(--cyan-h) / .35);
+  background:hsl(var(--cyan-h) / .07);letter-spacing:.06em;
+}
+.pro-card-desc{
+  font-size:11px;color:var(--text-dim);line-height:1.75;
+}
+
+
+p, .about-text p, .pro-card-desc, .hero3-desc, .pf-desc, .ptdesc, .cbox3 p,
+.overview-body p, .proj-footer, .about-text {
+  font-family: var(--font-body) !important;
+}
+
+/* Personal project card — cyan highlight */
+.pro-card-personal:hover {
+  border-color: rgba(0,210,240,.7) !important;
+  box-shadow: 0 22px 55px hsl(var(--cyan-h) / .22), 0 0 0 1px rgba(0,210,240,.25) !important;
+}
+.pro-cards-grid:hover .pro-card-personal:hover {
+  border-color: rgba(0,210,240,.7) !important;
+  box-shadow: 0 22px 55px hsl(var(--cyan-h) / .22), 0 0 0 1px rgba(0,210,240,.25) !important;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="top">
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <ul class="navl">
+    <li><a href="#top" class="nav-home" id="btn-home">HOME</a></li>
+    <li><a href="#prof-projects">PROFESSIONAL PROJECTS</a></li>
+    <li><a href="#pers-projects">PERSONAL PROJECTS</a></li>
+    <li><a href="#about">ABOUT ME</a></li>
+    <li><a href="#contact" class="nav-contact">CONTACTO</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ TICKER ══════════ -->
+<div class="ticker">
+  <div class="ticker-inner" aria-hidden="true">
+    <span class="tick">UNREAL ENGINE <span>//</span></span>
+    <span class="tick c">UNITY <span>//</span></span>
+    <span class="tick">UEFN <span>//</span></span>
+    <span class="tick c">FIGMA <span>//</span></span>
+    <span class="tick">PHOTOSHOP <span>//</span></span>
+    <span class="tick c">ILLUSTRATOR <span>//</span></span>
+    <span class="tick">AFTER EFFECTS <span>//</span></span>
+    <span class="tick c">BLENDER <span>//</span></span>
+    <span class="tick">UNREAL ENGINE <span>//</span></span>
+    <span class="tick c">UNITY <span>//</span></span>
+    <span class="tick">UEFN <span>//</span></span>
+    <span class="tick c">FIGMA <span>//</span></span>
+    <span class="tick">PHOTOSHOP <span>//</span></span>
+    <span class="tick c">ILLUSTRATOR <span>//</span></span>
+    <span class="tick">AFTER EFFECTS <span>//</span></span>
+    <span class="tick c">BLENDER <span>//</span></span>
+  </div>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero3">
+  <h1>ALEJANDRO <span class="cu">MORA</span><br><span class="cy">UX</span> DESIGNER</h1>
+  <p class="hero3-desc" style="font-family:var(--font-body);">UX game designer crafting immersive, seamless experiences where every system is designed to connect with players and keep them engaged and challenged.</p>
+  <div class="tags3">
+    <span class="tag3 t3p">UX DESIGN</span>
+    <span class="tag3 t3c">LEVEL DESIGN</span>
+    <span class="tag3 t3p">GAME DESIGN</span>
+    <span class="tag3 t3c">PLAYTEST</span>
+    <span class="tag3 t3p">GDD</span>
+  </div>
+  <div class="btns3">
+    <button class="bp3" onclick="document.getElementById('prof-projects').scrollIntoView({behavior:'smooth'})">&#9654; VER PROYECTOS</button>
+    <button class="bs3">DESCARGAR CV</button>
+  </div>
+</div>
+
+<!-- ══════════ STATS ══════════ -->
+<div class="stats3">
+  <div class="s3c"><div class="s3n">3</div><div class="s3l">PROJECTS</div></div>
+  <div class="s3c"><div class="s3n cy">3.5 YRS</div><div class="s3l">EXPERIENCE</div></div>
+  <div class="s3c"><div class="s3n">MID 2</div><div class="s3l">SENIORITY</div></div>
+</div>
+
+<!-- ══════════ SHOWREEL ══════════ -->
+<div class="reel3-wrap">
+  <div class="reel3-label">// SHOWREEL 2025</div>
+  <div class="reel3" id="r3w">
+    <div class="r3bg"></div>
+    <div class="r3scl"></div>
+    <div class="r3frames">
+      <div class="r3f" style="font-size:18px;">&#128506;<span>LEVEL_01</span></div>
+      <div class="r3f" style="font-size:18px;">&#127918;<span>HUD_REEL</span></div>
+      <div class="r3f" style="font-size:18px;">&#128126;<span>UX_FLOW</span></div>
+      <div class="r3f" style="font-size:18px;">&#9889;<span>JAM_24</span></div>
+    </div>
+    <div class="r3play" id="r3p">
+      <div class="r3pb"><div class="r3pt"></div></div>
+      <div class="r3t">SHOWREEL 2025</div>
+      <div class="r3s">// CLICK PARA CARGAR VIDEO</div>
+    </div>
+    <div class="r3c tl"></div><div class="r3c tr"></div><div class="r3c bl"></div><div class="r3c br"></div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     ABOUT ME
+════════════════════════════════════════ -->
+<div id="about">
+  <div class="sec-div" style="margin-top:2rem;">
+    <div class="sdl"></div>
+    <div class="sdt">ABOUT ME</div>
+    <div class="sdl"></div>
+  </div>
+
+  <div class="about-section">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="about-label">// DESIGNER · CREATOR · EXPLORER</div>
+        <h2>Game <em>UX</em> Designer<br>shaping player experiences</h2>
+        <p>
+          I'm a Colombian designer with <strong>3.5 years of experience</strong>, focused on UX for video games. My work centers on shaping player experiences that feel clear, responsive, and engaging, with a strong emphasis on how systems communicate with players in real time.
+        </p>
+        <p>
+          What draws me to games is their ability to speak to people and create coherent, immersive experiences where players feel truly part of the world. I design with that in mind — building systems that translate complexity into <strong>intuitive interactions</strong>, reducing friction while maintaining experiences that are engaging, challenging, and rewarding.
+        </p>
+        <p>
+          I believe game experiences are built across multiple layers, where systems, interactions, and spaces come together to guide player behavior. What I enjoy most is designing those systems and environments that create <strong>meaningful moments for players</strong> — crafting spaces that feel intentional, readable, and alive through the way players interact with them.
+        </p>
+        <a class="cv-btn" href="#" onclick="alert('Replace this link with your CV PDF URL'); return false;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          DOWNLOAD CV
+        </a>
+      </div>
+
+      <div>
+        <div class="about-avatar-wrap">
+          <div class="about-img">
+            <div class="r3c tl"></div><div class="r3c tr"></div><div class="r3c bl"></div><div class="r3c br"></div>
+            <img src="img/project-01.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;border-radius:6px;" alt="Alejandro Mora" />
+            <div class="about-img-sub">// ALEJANDRO MORA</div>
+
+            <!-- Stats overlay on hover -->
+            <div class="about-stats-overlay">
+              <div class="aso-title">// DESIGNER STATS</div>
+
+              <div class="aso-stat">
+                <div class="aso-row"><span class="aso-label">UX Designer Mid 2</span><span class="aso-val-p">65</span></div>
+                <div class="aso-bar"><div class="aso-fill-p" style="width:65%"></div></div>
+              </div>
+
+              <div style="height:1px;background:hsl(var(--accent-h) / .18);margin:.5rem 0;"></div>
+
+              <div class="aso-stat">
+                <div class="aso-row"><span class="aso-label">System Design</span><span class="aso-val-p">85</span></div>
+                <div class="aso-bar"><div class="aso-fill-p" style="width:85%"></div></div>
+              </div>
+              <div class="aso-stat">
+                <div class="aso-row"><span class="aso-label">Player Empathy</span><span class="aso-val-c">75</span></div>
+                <div class="aso-bar"><div class="aso-fill-c" style="width:75%"></div></div>
+              </div>
+              <div class="aso-stat">
+                <div class="aso-row"><span class="aso-label">Interaction Clarity</span><span class="aso-val-p">85</span></div>
+                <div class="aso-bar"><div class="aso-fill-p" style="width:85%"></div></div>
+              </div>
+              <div class="aso-stat">
+                <div class="aso-row"><span class="aso-label">Challenge Design</span><span class="aso-val-c">75</span></div>
+                <div class="aso-bar"><div class="aso-fill-c" style="width:75%"></div></div>
+              </div>
+              <div class="aso-stat">
+                <div class="aso-row"><span class="aso-label">World Integration</span><span class="aso-val-p">70</span></div>
+                <div class="aso-bar"><div class="aso-fill-p" style="width:70%"></div></div>
+              </div>
+
+              <div class="aso-xp">
+                <div class="aso-xp-row"><span>MID LEVEL 2</span><span>65% → SENIOR</span></div>
+                <div class="aso-xpbar"><div class="aso-xpfill" style="width:65%;"></div></div>
+              </div>
+              <div class="aso-hint">↑ HOVER STATS · CLICK PARA CV</div>
+            </div>
+          </div>
+
+          <div class="cv-btn-wrap">
+            <a class="cv-btn" href="#" style="display:inline-flex;font-size:9px;" onclick="alert('Reemplaza este link con la URL de tu CV en PDF'); return false;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              ABRIR CV — PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="prof-projects">
+  <div class="sec-div">
+    <div class="sdl"></div>
+    <div class="sdt">PROFESSIONAL PROJECTS</div>
+    <div class="sdl"></div>
+  </div>
+
+  <div class="proj-section">
+    <div class="pro-cards-grid">
+
+      <!-- ORCS MUST DIE -->
+      <div class="pro-card" onclick="openProject('projects/orcs.html')" style="cursor:pointer;">
+        <div class="pro-card-img">
+          <img src="img/project-02.png" alt="Orcs Must Die by the Blade" />
+          <div class="pro-card-corner tl"></div>
+          <div class="pro-card-corner tr"></div>
+          <div class="pro-card-corner bl"></div>
+          <div class="pro-card-corner br"></div>
+          <div class="pro-card-img-overlay"></div>
+          <div class="pro-card-title">
+            <div class="pro-card-game">Orcs Must Die! By the Blade</div>
+            <div class="pro-card-genre">VR Adventure Action</div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-skill-tags">
+            <span class="pst-v">VR Combat UX</span>
+            <span class="pst-v">FTUX (Onboarding Design)</span>
+            <span class="pst-v">UI Design Systems</span>
+            <span class="pst-c">Interaction Design (VR)</span>
+            <span class="pst-c">Level Prototyping</span>
+          </div>
+          <p class="pro-card-desc">Worked on UX design across the full development cycle of an action-adventure VR game, from prototyping to launch. Designed combat systems and defined a combat language to make real-time feedback readable and actionable for players. Developed a prototype level to validate core mechanics, structured the FTUX flow, and created the UI design system along with wireframes for all key screens.</p>
+        </div>
+      </div>
+
+      <!-- CAPTAIN TOONHEAD -->
+      <div class="pro-card" onclick="openProject('projects/captain.html')" style="cursor:pointer;">
+        <div class="pro-card-img">
+          <img src="img/project-03.png" alt="Captain Toonhead vs The Punks from Outer Space" />
+          <div class="pro-card-corner tl"></div>
+          <div class="pro-card-corner tr"></div>
+          <div class="pro-card-corner bl"></div>
+          <div class="pro-card-corner br"></div>
+          <div class="pro-card-img-overlay"></div>
+          <div class="pro-card-title">
+            <div class="pro-card-game">Captain Toonhead vs The Punks from Outer Space</div>
+            <div class="pro-card-genre">VR Tower Defense</div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-skill-tags">
+            <span class="pst-v">Game UI/UX Systems</span>
+            <span class="pst-v">Player Feedback Design</span>
+            <span class="pst-c">Unreal Engine (UMG)</span>
+          </div>
+          <p class="pro-card-desc">Designed and implemented interfaces in Unreal Engine for a VR tower defense game, applying a design system focused on improving player decision-making in Survival Mode. Translated complex game states (waves, sector danger, and spatial differentiation) into clear, actionable feedback, reducing cognitive load during real-time gameplay. Additionally, prototyped visual solutions and developed the global scoring system for Arcade Mode.</p>
+        </div>
+      </div>
+
+      <!-- KILLER KLOWNS -->
+      <div class="pro-card" onclick="openProject('projects/klowns.html')" style="cursor:pointer;">
+        <div class="pro-card-img">
+          <img src="img/project-04.png" alt="Killer Klowns From Outer Space The Game" />
+          <div class="pro-card-corner tl"></div>
+          <div class="pro-card-corner tr"></div>
+          <div class="pro-card-corner bl"></div>
+          <div class="pro-card-corner br"></div>
+          <div class="pro-card-img-overlay"></div>
+          <div class="pro-card-title">
+            <div class="pro-card-game">Killer Klowns From Outer Space: The Game</div>
+            <div class="pro-card-genre">Asymmetrical Horror</div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-skill-tags">
+            <span class="pst-v">User Research</span>
+            <span class="pst-v">Playtesting</span>
+            <span class="pst-c">Player Behavior Insights</span>
+          </div>
+          <p class="pro-card-desc">Conducted playtesting sessions as a User Research Intern for an asymmetrical horror game, recruiting external players to evaluate new mechanics and cooperative gameplay flows. Analyzed player behavior and team dynamics to assess clarity of objectives and win conditions across both sides. Insights from these sessions informed key design decisions, including reducing the original large map into multiple smaller maps to improve pacing, navigation, and overall player experience.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PERSONAL PROJECTS
+════════════════════════════════════════ -->
+<div id="pers-projects">
+  <div class="sec-div">
+    <div class="sdl"></div>
+    <div class="sdt cy">PERSONAL PROJECTS</div>
+    <div class="sdl"></div>
+  </div>
+
+  <div class="proj-section">
+    <div class="pro-cards-grid" style="grid-template-columns:1fr;justify-items:center;">
+
+      <div class="pro-card pro-card-personal" onclick="openProject('projects/lucas.html')" style="cursor:pointer;max-width:420px;width:100%;">
+        <div class="pro-card-img">
+          <div style="width:100%;height:100%;background:radial-gradient(ellipse at 30% 60%,rgba(0,210,240,.15) 0%,transparent 55%),radial-gradient(ellipse at 75% 30%,hsl(var(--accent-h) / .1) 0%,transparent 50%);display:flex;align-items:center;justify-content:center;">
+            <div style="font-size:48px;opacity:.18;">🗺️</div>
+          </div>
+          <div class="pro-card-corner tl"></div>
+          <div class="pro-card-corner tr"></div>
+          <div class="pro-card-corner bl"></div>
+          <div class="pro-card-corner br"></div>
+          <div class="pro-card-img-overlay"></div>
+          <div class="pro-card-title">
+            <div class="pro-card-game">Lucas Horror Game</div>
+            <div class="pro-card-genre" style="color:var(--cyan);">Horror · Level Design</div>
+          </div>
+        </div>
+        <div class="pro-card-body">
+          <div class="pro-skill-tags">
+            <span class="pst-v">Level Design</span>
+            <span class="pst-v">GDD</span>
+            <span class="pst-v">Procedural Systems</span>
+            <span class="pst-c">Unity</span>
+            <span class="pst-c">Playtesting</span>
+          </div>
+          <p class="pro-card-desc">Complete dungeon generation system with room distribution algorithm, combat flow, secret zones, and adaptive difficulty based on player behavior.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════ -->
+<div id="contact">
+  <div class="sec-div">
+    <div class="sdl"></div>
+    <div class="sdt cy">PERFIL & CONTACTO</div>
+    <div class="sdl"></div>
+  </div>
+
+  <div class="contact-wrap">
+    <div class="contact-frame">
+      <div class="cf-divider"></div>
+      <div class="cf-glow"></div>
+      <span class="cf-corner tl"></span><span class="cf-corner tr"></span>
+      <span class="cf-corner bl"></span><span class="cf-corner br"></span>
+
+      <!-- LEFT: stats -->
+      <div class="cf-left">
+        <div class="cf-head">
+          <div class="cf-avatar">AM</div>
+          <div>
+            <div class="cf-name">Alejandro Mora</div>
+            <div class="cf-role">GAME UX DESIGNER</div>
+          </div>
+        </div>
+
+        <div class="skill-bar">
+          <div class="row first"><span>UX Designer Mid 2</span><span class="v-p">65</span></div>
+          <div class="track"><div class="fill fill-p" style="width:65%"></div></div>
+        </div>
+        <div class="skill-divider"></div>
+
+        <div class="skill-bar">
+          <div class="row"><span>System Design</span><span class="v-p">85</span></div>
+          <div class="track"><div class="fill fill-p" style="width:85%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="row"><span>Player Empathy</span><span class="v-c">75</span></div>
+          <div class="track"><div class="fill fill-c" style="width:75%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="row"><span>Interaction Clarity</span><span class="v-p">85</span></div>
+          <div class="track"><div class="fill fill-p" style="width:85%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="row"><span>Challenge Design</span><span class="v-c">75</span></div>
+          <div class="track"><div class="fill fill-c" style="width:75%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="row"><span>World Integration</span><span class="v-p">70</span></div>
+          <div class="track"><div class="fill fill-p" style="width:70%"></div></div>
+        </div>
+
+        <div class="cf-xp">
+          <div class="row"><span class="label">MID LEVEL 2</span><span>UX Design · Game Design</span></div>
+          <div class="track"><div class="fill" style="width:65%"></div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: contact -->
+      <div class="cf-right">
+        <div>
+          <div class="cf-title">COLABORAMOS?</div>
+          <div class="cf-desc">Busco proyectos donde UX y level design vayan de la mano. Hablemos de tu juego.</div>
+        </div>
+        <div class="cf-sep"></div>
+        <div class="cf-links">
+          <a class="cf-link mail" href="mailto:a.moras@uniandes.edu.co">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+            a.moras@uniandes.edu.co
+          </a>
+          <a class="cf-link li" href="https://www.linkedin.com/in/alejandro-mora-salinas/" target="_blank" rel="noopener">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            /in/alejandro-mora-salinas
+          </a>
+        </div>
+        <div class="cf-tags">
+          <span class="cf-tag p">MID LEVEL 2</span>
+          <span class="cf-tag c">UX DESIGN</span>
+          <span class="cf-tag c">LEVEL DESIGN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>&lt; VERSION <span>04 — PORTFOLIO FULL</span> &gt; — 2025</footer>
+
+<script>
+document.getElementById('r3w').addEventListener('click',()=>{
+  if(document.getElementById('r3w').querySelector('video'))return;
+  const inp=document.createElement('input');inp.type='file';inp.accept='video/*';
+  inp.onchange=e=>{
+    const f=e.target.files[0];if(!f)return;
+    const v=document.createElement('video');v.src=URL.createObjectURL(f);v.controls=true;v.autoplay=true;
+    v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:10;border-radius:5px;';
+    document.getElementById('r3w').appendChild(v);
+    document.getElementById('r3p').style.display='none';
+    document.getElementById('r3w').querySelector('.r3frames').style.display='none';
+  };inp.click();
+});
+</script>
+
+<script>
+function openProject(url){
+  window.open(url,'_blank');
+}</script>
+</div>
+
+
+</body>
+</html>
