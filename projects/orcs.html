@@ -125,7 +125,7 @@ h1 em{color:#be32ff;font-style:normal;}
 .wrist-bullet{display:flex;align-items:flex-start;gap:12px;}
 .wrist-bullet-dot{width:6px;height:6px;border-radius:50%;background:#be32ff;flex-shrink:0;margin-top:6px;box-shadow:0 0 6px rgba(190,50,255,.6);}
 .wrist-bullet-text{font-family:'Roboto',sans-serif;font-size:13px;color:#8070a0;line-height:1.75;}
-.explore-group-label{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#f4ecff;letter-spacing:.08em;padding-bottom:.55rem;margin-bottom:1.6rem;border-bottom:1px solid rgba(190,50,255,.2);}
+.explore-group-label{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#f4ecff;letter-spacing:.08em;padding-bottom:.55rem;margin-bottom:1.6rem;border-bottom:1px solid rgba(190,50,255,.2);text-align:center;}
 
 /* FINAL DESIGN */
 .final-img-wrap{position:relative;border:1px solid rgba(190,50,255,.2);border-radius:12px;overflow:hidden;background:#03010a;margin-bottom:1.4rem;}
@@ -265,48 +265,90 @@ h1 em{color:#be32ff;font-style:normal;}
     </div>
   </div>
 
-  <!-- 2. EXPLORATION & PROTOTYPING -->
+  <!-- 2. PLAYER FEEDBACK -->
   <div class="fw-section">
     <div class="q-label">
-      <div class="q-label-sdt">EXPLORATION &amp; PROTOTYPING</div>
+      <div class="q-label-sdt">PLAYER FEEDBACK</div>
       <div class="q-label-line"></div>
     </div>
 
     <div class="wrist-outer">
 
-      <!-- Section header -->
       <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#1a0545 0%,#2a0870 40%,#0d1a4a 70%,#0a0e35 100%);border-bottom:1px solid rgba(190,50,255,.35);">
         <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
         <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
         <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
           <span style="width:22px;height:1px;background:#be32ff;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(190,50,255,.6);"></span>
-          <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(190,50,255,.5);">COMBAT SYSTEMS</span>
+          <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(190,50,255,.5);">PLAYER FEEDBACK</span>
         </div>
       </div>
 
-      <!-- Para 1: Player Feedback — image left, text right -->
+      <!-- Taking Damage — image left, text right -->
+      <div class="wrist-para">
+        <div class="wrist-row">
+          <div class="wrist-img-cell fade-right">
+            <img src="../img/OMD_Image/OMD_ProjectImage01.png" alt="Taking Damage — directional feedback prototype"/>
+          </div>
+          <div class="wrist-text-cell">
+            <div class="explore-group-label">Taking Damage</div>
+            <div class="wrist-bullet">
+              <div class="wrist-bullet-dot"></div>
+              <div class="wrist-bullet-text">Feedback was designed to clearly communicate when and from where the player was hit, without breaking immersion.</div>
+            </div>
+            <div class="wrist-bullet">
+              <div class="wrist-bullet-dot"></div>
+              <div class="wrist-bullet-text">Directional cues and screen effects helped players quickly understand incoming threats, while a critical state intensified the visual feedback — shifting the player's vision and increasing tension during combat.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dealing Damage — text left, image right -->
+      <div class="wrist-para">
+        <div class="wrist-row" style="grid-template-columns:1fr 500px;">
+          <div class="wrist-text-cell">
+            <div class="explore-group-label">Dealing Damage</div>
+            <div class="wrist-bullet">
+              <div class="wrist-bullet-dot"></div>
+              <div class="wrist-bullet-text">Outgoing damage needed to feel immediate and rewarding. Early iterations relied on enemy color shifts and health indicators, but this was expanded through VFX to differentiate damage types more clearly.</div>
+            </div>
+            <div class="wrist-bullet">
+              <div class="wrist-bullet-dot"></div>
+              <div class="wrist-bullet-text">Combined with haptic feedback, these cues reinforced the physicality of combat, allowing players to feel the impact of their actions.</div>
+            </div>
+          </div>
+          <div class="wrist-img-cell fade-left">
+            <video src="../img/OMD_Vid/OMD_Vid01.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. DAMAGE TYPES -->
+  <div class="fw-section">
+    <div class="q-label">
+      <div class="q-label-sdt cy">DAMAGE TYPES</div>
+      <div class="q-label-line"></div>
+    </div>
+
+    <div class="wrist-outer">
+
+      <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#001a2e 0%,#003050 40%,#001a35 70%,#000e1a 100%);border-bottom:1px solid rgba(0,210,240,.35);">
+        <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
+        <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(0,210,240,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(0,210,240,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
+        <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
+          <span style="width:22px;height:1px;background:#00d2f0;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(0,210,240,.6);"></span>
+          <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(0,210,240,.5);">DAMAGE TYPES</span>
+        </div>
+      </div>
+
       <div class="wrist-para">
         <div class="wrist-row">
           <div class="wrist-img-cell fade-right">
             <div class="img-ph">[ IMAGE PLACEHOLDER ]</div>
           </div>
-          <div class="wrist-text-cell">
-            <div class="explore-group-label">Player Feedback</div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">[ Description placeholder ]</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">[ Description placeholder ]</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Para 2: Damage Types — text left, image right -->
-      <div class="wrist-para">
-        <div class="wrist-row" style="grid-template-columns:1fr 500px;">
           <div class="wrist-text-cell">
             <div class="explore-group-label">Damage Types</div>
             <div class="wrist-bullet">
@@ -318,13 +360,30 @@ h1 em{color:#be32ff;font-style:normal;}
               <div class="wrist-bullet-text">[ Description placeholder ]</div>
             </div>
           </div>
-          <div class="wrist-img-cell fade-left">
-            <div class="img-ph">[ IMAGE PLACEHOLDER ]</div>
-          </div>
         </div>
       </div>
 
-      <!-- Para 3: Block & Parry — image left, text right -->
+    </div>
+  </div>
+
+  <!-- 4. BLOCK & PARRY -->
+  <div class="fw-section">
+    <div class="q-label">
+      <div class="q-label-sdt">BLOCK &amp; PARRY</div>
+      <div class="q-label-line"></div>
+    </div>
+
+    <div class="wrist-outer">
+
+      <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#1a0545 0%,#2a0870 40%,#0d1a4a 70%,#0a0e35 100%);border-bottom:1px solid rgba(190,50,255,.35);">
+        <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
+        <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
+        <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
+          <span style="width:22px;height:1px;background:#be32ff;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(190,50,255,.6);"></span>
+          <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(190,50,255,.5);">BLOCK &amp; PARRY</span>
+        </div>
+      </div>
+
       <div class="wrist-para">
         <div class="wrist-row">
           <div class="wrist-img-cell fade-right">
@@ -344,7 +403,7 @@ h1 em{color:#be32ff;font-style:normal;}
         </div>
       </div>
 
-    </div><!-- /wrist-outer -->
+    </div>
   </div>
 
   <!-- 3. LEARNINGS -->
