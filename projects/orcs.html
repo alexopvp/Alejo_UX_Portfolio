@@ -168,6 +168,10 @@ h1 em{color:#be32ff;font-style:normal;}
 .learning-sticker.cy .ls-dot{background:#00d2f0;}
 
 .img-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0e0618,#04020c);font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.15em;min-height:380px;}
+
+/* PARRY SLIDER */
+.parry-slider{display:flex;width:200%;height:100%;transition:transform .7s cubic-bezier(.77,0,.18,1);}
+.parry-slide{width:50%;height:100%;object-fit:cover;flex-shrink:0;display:block;}
 </style>
 </head>
 <body>
@@ -461,7 +465,7 @@ h1 em{color:#be32ff;font-style:normal;}
         </div>
       </div>
 
-      <!-- Parry — row 1: text left, image right -->
+      <!-- Parry — text left, sliding carousel right -->
       <div class="wrist-para">
         <div class="wrist-row" style="grid-template-columns:1fr 500px;">
           <div class="wrist-text-cell">
@@ -470,23 +474,15 @@ h1 em{color:#be32ff;font-style:normal;}
               <div class="wrist-bullet-dot"></div>
               <div class="wrist-bullet-text">Parry transforms defense into skill expression, requiring players to not only intercept the attack, but respond with the correct timing, force, and direction.</div>
             </div>
-          </div>
-          <div class="wrist-img-cell fade-left">
-            <img src="../img/OMD_Image/OMD_ProjectImage02.png" alt="Parry mechanic diagram" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-          </div>
-        </div>
-      </div>
-
-      <!-- Parry — row 2: image left, text right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-img-cell fade-right">
-            <img src="../img/OMD_Image/OMD_ProjectImage03.png" alt="Parry prototype in engine" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-          </div>
-          <div class="wrist-text-cell">
             <div class="wrist-bullet">
               <div class="wrist-bullet-dot"></div>
               <div class="wrist-bullet-text">When executed correctly, it creates a moment of control within combat, opening a window for a powerful counter.</div>
+            </div>
+          </div>
+          <div class="wrist-img-cell fade-left" style="overflow:hidden;position:relative;">
+            <div class="parry-slider">
+              <img src="../img/OMD_Image/OMD_ProjectImage02.png" alt="Parry mechanic diagram" class="parry-slide"/>
+              <img src="../img/OMD_Image/OMD_ProjectImage03.png" alt="Parry prototype in engine" class="parry-slide"/>
             </div>
           </div>
         </div>
@@ -570,6 +566,18 @@ function loadVideo() {
   povl.style.display = 'none';
   document.querySelector('.video-thumb').style.display = 'none';
 }
+
+// Parry auto-slider
+(function(){
+  var slider = document.querySelector('.parry-slider');
+  if(!slider) return;
+  var current = 0;
+  var total = slider.querySelectorAll('.parry-slide').length;
+  setInterval(function(){
+    current = (current + 1) % total;
+    slider.style.transform = 'translateX(-' + (current * (100 / total)) + '%)';
+  }, 3000);
+})();
 </script>
 </body>
 </html>
