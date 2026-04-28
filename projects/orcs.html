@@ -6,6 +6,7 @@
 <title>Orcs Must Die! By the Blade — Alejandro Mora</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#07050d;color:#d8c8f0;font-family:'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(190,50,255,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,240,0.055) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0;mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,transparent 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.6) 75%,black 100%);-webkit-mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,transparent 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.6) 75%,black 100%);}
@@ -19,28 +20,22 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 
 .nav-meta span{color:#be32ff;}
 
 /* HERO */
+.hero{padding:3.5rem 2.5rem 2rem;max-width:900px;margin:0 auto;}
+.kicker{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00d2f0;letter-spacing:.2em;margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
+.kicker::before{content:'';width:24px;height:1px;background:#00d2f0;}
 h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight:700;color:#f4ecff;line-height:1.15;}
 h1 em{color:#be32ff;font-style:normal;}
-.game-type{font-family:'Orbitron',monospace;font-size:clamp(13px,1.6vw,18px);font-weight:400;color:#be32ff;letter-spacing:.12em;margin-top:.45rem;opacity:.85;}
-.platforms-row{display:flex;align-items:center;gap:.75rem;margin-top:.9rem;flex-wrap:wrap;}
-.platforms-title{font-family:'Share Tech Mono',monospace;font-size:10px;color:#f4ecff;letter-spacing:.22em;font-weight:500;}
-.platform-tag{font-family:'Share Tech Mono',monospace;font-size:9px;color:#00d2f0;border:1px solid rgba(0,210,240,.35);background:rgba(0,210,240,.07);padding:3px 10px;clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);}
-.tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem;}
+.genre-label{font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.18em;margin-top:.5rem;}
 .tag{font-family:'Share Tech Mono',monospace;font-size:9px;padding:4px 12px;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);}
 .tag-p{color:#be32ff;border:1px solid rgba(190,50,255,.4);background:rgba(190,50,255,.07);}
 .tag-c{color:#00d2f0;border:1px solid rgba(0,210,240,.35);background:rgba(0,210,240,.07);}
-.hero{padding:3.5rem 2.5rem 2rem;max-width:900px;margin:0 auto;}
-.section-wrap{max-width:900px;margin:0 auto;padding:0 2.5rem;}
-.divider-bar{max-width:900px;margin:2.5rem auto 0;padding:0 2.5rem;}
-.sec-div{display:flex;align-items:center;gap:1rem;padding:.6rem 0;}
-.sdl{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.35));}
-.sdt{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;white-space:nowrap;position:relative;color:#07050d;padding:6px 22px 6px 16px;background:#be32ff;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);display:inline-block;box-shadow:3px 3px 0 rgba(0,0,0,.5),0 0 18px rgba(190,50,255,.55);transform:skewX(-4deg);}
-.sdt::before{content:'';position:absolute;inset:2px;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);border:1px solid rgba(255,255,255,.25);pointer-events:none;}
-.sdt.cy{background:#00d2f0;box-shadow:3px 3px 0 rgba(0,0,0,.5),0 0 18px rgba(0,210,240,.55);}
+.tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem;}
 
 /* VIDEO */
+.video-section{max-width:900px;margin:0 auto;padding:0 2.5rem;}
+.video-label{font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.15em;margin-bottom:.6rem;}
 .video-wrap{position:relative;width:100%;padding-bottom:56.25%;background:#000;border:1px solid rgba(190,50,255,.22);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,12px 100%,0 calc(100% - 12px));overflow:hidden;cursor:pointer;}
-.video-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.video-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s;}
 .play-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(7,5,13,.45);transition:background .3s;}
 .video-wrap:hover .play-overlay{background:rgba(7,5,13,.25);}
 .play-btn{width:64px;height:64px;background:rgba(190,50,255,.15);border:2px solid rgba(190,50,255,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;}
@@ -50,176 +45,120 @@ h1 em{color:#be32ff;font-style:normal;}
 .iframe-wrap{position:absolute;inset:0;display:none;}
 .iframe-wrap iframe{width:100%;height:100%;border:none;}
 
+/* SECTION DIVIDER */
+.sec-div{display:flex;align-items:center;gap:1rem;padding:.6rem 0;}
+.sdl{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.35));}
+.sdl:first-child{background:linear-gradient(90deg,rgba(190,50,255,.35),transparent);}
+.sdt{font-family:'Share Tech Mono',monospace;font-size:10px;color:#be32ff;letter-spacing:.2em;white-space:nowrap;}
+.divider-bar{max-width:900px;margin:2.5rem auto 0;padding:0 2.5rem;}
+
 /* MY ROLE */
-.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-top:1.8rem;}
-.role-left{display:flex;flex-direction:column;gap:1.2rem;}
-.role-img-wrap{position:relative;border:1px solid rgba(190,50,255,.22);clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,10px 100%,0 calc(100% - 10px));overflow:hidden;background:#03010a;}
-.role-corner{position:absolute;width:13px;height:13px;z-index:2;}
-.role-corner.tl{top:8px;left:8px;border-top:2px solid rgba(0,210,240,.5);border-left:2px solid rgba(0,210,240,.5);}
-.role-corner.tr{top:8px;right:8px;border-top:2px solid rgba(0,210,240,.5);border-right:2px solid rgba(0,210,240,.5);}
-.role-corner.bl{bottom:8px;left:8px;border-bottom:2px solid rgba(190,50,255,.4);border-left:2px solid rgba(190,50,255,.4);}
-.role-corner.br{bottom:8px;right:8px;border-bottom:2px solid rgba(190,50,255,.4);border-right:2px solid rgba(190,50,255,.4);}
-.deliverables-frame{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,210,240,.35);background:rgba(0,210,240,.05);padding:5px 14px 5px 10px;margin-bottom:1.1rem;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
-.deliverables-frame::before{content:'';width:16px;height:1px;background:#00d2f0;}
-.deliverables-frame span{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00d2f0;letter-spacing:.22em;font-weight:600;}
-.deliverable-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:.85rem;}
-.deliverable-dot{width:7px;height:7px;border-radius:50%;background:#be32ff;flex-shrink:0;box-shadow:0 0 8px rgba(190,50,255,.75);margin-top:5px;}
-.deliverable-text{font-family:'Roboto',sans-serif;font-size:13.5px;color:#d8c8f0;font-weight:500;line-height:1.4;}
-.role-question{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;color:#f4ecff;letter-spacing:.04em;line-height:1.3;}
-.role-subtitle{font-family:'Share Tech Mono',monospace;font-size:10px;color:#be32ff;letter-spacing:.14em;margin-top:6px;margin-bottom:1rem;}
+.content{max-width:900px;margin:1.5rem auto 0;padding:0 2.5rem;}
+.role-subtitle{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00d2f0;letter-spacing:.18em;margin-bottom:1rem;}
 .desc{font-family:'Roboto',sans-serif;font-size:13.5px;color:#8070a0;line-height:1.9;}
+.desc strong{color:#d8c8f0;font-weight:500;}
 
-/* BANNER */
-.sector-banner{
-  width:100%;margin:3rem 0 0;padding:2.8rem 0;
+/* COMBAT LANGUAGE BANNER */
+.combat-banner{
+  margin:3rem 0 0;padding:2rem 2.5rem;
+  background:linear-gradient(135deg,#0d0320 0%,#060115 50%,#030010 100%);
+  border-top:1px solid rgba(190,50,255,.25);
+  border-bottom:1px solid rgba(190,50,255,.25);
   position:relative;overflow:hidden;
-  background:radial-gradient(ellipse 80% 100% at 50% 50%, rgba(50,10,80,.98) 0%, #07050d 100%);
-  border-top:1px solid rgba(190,50,255,.5);
-  border-bottom:1px solid rgba(190,50,255,.5);
-  box-shadow:0 -8px 40px rgba(190,50,255,.12),0 8px 40px rgba(190,50,255,.12),inset 0 1px 0 rgba(255,255,255,.04),inset 0 -1px 0 rgba(0,210,240,.08);
 }
-.sector-banner::before{
-  content:'';position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 0 L56 16 L56 48 L28 64 L0 48 L0 16 Z' fill='none' stroke='rgba(190,50,255,0.13)' stroke-width='1'/%3E%3Cpath d='M28 36 L56 52 L56 84 L28 100 L0 84 L0 52 Z' fill='none' stroke='rgba(190,50,255,0.13)' stroke-width='1'/%3E%3C/svg%3E");
-  background-size:56px 100px;
-  mask-image:radial-gradient(ellipse 90% 100% at 50% 50%, black 30%, transparent 90%);
-  -webkit-mask-image:radial-gradient(ellipse 90% 100% at 50% 50%, black 30%, transparent 90%);
-  pointer-events:none;opacity:.8;
-}
-.sector-banner::after{
-  content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(190,50,255,.1),rgba(0,210,240,.06),transparent);
-  animation:scan 3.5s ease-in-out infinite;pointer-events:none;
-}
-@keyframes scan{0%{left:-55%;}100%{left:140%;}}
-.sector-banner-inner{max-width:900px;margin:0 auto;padding:0 2.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem;position:relative;z-index:1;}
-.sector-banner-title{font-family:'Orbitron',monospace;font-size:clamp(20px,3vw,34px);font-weight:700;color:#f4ecff;letter-spacing:.18em;text-shadow:0 0 20px rgba(190,50,255,.7),0 0 60px rgba(190,50,255,.3);white-space:nowrap;}
-.sector-banner-sub{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00d2f0;letter-spacing:.28em;opacity:.8;text-shadow:0 0 12px rgba(0,210,240,.6);}
+.combat-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#be32ff,#00d2f0,transparent);}
+.combat-banner::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.4),transparent);}
+.combat-banner-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:2rem;}
+.combat-banner-title{font-family:'Orbitron',monospace;font-size:clamp(16px,2.5vw,26px);font-weight:700;color:#f4ecff;letter-spacing:.06em;white-space:nowrap;}
+.combat-banner-title em{color:#be32ff;font-style:normal;}
+.combat-banner-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(190,50,255,.4),transparent);}
+.combat-banner-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(190,50,255,.45);letter-spacing:.2em;white-space:nowrap;}
 
-/* SECTOR FRAME */
-.sector-frame{
-  position:relative;margin:0;padding:3rem 0 4rem;overflow:hidden;
-  background:
-    repeating-linear-gradient(0deg,transparent,transparent 38px,rgba(190,50,255,.028) 38px,rgba(190,50,255,.028) 39px),
-    repeating-linear-gradient(90deg,transparent,transparent 38px,rgba(0,210,240,.018) 38px,rgba(0,210,240,.018) 39px),
-    radial-gradient(ellipse 120% 80% at 50% 0%,rgba(30,6,55,.65) 0%,transparent 70%),
-    radial-gradient(ellipse 120% 80% at 50% 100%,rgba(0,15,35,.55) 0%,transparent 70%),
-    #07050d;
-  border-left:1px solid rgba(190,50,255,.12);
-  border-right:1px solid rgba(190,50,255,.12);
+/* COMBAT EPIGRAPH */
+.combat-epigraph{max-width:900px;margin:0 auto;padding:2rem 2.5rem 0;text-align:center;}
+.combat-epigraph p{
+  font-family:'Roboto',sans-serif;font-size:13px;font-style:italic;
+  color:#5a4870;line-height:1.8;letter-spacing:.02em;
+  display:inline-block;position:relative;
 }
-.sector-frame::before{
-  content:'';position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='120'%3E%3Cpath d='M35 2 L67 20 L67 56 L35 74 L3 56 L3 20 Z' fill='none' stroke='rgba(0,210,240,0.045)' stroke-width='1'/%3E%3Cpath d='M35 46 L67 64 L67 100 L35 118 L3 100 L3 64 Z' fill='none' stroke='rgba(0,210,240,0.045)' stroke-width='1'/%3E%3C/svg%3E");
-  background-size:70px 120px;pointer-events:none;
-  mask-image:radial-gradient(ellipse 60% 50% at 95% 10%,black 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 5% 90%,black 0%,transparent 70%);
-  -webkit-mask-image:radial-gradient(ellipse 60% 50% at 95% 10%,black 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 5% 90%,black 0%,transparent 70%);
-  mask-composite:add;-webkit-mask-composite:source-over;opacity:.9;
+.combat-epigraph p::before,.combat-epigraph p::after{
+  content:'';display:block;width:40px;height:1px;margin:0 auto;
+  background:linear-gradient(90deg,transparent,rgba(190,50,255,.3));
 }
-.sector-frame::after{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:
-    linear-gradient(90deg,rgba(190,50,255,.08) 0px,transparent 1px),
-    linear-gradient(90deg,transparent calc(100% - 1px),rgba(190,50,255,.08) 100%),
-    linear-gradient(180deg,rgba(190,50,255,.06) 0px,transparent 80px),
-    linear-gradient(180deg,transparent calc(100% - 80px),rgba(190,50,255,.06) 100%);
-}
+.combat-epigraph p::before{margin-bottom:.75rem;}
+.combat-epigraph p::after{margin-top:.75rem;background:linear-gradient(90deg,rgba(190,50,255,.3),transparent);}
 
-/* FW-SECTION */
-.fw-section{max-width:1100px;margin:0 auto;padding:3rem 2.5rem;border-bottom:1px solid rgba(190,50,255,.07);}
-.fw-section:last-child{border-bottom:none;padding-bottom:0;}
-
-/* Q-LABEL */
+/* INNER FRAME */
+.sector-frame{max-width:900px;margin:0 auto 5rem;padding:0 2.5rem;}
+.fw-section{margin-top:3rem;}
 .q-label{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem;}
-.q-label-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.35));}
-.q-label-sdt{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;white-space:nowrap;position:relative;color:#07050d;padding:6px 22px 6px 16px;background:#be32ff;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);display:inline-block;box-shadow:3px 3px 0 rgba(0,0,0,.5),0 0 18px rgba(190,50,255,.55);transform:skewX(-4deg);}
-.q-label-sdt::before{content:'';position:absolute;inset:2px;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);border:1px solid rgba(255,255,255,.25);pointer-events:none;}
-.q-label-sdt.cy{background:#00d2f0;box-shadow:3px 3px 0 rgba(0,0,0,.5),0 0 18px rgba(0,210,240,.55);}
+.q-label-sdt{font-family:'Share Tech Mono',monospace;font-size:10px;color:#be32ff;letter-spacing:.2em;white-space:nowrap;}
+.q-label-sdt.cy{color:#00d2f0;}
+.q-label-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(190,50,255,.3),transparent);}
+.q-label-line.cy{background:linear-gradient(90deg,rgba(0,210,240,.3),transparent);}
 
 /* CHALLENGE CARD */
-.challenge-card{position:relative;border:1px solid rgba(190,50,255,.25);border-radius:14px;overflow:hidden;background:#03010a;}
-.challenge-card img{width:100%;display:block;max-height:600px;object-fit:cover;object-position:center;}
-.challenge-card::after{content:'';position:absolute;left:0;right:0;bottom:0;top:0;background:linear-gradient(to bottom,rgba(7,5,13,.18) 0%,rgba(7,5,13,.35) 20%,rgba(7,5,13,.72) 48%,rgba(7,5,13,.93) 68%,rgba(7,5,13,.99) 100%);pointer-events:none;}
-.challenge-overlay-text{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:1.8rem 2.2rem 2.2rem;}
-.challenge-overlay-text p{font-family:'Roboto',sans-serif;font-size:13.5px;color:#d0c0e8;line-height:1.85;}
-.cc{position:absolute;width:16px;height:16px;z-index:3;}
-.cc.tl{top:12px;left:12px;border-top:2px solid rgba(0,210,240,.5);border-left:2px solid rgba(0,210,240,.5);}
-.cc.tr{top:12px;right:12px;border-top:2px solid rgba(0,210,240,.5);border-right:2px solid rgba(0,210,240,.5);}
-.cc.bl{bottom:12px;left:12px;border-bottom:2px solid rgba(190,50,255,.45);border-left:2px solid rgba(190,50,255,.45);}
-.cc.br{bottom:12px;right:12px;border-bottom:2px solid rgba(190,50,255,.45);border-right:2px solid rgba(190,50,255,.45);}
+.challenge-card{position:relative;border:1px solid rgba(190,50,255,.18);background:linear-gradient(135deg,#0c0420 0%,#04010e 100%);overflow:hidden;padding:2rem 2.4rem;}
+.cc{position:absolute;width:14px;height:14px;}
+.cc.tl{top:10px;left:10px;border-top:2px solid rgba(0,210,240,.5);border-left:2px solid rgba(0,210,240,.5);}
+.cc.tr{top:10px;right:10px;border-top:2px solid rgba(0,210,240,.5);border-right:2px solid rgba(0,210,240,.5);}
+.cc.bl{bottom:10px;left:10px;border-bottom:2px solid rgba(190,50,255,.4);border-left:2px solid rgba(190,50,255,.4);}
+.cc.br{bottom:10px;right:10px;border-bottom:2px solid rgba(190,50,255,.4);border-right:2px solid rgba(190,50,255,.4);}
+.challenge-card p{font-family:'Roboto',sans-serif;font-size:13.5px;color:#8070a0;line-height:1.9;}
+.challenge-card p strong{color:#d8c8f0;font-weight:500;}
 
-/* PLAYER FLOW */
-.sub-img{position:relative;border:1px solid rgba(190,50,255,.2);border-radius:12px;overflow:hidden;background:#03010a;}
-.sub-img.cy{border-color:rgba(0,210,240,.2);}
-.sub-img img,.sub-img .img-ph{width:100%;display:block;}
+/* EXPLORATION SUBSECTIONS */
+.exploration-section{margin-top:2.8rem;}
+.expl-label{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(190,50,255,.5);letter-spacing:.2em;margin-bottom:.5rem;display:flex;align-items:center;gap:8px;}
+.expl-label::before{content:'';width:14px;height:1px;background:rgba(190,50,255,.5);}
+.expl-title{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;color:#f4ecff;letter-spacing:.04em;margin-bottom:.8rem;}
+.expl-desc{font-family:'Roboto',sans-serif;font-size:13px;color:#8070a0;line-height:1.9;}
+.expl-img-wrap{margin-top:1.2rem;position:relative;border:1px solid rgba(190,50,255,.18);overflow:hidden;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,10px 100%,0 calc(100% - 10px));background:#03010a;}
+.expl-img-wrap img{width:100%;display:block;object-fit:cover;}
+.expl-divider{margin-top:2.8rem;height:1px;background:linear-gradient(90deg,rgba(190,50,255,.15),rgba(0,210,240,.1),transparent);}
+.img-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0e0618,#04020c);font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.15em;min-height:260px;}
 
-/* WRIST-OUTER reusable frame */
-.wrist-outer{
-  position:relative;display:flex;flex-direction:column;gap:1.2rem;
-  padding:2rem 1rem;background:rgba(8,3,18,.55);
-  border:1px solid rgba(190,50,255,.14);
-}
-.wrist-outer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.45),rgba(0,210,240,.25),transparent);}
-.wrist-outer::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.2),transparent);}
+/* LEARNINGS — cyberpunk stickers (same component as CTH) */
+.learnings-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch;}
+.learning-sticker{position:relative;background:linear-gradient(135deg,#0e0420 0%,#060115 55%,#0a0418 100%);border:1px solid rgba(190,50,255,.38);clip-path:polygon(20px 0%,100% 0%,calc(100% - 20px) 100%,0% 100%);padding:2rem 2.4rem 2rem 2.4rem;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+.learning-sticker:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(190,50,255,.15);}
+.learning-sticker.cy{border-color:rgba(0,210,240,.38);background:linear-gradient(135deg,#02141e 0%,#010b12 55%,#011018 100%);}
+.learning-sticker.cy:hover{box-shadow:0 8px 30px rgba(0,210,240,.15);}
+.learning-sticker::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 4%,rgba(190,50,255,.9) 30%,rgba(190,50,255,.55) 70%,transparent 96%);}
+.learning-sticker.cy::before{background:linear-gradient(90deg,transparent 4%,rgba(0,210,240,.85) 30%,rgba(0,210,240,.5) 70%,transparent 96%);}
+.learning-sticker::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.25),transparent);}
+.learning-sticker.cy::after{background:linear-gradient(90deg,transparent,rgba(0,210,240,.22),transparent);}
+@keyframes ls-scan{0%{top:-60px;}100%{top:130%}}
+.ls-scan{position:absolute;left:0;right:0;height:48px;pointer-events:none;background:linear-gradient(to bottom,transparent,rgba(190,50,255,.04),transparent);animation:ls-scan 6s ease-in-out infinite;}
+.learning-sticker.cy .ls-scan{background:linear-gradient(to bottom,transparent,rgba(0,210,240,.04),transparent);}
+.ls-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 15% 25%,rgba(190,50,255,.08) 0%,transparent 60%);}
+.learning-sticker.cy .ls-glow{background:radial-gradient(ellipse at 85% 25%,rgba(0,210,240,.08) 0%,transparent 60%);}
+.ls-c{position:absolute;width:13px;height:13px;}
+.ls-c.tl{top:10px;left:24px;border-top:2px solid rgba(0,210,240,.55);border-left:2px solid rgba(0,210,240,.55);}
+.ls-c.tr{top:10px;right:10px;border-top:2px solid rgba(0,210,240,.55);border-right:2px solid rgba(0,210,240,.55);}
+.ls-c.bl{bottom:10px;left:24px;border-bottom:2px solid rgba(190,50,255,.45);border-left:2px solid rgba(190,50,255,.45);}
+.ls-c.br{bottom:10px;right:10px;border-bottom:2px solid rgba(190,50,255,.45);border-right:2px solid rgba(190,50,255,.45);}
+.learning-sticker.cy .ls-c.tl,.learning-sticker.cy .ls-c.tr{border-color:rgba(190,50,255,.5);}
+.learning-sticker.cy .ls-c.bl,.learning-sticker.cy .ls-c.br{border-color:rgba(0,210,240,.4);}
+.ls-badge{display:inline-flex;align-items:center;gap:7px;margin-bottom:.8rem;font-family:'Share Tech Mono',monospace;font-size:9px;color:#be32ff;letter-spacing:.22em;}
+.ls-badge::before{content:'';width:18px;height:1px;background:#be32ff;box-shadow:0 0 5px rgba(190,50,255,.8);flex-shrink:0;}
+.learning-sticker.cy .ls-badge{color:#00d2f0;}
+.learning-sticker.cy .ls-badge::before{background:#00d2f0;box-shadow:0 0 5px rgba(0,210,240,.8);}
+.ls-num{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(190,50,255,.4);letter-spacing:.18em;margin-bottom:.45rem;}
+.learning-sticker.cy .ls-num{color:rgba(0,210,240,.4);}
+.ls-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#f4ecff;letter-spacing:.04em;line-height:1.3;margin-bottom:.7rem;padding-bottom:.55rem;border-bottom:1px solid rgba(190,50,255,.2);}
+.learning-sticker.cy .ls-title{border-bottom-color:rgba(0,210,240,.2);}
+.ls-text{font-family:'Roboto',sans-serif;font-size:12.5px;color:#7a6890;line-height:1.8;}
+.ls-dots{position:absolute;bottom:16px;right:22px;display:grid;grid-template-columns:repeat(5,5px);gap:5px;opacity:.16;}
+.ls-dot{width:2px;height:2px;border-radius:50%;background:#be32ff;}
+.learning-sticker.cy .ls-dot{background:#00d2f0;}
 
-/* FRAME HEADER full-width — reusable mixin via inline styles */
-
-/* WRIST PARA */
-.wrist-para{position:relative;clip-path:polygon(36px 0%,100% 0%,calc(100% - 36px) 100%,0% 100%);background:#04010e;overflow:hidden;}
-.wrist-para:nth-child(odd){border:1px solid rgba(190,50,255,.28);}
-.wrist-para:nth-child(even){border:1px solid rgba(0,210,240,.22);}
-.wrist-para:nth-child(odd)::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 5%,rgba(190,50,255,.7) 30%,rgba(190,50,255,.4) 70%,transparent 95%);z-index:2;}
-.wrist-para:nth-child(even)::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 5%,rgba(0,210,240,.6) 30%,rgba(0,210,240,.35) 70%,transparent 95%);z-index:2;}
-.wrist-row{display:grid;grid-template-columns:500px 1fr;align-items:stretch;min-height:380px;}
-.wrist-img-cell{position:relative;overflow:hidden;flex-shrink:0;width:500px;height:380px;}
-.wrist-img-cell img{width:100%;height:100%;object-fit:cover;display:block;}
-.wrist-img-cell.fade-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,rgba(4,1,14,.95) 100%);pointer-events:none;}
-.wrist-img-cell.fade-left::after{content:'';position:absolute;inset:0;background:linear-gradient(to left,transparent 55%,rgba(4,1,14,.95) 100%);pointer-events:none;}
-.wrist-ver-tag{position:absolute;z-index:3;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.16em;padding:4px 10px;background:rgba(4,1,14,.75);}
-.wrist-para:nth-child(odd) .wrist-ver-tag{top:10px;left:10px;color:#be32ff;border:1px solid rgba(190,50,255,.3);}
-.wrist-para:nth-child(even) .wrist-ver-tag{top:10px;right:10px;color:#00d2f0;border:1px solid rgba(0,210,240,.3);}
-.wrist-text-cell{padding:1.6rem 1.8rem;display:flex;flex-direction:column;justify-content:center;gap:.9rem;background:rgba(4,1,14,.5);}
-.wrist-bullet{display:flex;align-items:flex-start;gap:10px;}
-.wrist-bullet-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:7px;}
-.wrist-para:nth-child(odd) .wrist-bullet-dot{background:#be32ff;box-shadow:0 0 6px rgba(190,50,255,.8);}
-.wrist-para:nth-child(even) .wrist-bullet-dot{background:#00d2f0;box-shadow:0 0 6px rgba(0,210,240,.8);}
-.wrist-bullet-text{font-family:'Roboto',sans-serif;font-size:13px;color:#8878a8;line-height:1.72;}
-
-/* ALERT CARDS */
-.alert-card{background:rgba(10,4,20,.7);border:1px solid rgba(190,50,255,.16);border-left:2px solid #be32ff;border-radius:0 8px 8px 0;padding:1rem 1.2rem;position:relative;overflow:hidden;}
-.alert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(190,50,255,.4),transparent);}
-.alert-card-num{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(190,50,255,.5);letter-spacing:.2em;margin-bottom:.4rem;}
-.alert-card-title{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;color:#f4ecff;letter-spacing:.04em;line-height:1.3;margin-bottom:.5rem;}
-.alert-card-text{font-family:'Roboto',sans-serif;font-size:12.5px;color:#7a6890;line-height:1.7;}
-
-/* FINAL / LEARNINGS */
-.final-img-wrap{position:relative;border:1px solid rgba(190,50,255,.2);border-radius:12px;overflow:hidden;background:#03010a;margin-bottom:1.4rem;}
-.final-img-wrap img{width:100%;display:block;}
-.final-img-wrap:last-child{margin-bottom:0;}
-.learnings-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;}
-.learning-item{margin-bottom:1.6rem;}
-.learning-item:last-child{margin-bottom:0;}
-.learning-title{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.05em;margin-bottom:.45rem;padding-bottom:.4rem;border-bottom:1px solid rgba(190,50,255,.2);}
-.learning-text{font-family:'Roboto',sans-serif;font-size:12.5px;color:#7a6890;line-height:1.75;}
-.img-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0e0618,#04020c);font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.15em;min-height:200px;}
-
-/* reusable frame header */
-.frame-header{
-  position:relative;
-  margin:-2rem -1rem 1.2rem -1rem;
-  padding:1rem 1.8rem;
-  overflow:hidden;
-  border-bottom:1px solid rgba(190,50,255,.35);
-}
-.frame-header-scan{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;}
-.frame-header-hex{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='70'%3E%3Cpath d='M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3Cpath d='M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E");background-size:40px 70px;pointer-events:none;opacity:.9;}
-.frame-header-content{position:relative;z-index:1;display:flex;align-items:center;gap:12px;}
-.frame-header-line{width:22px;height:1px;display:inline-block;flex-shrink:0;}
-.frame-header-title{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;}
 </style>
 </head>
 <body>
 <div class="page">
+
+<!-- NAV -->
 <nav>
   <a href="javascript:window.close()" class="nav-back">
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
@@ -230,14 +169,9 @@ h1 em{color:#be32ff;font-style:normal;}
 
 <!-- HERO -->
 <div class="hero">
+  <div class="kicker">// PROJECT CASE STUDY</div>
   <h1>Orcs Must Die! <em>By the Blade</em></h1>
-  <div class="game-type">VR Action-Adventure</div>
-  <div class="platforms-row">
-    <span class="platforms-title">PLATFORMS</span>
-    <span class="platform-tag">META QUEST</span>
-    <span class="platform-tag">PSVR2</span>
-    <span class="platform-tag">STEAM VR</span>
-  </div>
+  <div class="genre-label">// VR Action-Adventure</div>
   <div class="tags-row">
     <span class="tag tag-p">UX Design</span>
     <span class="tag tag-c">VR Combat Systems</span>
@@ -248,67 +182,48 @@ h1 em{color:#be32ff;font-style:normal;}
 </div>
 
 <!-- TRAILER -->
-<div class="section-wrap">
-  <div class="sec-div">
-    <div class="sdt cy">TRAILER</div>
-    <div class="sdl"></div>
-  </div>
-  <div style="margin-top:1.2rem;">
-    <div class="video-wrap" id="vwrap" onclick="loadVideo()">
-      <!-- fallback background so player is visible even if thumb fails -->
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0e0618,#04020c);"></div>
-      <img class="video-thumb" src="https://img.youtube.com/vi/1cTftd4pNaY/hqdefault.jpg" alt="Trailer thumbnail" onerror="this.style.opacity='0'"/>
-      <div class="play-overlay" id="povl">
-        <div class="play-btn"><div class="play-arrow"></div></div>
-        <div class="play-text">WATCH TRAILER</div>
-      </div>
-      <div class="iframe-wrap" id="ifwrap">
-        <iframe id="ytframe" src="" allowfullscreen allow="autoplay"></iframe>
-      </div>
+<div class="video-section">
+  <div class="video-label">// OFFICIAL TRAILER</div>
+  <div class="video-wrap" id="vwrap" onclick="loadVideo()">
+    <img class="video-thumb" src="https://img.youtube.com/vi/1cTftd4pNaY/maxresdefault.jpg" alt="Trailer thumbnail" onerror="this.style.display='none'"/>
+    <div class="play-overlay" id="povl">
+      <div class="play-btn"><div class="play-arrow"></div></div>
+      <div class="play-text">WATCH TRAILER</div>
+    </div>
+    <div class="iframe-wrap" id="ifwrap">
+      <iframe id="ytframe" src="" allowfullscreen allow="autoplay"></iframe>
     </div>
   </div>
 </div>
 
 <!-- MY ROLE -->
-<div class="divider-bar" style="margin-top:2.5rem;">
+<div class="divider-bar">
   <div class="sec-div">
+    <div class="sdl"></div>
     <div class="sdt">MY ROLE</div>
     <div class="sdl"></div>
   </div>
 </div>
-<div class="section-wrap" style="padding-bottom:1.5rem;">
-  <div class="role-grid">
-    <div class="role-left">
-      <div class="role-img-wrap">
-        <div class="role-corner tl"></div><div class="role-corner tr"></div>
-        <div class="role-corner bl"></div><div class="role-corner br"></div>
-        <div class="img-ph">[ IMAGE PLACEHOLDER ]</div>
-      </div>
-      <div>
-        <div class="deliverables-frame"><span>DELIVERABLES</span></div>
-        <div class="deliverable-item"><div class="deliverable-dot"></div><div class="deliverable-text">Combat Language Design</div></div>
-        <div class="deliverable-item"><div class="deliverable-dot"></div><div class="deliverable-text">Interaction Systems (object handling, inventory, armory)</div></div>
-        <div class="deliverable-item"><div class="deliverable-dot"></div><div class="deliverable-text">Full FTUX Design</div></div>
-        <div class="deliverable-item"><div class="deliverable-dot"></div><div class="deliverable-text">Weapon Upgrade Flows</div></div>
-      </div>
-    </div>
-    <div>
-      <div class="role-question">What was I working on?</div>
-      <div class="role-subtitle">// UX DESIGNER</div>
-      <p class="desc">A VR action-adventure title within the Orcs Must Die franchise, reimagined with a strong focus on melee combat rather than traditional tower defense.<br><br>As the UX Designer for the project, I led the design of core interaction systems, including object handling, inventory, weapon upgrades, and armory flows, as well as the full FTUX. I also developed the combat language — defining clear visual and systemic signifiers to guide players on when to attack, block, or parry — ensuring combat felt intuitive, responsive, and satisfying within VR.</p>
-    </div>
-  </div>
+<div class="content">
+  <div class="role-subtitle">// UX DESIGNER</div>
+  <p class="desc">Orcs Must Die! By the Blade is a VR action-adventure adaptation of the Orcs Must Die! franchise, originally known for its tower defense gameplay on PC.<br><br>In this version, combat shifts from strategic placement to direct, physical interaction — requiring players to engage enemies through movement, timing, and spatial awareness.<br><br>As a UX Designer, I defined the combat language — a system of signifiers, feedback, and mechanics that makes combat readable, responsive, and grounded in the player's physical actions.</p>
 </div>
 
 <!-- COMBAT LANGUAGE BANNER -->
-<div class="sector-banner">
-  <div class="sector-banner-inner">
-    <span class="sector-banner-title">COMBAT LANGUAGE SYSTEM</span>
-    <span class="sector-banner-sub">DESIGN PROCESS</span>
+<div class="combat-banner">
+  <div class="combat-banner-inner">
+    <div class="combat-banner-title">COMBAT <em>LANGUAGE</em></div>
+    <div class="combat-banner-line"></div>
+    <div class="combat-banner-sub">DESIGN PROCESS</div>
   </div>
 </div>
 
-<!-- ═══ SECTOR FRAME ═══ -->
+<!-- EPIGRAPH -->
+<div class="combat-epigraph">
+  <p>In VR, the body is the controller — every attack, block, and parry<br>must feel earned, readable, and physically honest.</p>
+</div>
+
+<!-- MAIN CONTENT FRAME -->
 <div class="sector-frame">
 
   <!-- 1. WHAT WAS THE CHALLENGE? -->
@@ -320,204 +235,99 @@ h1 em{color:#be32ff;font-style:normal;}
     <div class="challenge-card">
       <div class="cc tl"></div><div class="cc tr"></div>
       <div class="cc bl"></div><div class="cc br"></div>
-      <div class="img-ph" style="min-height:560px;">[ ORCS — CHALLENGE IMAGE ]</div>
-      <div class="challenge-overlay-text">
-        <p>In a VR melee combat game, players need to understand moment-to-moment when to attack, when to block, and when to parry — without relying on traditional UI overlays that would break immersion.<br><br>The challenge was to build a combat language entirely through spatial, visual, and systemic cues, making the system feel readable and intuitive to new players while remaining deep and responsive for experienced ones.</p>
+      <p>Transitioning from a strategy-driven experience to a physically driven one introduced a new challenge: <strong>how to make combat immediately readable while players are fully engaged with their bodies in motion.</strong><br><br>The system needed to communicate impact, damage, and defensive opportunities in real time — without slowing down the intensity of the experience.</p>
+    </div>
+  </div>
+
+  <!-- 2. EXPLORATION & PROTOTYPING -->
+  <div class="fw-section">
+    <div class="q-label">
+      <div class="q-label-sdt cy">EXPLORATION &amp; PROTOTYPING</div>
+      <div class="q-label-line cy"></div>
+    </div>
+
+    <!-- 2.1 Player Feedback -->
+    <div class="exploration-section">
+      <div class="expl-label">01 — PLAYER FEEDBACK</div>
+      <div class="expl-title">Player Feedback</div>
+      <div class="expl-desc">[ Description placeholder ]</div>
+      <div class="expl-img-wrap">
+        <div class="img-ph">[ IMAGE PLACEHOLDER ]</div>
+      </div>
+    </div>
+
+    <div class="expl-divider"></div>
+
+    <!-- 2.2 Damage Types -->
+    <div class="exploration-section">
+      <div class="expl-label">02 — DAMAGE TYPES</div>
+      <div class="expl-title">Damage Types</div>
+      <div class="expl-desc">[ Description placeholder ]</div>
+      <div class="expl-img-wrap">
+        <div class="img-ph">[ IMAGE PLACEHOLDER ]</div>
+      </div>
+    </div>
+
+    <div class="expl-divider"></div>
+
+    <!-- 2.3 Block & Parry -->
+    <div class="exploration-section">
+      <div class="expl-label">03 — BLOCK &amp; PARRY</div>
+      <div class="expl-title">Block &amp; Parry</div>
+      <div class="expl-desc">[ Description placeholder ]</div>
+      <div class="expl-img-wrap">
+        <div class="img-ph">[ IMAGE PLACEHOLDER ]</div>
       </div>
     </div>
   </div>
 
-  <!-- 2. PLAYER FLOW -->
-  <div class="fw-section">
-    <div class="q-label">
-      <div class="q-label-sdt cy">PLAYER FLOW</div>
-      <div class="q-label-line"></div>
-    </div>
-    <div class="sub-img cy">
-      <div class="img-ph" style="min-height:460px;">[ FLOW MAP PLACEHOLDER ]</div>
-    </div>
-  </div>
-
-  <!-- 3. EXPLORATION & PROTOTYPING -->
-  <div class="fw-section">
-    <div class="q-label">
-      <div class="q-label-sdt">EXPLORATION &amp; PROTOTYPING</div>
-      <div class="q-label-line"></div>
-    </div>
-
-    <!-- ATTACK SIGNIFIERS -->
-    <div class="wrist-outer">
-      <div class="frame-header" style="background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(190,50,255,.04) 8px,rgba(190,50,255,.04) 9px),linear-gradient(110deg,#1a0545 0%,#2a0870 40%,#0d1a4a 70%,#0a0e35 100%);">
-        <div class="frame-header-scan"></div>
-        <div class="frame-header-hex"></div>
-        <div class="frame-header-content">
-          <span class="frame-header-line" style="background:#be32ff;box-shadow:0 0 6px rgba(190,50,255,.6);"></span>
-          <span class="frame-header-title" style="text-shadow:0 0 14px rgba(190,50,255,.5);">ATTACK SIGNIFIERS</span>
-        </div>
-      </div>
-      <!-- Para 1: image left, text right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-img-cell fade-right">
-            <div class="img-ph" style="height:380px;">[ ORCS IMAGE 01 ]</div>
-          </div>
-          <div class="wrist-text-cell">
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Visual signifiers were designed to clearly indicate enemy vulnerability windows, guiding players toward the right moment to strike.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">The system relied on in-world cues rather than HUD overlays, keeping players immersed while still communicating clearly.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Para 2: text left, image right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-text-cell">
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Iterations focused on balancing readability with aesthetic coherence — signifiers had to feel part of the world, not layered on top of it.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Playtesting revealed that timing feedback was critical — players needed to feel the window, not just see it.</div>
-            </div>
-          </div>
-          <div class="wrist-img-cell fade-left">
-            <div class="img-ph" style="height:380px;">[ ORCS IMAGE 02 ]</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BLOCK & PARRY SYSTEM -->
-    <div class="wrist-outer" style="margin-top:2rem;">
-      <div class="frame-header" style="background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#051a45 0%,#08306e 40%,#0a1a4d 70%,#050d35 100%);border-bottom-color:rgba(0,210,240,.35);">
-        <div class="frame-header-scan"></div>
-        <div class="frame-header-hex"></div>
-        <div class="frame-header-content">
-          <span class="frame-header-line" style="background:#00d2f0;box-shadow:0 0 6px rgba(0,210,240,.6);"></span>
-          <span class="frame-header-title" style="text-shadow:0 0 14px rgba(0,210,240,.5);">BLOCK &amp; PARRY SYSTEM</span>
-        </div>
-      </div>
-      <!-- 1 para: image left, 3 insight cards right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-img-cell fade-right">
-            <div class="img-ph" style="height:380px;">[ ORCS IMAGE 03 ]</div>
-          </div>
-          <div class="wrist-text-cell" style="gap:1rem;">
-            <div class="alert-card">
-              <div class="alert-card-num">// 01</div>
-              <div class="alert-card-title">Spatial blocking</div>
-              <div class="alert-card-text">Block mechanics were tied to physical weapon positioning in VR space, making defense feel instinctive rather than button-mapped.</div>
-            </div>
-            <div class="alert-card">
-              <div class="alert-card-num">// 02</div>
-              <div class="alert-card-title">Parry timing window</div>
-              <div class="alert-card-text">A tight parry window was designed with clear visual feedback, rewarding skilled players while remaining accessible to newcomers.</div>
-            </div>
-            <div class="alert-card">
-              <div class="alert-card-num">// 03</div>
-              <div class="alert-card-title">Readable under pressure</div>
-              <div class="alert-card-text">All cues were validated under high-intensity combat scenarios to ensure readability did not degrade when players were most stressed.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FTUX FLOW -->
-    <div class="wrist-outer" style="margin-top:2rem;">
-      <div class="frame-header" style="background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(190,50,255,.04) 8px,rgba(190,50,255,.04) 9px),linear-gradient(110deg,#1a0545 0%,#2a0870 40%,#0d1a4a 70%,#0a0e35 100%);">
-        <div class="frame-header-scan"></div>
-        <div class="frame-header-hex"></div>
-        <div class="frame-header-content">
-          <span class="frame-header-line" style="background:#be32ff;box-shadow:0 0 6px rgba(190,50,255,.6);"></span>
-          <span class="frame-header-title" style="text-shadow:0 0 14px rgba(190,50,255,.5);">FTUX FLOW</span>
-        </div>
-      </div>
-      <!-- Para 1: image left, text right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-img-cell fade-right">
-            <div class="img-ph" style="height:380px;">[ ORCS IMAGE 04 ]</div>
-          </div>
-          <div class="wrist-text-cell">
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">The FTUX was designed to introduce the combat language progressively, layering mechanics one at a time without breaking the player's sense of agency.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Each tutorial beat was contextual — teaching through combat encounters rather than static instruction screens.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Para 2: text left, image right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-text-cell">
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Pacing was carefully calibrated so players felt competent before each new mechanic was introduced, reducing frustration during early sessions.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Playtest data directly shaped the sequence, reordering beats based on where players struggled or disengaged.</div>
-            </div>
-          </div>
-          <div class="wrist-img-cell fade-left">
-            <div class="img-ph" style="height:380px;">[ ORCS IMAGE 05 ]</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /exploration -->
-
-  <!-- 4. FINAL DESIGN -->
-  <div class="fw-section">
-    <div class="q-label">
-      <div class="q-label-sdt cy">FINAL DESIGN</div>
-      <div class="q-label-line"></div>
-    </div>
-    <div class="final-img-wrap">
-      <div class="img-ph" style="min-height:400px;">[ FINAL DESIGN PLACEHOLDER ]</div>
-    </div>
-    <div class="final-img-wrap" style="margin-top:1.4rem;">
-      <div class="img-ph" style="min-height:400px;">[ FINAL DESIGN 2 PLACEHOLDER ]</div>
-    </div>
-  </div>
-
-  <!-- 5. LEARNINGS -->
+  <!-- 3. LEARNINGS -->
   <div class="fw-section">
     <div class="q-label">
       <div class="q-label-sdt">LEARNINGS</div>
       <div class="q-label-line"></div>
     </div>
     <div class="learnings-grid">
-      <div class="sub-img">
-        <div class="img-ph" style="min-height:260px;">[ IMAGE PLACEHOLDER ]</div>
-      </div>
-      <div>
-        <div class="learning-item">
-          <div class="learning-title">Combat readability is a spatial problem</div>
-          <div class="learning-text">In VR, information can't rely on flat-screen conventions. Designing a combat language meant rethinking how visual, audio, and haptic signals work together in three-dimensional space.</div>
+
+      <!-- STICKER 1 — Purple -->
+      <div class="learning-sticker">
+        <div class="ls-glow"></div>
+        <div class="ls-scan"></div>
+        <span class="ls-c tl"></span><span class="ls-c tr"></span>
+        <span class="ls-c bl"></span><span class="ls-c br"></span>
+        <div class="ls-badge">LEARNING 01</div>
+        <div class="ls-num">// ATTENTION &amp; FEEDBACK</div>
+        <div class="ls-title">Awareness must compete<br>with action</div>
+        <div class="ls-text">In fast-paced VR environments, information needs to be visible without demanding full attention from the player.</div>
+        <div class="ls-dots">
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
         </div>
-        <div class="learning-item">
-          <div class="learning-title">Trust the player to learn through doing</div>
-          <div class="learning-text">The most effective FTUX beats were the ones that put mechanics in front of players without explicit instruction — letting the system speak for itself through well-designed encounters.</div>
+      </div>
+
+      <!-- STICKER 2 — Cyan -->
+      <div class="learning-sticker cy">
+        <div class="ls-glow"></div>
+        <div class="ls-scan"></div>
+        <span class="ls-c tl"></span><span class="ls-c tr"></span>
+        <span class="ls-c bl"></span><span class="ls-c br"></span>
+        <div class="ls-badge">LEARNING 02</div>
+        <div class="ls-num">// COGNITIVE LOAD</div>
+        <div class="ls-title">Simplicity reduces<br>cognitive load</div>
+        <div class="ls-text">Adding more information can overwhelm players and make them miss what truly matters. Clear and simple steps help players focus and act without friction.</div>
+        <div class="ls-dots">
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
         </div>
       </div>
+
     </div>
   </div>
 
 </div><!-- /sector-frame -->
+</div><!-- /page -->
 
 <script>
 function loadVideo() {
@@ -528,7 +338,7 @@ function loadVideo() {
   frame.src = 'https://www.youtube.com/embed/1cTftd4pNaY?autoplay=1&rel=0&modestbranding=1';
   ifwrap.style.display = 'block';
   povl.style.display = 'none';
-  document.querySelector('.video-thumb').style.opacity = '0';
+  document.querySelector('.video-thumb').style.display = 'none';
 }
 </script>
 </body>
