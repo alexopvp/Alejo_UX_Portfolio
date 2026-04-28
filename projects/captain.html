@@ -437,12 +437,72 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
 .final-img-wrap img{width:100%;display:block;}
 .final-img-wrap:last-child{margin-bottom:0;}
 
-/* LEARNINGS */
-.learnings-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;}
-.learning-item{margin-bottom:1.6rem;}
-.learning-item:last-child{margin-bottom:0;}
-.learning-title{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.05em;margin-bottom:.45rem;padding-bottom:.4rem;border-bottom:1px solid rgba(190,50,255,.2);}
-.learning-text{font-family:'Roboto',sans-serif;font-size:12.5px;color:#7a6890;line-height:1.75;}
+/* LEARNINGS — cyberpunk stickers */
+.learnings-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch;}
+.learning-sticker{
+  position:relative;
+  background:linear-gradient(135deg,#0e0420 0%,#060115 55%,#0a0418 100%);
+  border:1px solid rgba(190,50,255,.38);
+  clip-path:polygon(20px 0%,100% 0%,calc(100% - 20px) 100%,0% 100%);
+  padding:2rem 2.4rem 2rem 2.4rem;
+  overflow:hidden;
+  transition:transform .2s, box-shadow .2s;
+}
+.learning-sticker:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(190,50,255,.15);}
+.learning-sticker.cy{
+  border-color:rgba(0,210,240,.38);
+  background:linear-gradient(135deg,#02141e 0%,#010b12 55%,#011018 100%);
+}
+.learning-sticker.cy:hover{box-shadow:0 8px 30px rgba(0,210,240,.15);}
+/* top accent bar */
+.learning-sticker::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 4%,rgba(190,50,255,.9) 30%,rgba(190,50,255,.55) 70%,transparent 96%);
+}
+.learning-sticker.cy::before{
+  background:linear-gradient(90deg,transparent 4%,rgba(0,210,240,.85) 30%,rgba(0,210,240,.5) 70%,transparent 96%);
+}
+/* bottom accent bar */
+.learning-sticker::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(190,50,255,.25),transparent);
+}
+.learning-sticker.cy::after{background:linear-gradient(90deg,transparent,rgba(0,210,240,.22),transparent);}
+/* scan line */
+@keyframes ls-scan{0%{top:-60px;}100%{top:130%}}
+.ls-scan{position:absolute;left:0;right:0;height:48px;pointer-events:none;
+  background:linear-gradient(to bottom,transparent,rgba(190,50,255,.04),transparent);
+  animation:ls-scan 6s ease-in-out infinite;}
+.learning-sticker.cy .ls-scan{background:linear-gradient(to bottom,transparent,rgba(0,210,240,.04),transparent);}
+/* glow spot */
+.ls-glow{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 15% 25%,rgba(190,50,255,.08) 0%,transparent 60%);}
+.learning-sticker.cy .ls-glow{background:radial-gradient(ellipse at 85% 25%,rgba(0,210,240,.08) 0%,transparent 60%);}
+/* corners */
+.ls-c{position:absolute;width:13px;height:13px;}
+.ls-c.tl{top:10px;left:24px;border-top:2px solid rgba(0,210,240,.55);border-left:2px solid rgba(0,210,240,.55);}
+.ls-c.tr{top:10px;right:10px;border-top:2px solid rgba(0,210,240,.55);border-right:2px solid rgba(0,210,240,.55);}
+.ls-c.bl{bottom:10px;left:24px;border-bottom:2px solid rgba(190,50,255,.45);border-left:2px solid rgba(190,50,255,.45);}
+.ls-c.br{bottom:10px;right:10px;border-bottom:2px solid rgba(190,50,255,.45);border-right:2px solid rgba(190,50,255,.45);}
+.learning-sticker.cy .ls-c.tl,.learning-sticker.cy .ls-c.tr{border-color:rgba(190,50,255,.5);}
+.learning-sticker.cy .ls-c.bl,.learning-sticker.cy .ls-c.br{border-color:rgba(0,210,240,.4);}
+/* badge tag */
+.ls-badge{display:inline-flex;align-items:center;gap:7px;margin-bottom:.8rem;
+  font-family:'Share Tech Mono',monospace;font-size:9px;color:#be32ff;letter-spacing:.22em;}
+.ls-badge::before{content:'';width:18px;height:1px;background:#be32ff;box-shadow:0 0 5px rgba(190,50,255,.8);flex-shrink:0;}
+.learning-sticker.cy .ls-badge{color:#00d2f0;}
+.learning-sticker.cy .ls-badge::before{background:#00d2f0;box-shadow:0 0 5px rgba(0,210,240,.8);}
+.ls-num{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(190,50,255,.4);letter-spacing:.18em;margin-bottom:.45rem;}
+.learning-sticker.cy .ls-num{color:rgba(0,210,240,.4);}
+.ls-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#f4ecff;
+  letter-spacing:.04em;line-height:1.3;margin-bottom:.7rem;padding-bottom:.55rem;
+  border-bottom:1px solid rgba(190,50,255,.2);}
+.learning-sticker.cy .ls-title{border-bottom-color:rgba(0,210,240,.2);}
+.ls-text{font-family:'Roboto',sans-serif;font-size:12.5px;color:#7a6890;line-height:1.8;}
+/* dot grid decoration */
+.ls-dots{position:absolute;bottom:16px;right:22px;display:grid;grid-template-columns:repeat(5,5px);gap:5px;opacity:.16;}
+.ls-dot{width:2px;height:2px;border-radius:50%;background:#be32ff;}
+.learning-sticker.cy .ls-dot{background:#00d2f0;}
 
 .img-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0e0618,#04020c);font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.15em;min-height:200px;}
 </style>
@@ -554,7 +614,7 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
       <div class="q-label-line"></div>
     </div>
     <div class="sub-img cy">
-      <div class="img-ph" style="min-height:460px;">[ FLOW MAP PLACEHOLDER ]</div>
+      <img src="../img/CTH_Image/CTH_ProjectImage09.png" alt="Player Flow Map — Survival Mode" style="width:100%;display:block;"/>
     </div>
   </div>
 
@@ -690,7 +750,7 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
       <div class="wrist-para">
         <div class="wrist-row">
           <div class="wrist-img-cell fade-right">
-            <img src="../img/CTH_Image/CTH_ProjectImage04.png" alt="Sector Room early layout"/>
+            <img src="../img/CTH_Image/CTH_ProjectImage07.png" alt="Sector Room early layout"/>
           </div>
           <div class="wrist-text-cell">
             <div class="wrist-bullet">
@@ -719,7 +779,7 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
             </div>
           </div>
           <div class="wrist-img-cell fade-left">
-            <img src="../img/CTH_Image/CTH_ProjectImage05.png" alt="Sector Room final design"/>
+            <img src="../img/CTH_Image/CTH_ProjectImage08.png" alt="Sector Room final design"/>
           </div>
         </div>
       </div>
@@ -749,19 +809,41 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
       <div class="q-label-line"></div>
     </div>
     <div class="learnings-grid">
-      <div class="sub-img">
-        <div class="img-ph" style="min-height:260px;">[ IMAGE PLACEHOLDER ]</div>
-      </div>
-      <div>
-        <div class="learning-item">
-          <div class="learning-title">Spatial awareness is a design problem</div>
-          <div class="learning-text">In VR, players can't rely on peripheral vision the way they can on a flat screen. Designing clear sectoral cues taught me how physical presence changes the rules of information hierarchy.</div>
+
+      <!-- STICKER 1 — Purple -->
+      <div class="learning-sticker">
+        <div class="ls-glow"></div>
+        <div class="ls-scan"></div>
+        <span class="ls-c tl"></span><span class="ls-c tr"></span>
+        <span class="ls-c bl"></span><span class="ls-c br"></span>
+        <div class="ls-badge">LEARNING 01</div>
+        <div class="ls-num">// ATTENTION &amp; FEEDBACK</div>
+        <div class="ls-title">Awareness must compete<br>with action</div>
+        <div class="ls-text">In fast-paced VR environments, information needs to be visible without demanding full attention from the player.</div>
+        <div class="ls-dots">
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
         </div>
-        <div class="learning-item">
-          <div class="learning-title">Alerts need to guide, not interrupt</div>
-          <div class="learning-text">The biggest challenge was creating urgency without breaking flow. An effective alert system informs without pulling the player out of the experience.</div>
+      </div>
+
+      <!-- STICKER 2 — Cyan -->
+      <div class="learning-sticker cy">
+        <div class="ls-glow"></div>
+        <div class="ls-scan"></div>
+        <span class="ls-c tl"></span><span class="ls-c tr"></span>
+        <span class="ls-c bl"></span><span class="ls-c br"></span>
+        <div class="ls-badge">LEARNING 02</div>
+        <div class="ls-num">// COGNITIVE LOAD</div>
+        <div class="ls-title">Simplicity reduces<br>cognitive load</div>
+        <div class="ls-text">Adding more information can overwhelm players and make them miss what truly matters. Clear and simple steps help players focus and act without friction.</div>
+        <div class="ls-dots">
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
         </div>
       </div>
+
     </div>
   </div>
 
