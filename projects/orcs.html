@@ -91,7 +91,7 @@ h1 em{color:#be32ff;font-style:normal;}
 /* CHALLENGE CARD */
 .challenge-card{position:relative;border:1px solid rgba(190,50,255,.25);border-radius:14px;overflow:hidden;background:#03010a;}
 .challenge-card img{width:100%;display:block;max-height:600px;object-fit:cover;object-position:center;}
-.challenge-card::after{content:'';position:absolute;left:0;right:0;bottom:0;top:0;background:linear-gradient(to bottom,rgba(7,5,13,.18) 0%,rgba(7,5,13,.35) 20%,rgba(7,5,13,.72) 48%,rgba(7,5,13,.93) 68%,rgba(7,5,13,.99) 100%);pointer-events:none;}
+.challenge-card::after{content:'';position:absolute;left:0;right:0;bottom:0;top:0;background:linear-gradient(to bottom,rgba(7,5,13,.0) 0%,rgba(7,5,13,.10) 20%,rgba(7,5,13,.45) 48%,rgba(7,5,13,.78) 68%,rgba(7,5,13,.93) 100%);pointer-events:none;}
 .challenge-overlay-text{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:1.8rem 2.2rem 2.2rem;}
 .challenge-overlay-text p{font-family:'Roboto',sans-serif;font-size:13.5px;color:#d0c0e8;line-height:1.85;}
 .cc{position:absolute;width:16px;height:16px;z-index:3;}
@@ -251,11 +251,32 @@ h1 em{color:#be32ff;font-style:normal;}
 </div>
 
 <!-- COMBAT QUOTE -->
-<div style="text-align:center;padding:2.8rem 2rem 0;background:#07050d;position:relative;">
-  <div style="display:inline-block;position:relative;">
-    <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#be32ff;letter-spacing:.28em;opacity:.7;display:block;margin-bottom:.6rem;">// DESIGN PRINCIPLE</span>
-    <p style="font-family:'Orbitron',monospace;font-size:clamp(13px,1.8vw,18px);font-weight:700;color:#f4ecff;letter-spacing:.06em;line-height:1.6;text-shadow:0 0 30px rgba(190,50,255,.4),0 0 60px rgba(0,210,240,.15);max-width:820px;margin:0 auto;">Every hit must be felt.<br><span style="color:#00d2f0;text-shadow:0 0 20px rgba(0,210,240,.6);">Every threat must be read.</span><br>Every response must be possible.</p>
-    <div style="margin-top:1.2rem;width:60px;height:1px;background:linear-gradient(90deg,transparent,#be32ff,transparent);margin-left:auto;margin-right:auto;"></div>
+<div style="padding:2.8rem 2.5rem 0;background:#07050d;position:relative;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#be32ff;letter-spacing:.28em;opacity:.7;display:block;margin-bottom:1.4rem;text-align:center;">// DESIGN PRINCIPLES</span>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:0;">
+
+      <!-- Left principle -->
+      <div style="text-align:center;padding:1.6rem 2rem;border:1px solid rgba(190,50,255,.18);border-right:none;background:rgba(190,50,255,.04);clip-path:polygon(0 0,100% 0,100% 100%,16px 100%,0 calc(100% - 16px));">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#be32ff;letter-spacing:.2em;opacity:.6;margin-bottom:.7rem;">01</div>
+        <p style="font-family:'Orbitron',monospace;font-size:clamp(11px,1.3vw,14px);font-weight:700;color:#f4ecff;letter-spacing:.05em;line-height:1.6;text-shadow:0 0 20px rgba(190,50,255,.35);">Make the player feel<br>powerful and in control</p>
+      </div>
+
+      <!-- Center principle — highlighted -->
+      <div style="text-align:center;padding:2rem 2.4rem;border:1px solid rgba(0,210,240,.4);background:rgba(0,210,240,.06);position:relative;z-index:1;box-shadow:0 0 30px rgba(0,210,240,.08);">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#00d2f0;letter-spacing:.2em;opacity:.7;margin-bottom:.7rem;">02</div>
+        <p style="font-family:'Orbitron',monospace;font-size:clamp(13px,1.8vw,18px);font-weight:700;color:#f4ecff;letter-spacing:.06em;line-height:1.6;text-shadow:0 0 30px rgba(190,50,255,.4),0 0 60px rgba(0,210,240,.2);">Every hit must be felt.<br><span style="color:#00d2f0;text-shadow:0 0 20px rgba(0,210,240,.6);">Every threat must be read.</span><br>Every response must be possible.</p>
+        <div style="margin-top:1rem;width:40px;height:1px;background:linear-gradient(90deg,transparent,#00d2f0,transparent);margin-left:auto;margin-right:auto;"></div>
+      </div>
+
+      <!-- Right principle -->
+      <div style="text-align:center;padding:1.6rem 2rem;border:1px solid rgba(190,50,255,.18);border-left:none;background:rgba(190,50,255,.04);clip-path:polygon(0 0,100% 0,calc(100% - 0px) calc(100% - 16px),calc(100% - 16px) 100%,0 100%);">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#be32ff;letter-spacing:.2em;opacity:.6;margin-bottom:.7rem;">03</div>
+        <p style="font-family:'Orbitron',monospace;font-size:clamp(11px,1.3vw,14px);font-weight:700;color:#f4ecff;letter-spacing:.05em;line-height:1.6;text-shadow:0 0 20px rgba(190,50,255,.35);">Physicality and immersion<br>must be one</p>
+      </div>
+
+    </div>
+    <div style="margin-top:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.3),rgba(0,210,240,.3),rgba(190,50,255,.3),transparent);"></div>
   </div>
 </div>
 
@@ -535,16 +556,16 @@ h1 em{color:#be32ff;font-style:normal;}
       <div class="q-label-sdt">LEARNINGS</div>
       <div class="q-label-line"></div>
     </div>
-    <div class="learnings-grid">
+    <div class="learnings-grid" style="grid-template-columns:1fr 1fr 1fr;">
 
       <div class="learning-sticker">
         <div class="ls-glow"></div><div class="ls-scan"></div>
         <span class="ls-c tl"></span><span class="ls-c tr"></span>
         <span class="ls-c bl"></span><span class="ls-c br"></span>
         <div class="ls-badge">LEARNING 01</div>
-        <div class="ls-num">// ATTENTION &amp; FEEDBACK</div>
-        <div class="ls-title">Awareness must compete<br>with action</div>
-        <div class="ls-text">In fast-paced VR environments, information needs to be visible without demanding full attention from the player.</div>
+        <div class="ls-num">// SIGNAL VS NOISE</div>
+        <div class="ls-title">More information doesn't<br>mean more clarity</div>
+        <div class="ls-text">Overloading players with feedback and signals can reduce awareness instead of improving it. Prioritizing what matters helps players focus and act without hesitation.</div>
         <div class="ls-dots">
           <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
           <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
@@ -557,9 +578,24 @@ h1 em{color:#be32ff;font-style:normal;}
         <span class="ls-c tl"></span><span class="ls-c tr"></span>
         <span class="ls-c bl"></span><span class="ls-c br"></span>
         <div class="ls-badge">LEARNING 02</div>
-        <div class="ls-num">// COGNITIVE LOAD</div>
-        <div class="ls-title">Simplicity reduces<br>cognitive load</div>
-        <div class="ls-text">Adding more information can overwhelm players and make them miss what truly matters. Clear and simple steps help players focus and act without friction.</div>
+        <div class="ls-num">// VR CONSISTENCY</div>
+        <div class="ls-title">Immersion depends<br>on consistency</div>
+        <div class="ls-text">In VR, every visual and physical cue must feel connected to the player's actions. When feedback, mechanics, and movement align, the experience becomes more intuitive and believable.</div>
+        <div class="ls-dots">
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+          <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+        </div>
+      </div>
+
+      <div class="learning-sticker">
+        <div class="ls-glow"></div><div class="ls-scan"></div>
+        <span class="ls-c tl"></span><span class="ls-c tr"></span>
+        <span class="ls-c bl"></span><span class="ls-c br"></span>
+        <div class="ls-badge">LEARNING 03</div>
+        <div class="ls-num">// PLAYER AGENCY</div>
+        <div class="ls-title">Meaningful choices<br>drive engagement</div>
+        <div class="ls-text">Giving players multiple ways to approach combat — through timing, positioning, or weapon type — creates a deeper and more engaging experience, as long as each option is clearly communicated.</div>
         <div class="ls-dots">
           <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
           <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
