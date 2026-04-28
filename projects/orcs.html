@@ -480,10 +480,8 @@ h1 em{color:#be32ff;font-style:normal;}
             </div>
           </div>
           <div class="wrist-img-cell fade-left" style="overflow:hidden;position:relative;">
-            <div class="parry-slider">
-              <img src="../img/OMD_Image/OMD_ProjectImage02.png" alt="Parry mechanic diagram" class="parry-slide"/>
-              <img src="../img/OMD_Image/OMD_ProjectImage03.png" alt="Parry prototype in engine" class="parry-slide"/>
-            </div>
+            <img src="../img/OMD_Image/OMD_ProjectImage02.png" alt="Parry mechanic diagram" class="parry-fade" id="parry-img-a" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .9s ease;"/>
+            <img src="../img/OMD_Image/OMD_ProjectImage03.png" alt="Parry prototype in engine" class="parry-fade" id="parry-img-b" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;"/>
           </div>
         </div>
       </div>
@@ -567,15 +565,16 @@ function loadVideo() {
   document.querySelector('.video-thumb').style.display = 'none';
 }
 
-// Parry auto-slider
+// Parry crossfade
 (function(){
-  var slider = document.querySelector('.parry-slider');
-  if(!slider) return;
-  var current = 0;
-  var total = slider.querySelectorAll('.parry-slide').length;
+  var a = document.getElementById('parry-img-a');
+  var b = document.getElementById('parry-img-b');
+  if(!a || !b) return;
+  var showingA = true;
   setInterval(function(){
-    current = (current + 1) % total;
-    slider.style.transform = 'translateX(-' + (current * (100 / total)) + '%)';
+    if(showingA){ a.style.opacity='0'; b.style.opacity='1'; }
+    else        { a.style.opacity='1'; b.style.opacity='0'; }
+    showingA = !showingA;
   }, 3000);
 })();
 </script>
