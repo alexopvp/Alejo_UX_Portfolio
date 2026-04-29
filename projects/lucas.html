@@ -4,39 +4,100 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Lucas Horror Game — Alejandro Mora</title>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech;Mono&family=Orbitron:wght@400;700&hamily=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#07050d;color:#d8c8f0;font-family:'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(190,50,255,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,210,240,0.055) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0;mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,transparent 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.6) 75%,black 100%);-webkit-mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,transparent 30%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.6) 75%,black 100%);}
 .page{position:relative;z-index:1;}
+
+/* NAV */
 nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;border-bottom:1px solid rgba(190,50,255,.16);background:rgba(7,5,13,.97);position:sticky;top:0;z-index:100;}
-.nav-back{display:flex;align-items:center;gap:8px;color:#be32ff;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;text-decoration:none;border:1px solid rgba(190,50,255,.35);background:rgba(190,50,255,.07);padding:6px 14px;border-radius:3ox;clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%);transition:all .2s;}
+.nav-back{display:flex;align-items:center;gap:8px;color:#be32ff;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;text-decoration:none;border:1px solid rgba(190,50,255,.35);background:rgba(190,50,255,.07);padding:6px 14px;border-radius:3px;clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%);transition:all .2s;}
 .nav-back:hover{background:rgba(190,50,255,.16);border-color:#be32ff;}
 .nav-meta{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a2848;letter-spacing:.08em;}
 .nav-meta span{color:#be32ff;}
-.hero{padding:5rem 2.5rem 4rem;max-width:1100px;margin:0 auto;}
-.kicker{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00d2f0;letter-spacing:.2em;margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
-.kicker::before{content:'';width:24px;height:1px;background:#00d2f0;}
-h1{font-family:'Orbitron',monospace;font-size:clamp(26px,4vw,50px);font-weight:700;color:#f4ecff;line-height:1.15;}
-h1 em{color:#be32ff;font-style:normal;}
-.coming{margin-top:3ime;font-family:'Share Tech Mono',monospace;font-size:11px;color:#3a2848;letter-spacing:.15em;}
+
+/* HERO */
+h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight:700;color:#f4ecff;line-height:1.15;}
+.game-type{font-family:'Orbitron',monospace;font-size:clamp(13px,1.6vw,18px);font-weight:400;color:#be32ff;letter-spacing:.12em;margin-top:.45rem;opacity:.85;}
+.platforms-row{display:flex;align-items:center;gap:.75rem;margin-top:.9rem;flex-wrap:wrap;}
+.platforms-title{font-family:'Share Tech Mono',monospace;font-size:10px;color:#f4ecff;letter-spacing:.22em;font-weight:500;}
+.platform-tag{font-family:'Share Tech Mono',monospace;font-size:9px;color:#00d2f0;border:1px solid rgba(0,210,240,.35);background:rgba(0,210,240,.07);padding:3px 10px;clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);}
+.hero{padding:3.5rem 2.5rem 2rem;max-width:900px;margin:0 auto;}
+.section-wrap{max-width:900px;margin:0 auto;padding:0 2.5rem;}
+.sec-div{display:flex;align-items:center;gap:1rem;padding:.6rem 0;}
+.sdl{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.35));}
+.sdt{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;white-space:nowrap;position:relative;color:#07050d;padding:6px 22px 6px 16px;background:#be32ff;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);display:inline-block;box-shadow:3px 3px 0 rgba(0,0,0,.5),0 0 18px rgba(190,50,255,.55);transform:skewX(-4deg);}
+.sdt::before{content:'';position:absolute;inset:2px;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);border:1px solid rgba(255,255,255,.25);pointer-events:none;}
+.sdt.cy{background:#00d2f0;box-shadow:3px 3px 0 rgba(0,0,0,.5),0 0 18px rgba(0,210,240,.55);}
+
+/* INTRO TEXT */
+.intro-text{font-family:'Roboto',sans-serif;font-size:14.5px;color:#9a88b0;line-height:1.85;margin-top:2rem;padding:1.6rem 2rem;border-left:2px solid rgba(190,50,255,.35);background:rgba(190,50,255,.04);border-radius:0 6px 6px 0;max-width:900px;margin-left:auto;margin-right:auto;}
+
+/* SECTOR BANNER — exact copy from orcs */
+.sector-banner{width:100%;margin:3rem 0 0;padding:2.8rem 0;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 100% at 50% 50%,rgba(50,10,80,.98) 0%,#07050d 100%);border-top:1px solid rgba(190,50,255,.5);border-bottom:1px solid rgba(190,50,255,.5);box-shadow:0 -8px 40px rgba(190,50,255,.12),0 8px 40px rgba(190,50,255,.12),inset 0 1px 0 rgba(255,255,255,.04),inset 0 -1px 0 rgba(0,210,240,.08);}
+.sector-banner::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 0 L56 16 L56 48 L28 64 L0 48 L0 16 Z' fill='none' stroke='rgba(190,50,255,0.13)' stroke-width='1'/%3E%3Cpath d='M28 36 L56 52 L56 84 L28 100 L0 84 L0 52 Z' fill='none' stroke='rgba(190,50,255,0.13)' stroke-width='1'/%3E%3C/svg%3E");background-size:56px 100px;mask-image:radial-gradient(ellipse 90% 100% at 50% 50%,black 30%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 90% 100% at 50% 50%,black 30%,transparent 90%);pointer-events:none;opacity:.8;}
+.sector-banner::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(190,50,255,.1),rgba(0,210,240,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;}
+@keyframes scan{0%{left:-55%;}100%{left:140%;}}
+.sector-banner-inner{max-width:900px;margin:0 auto;padding:0 2.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem;position:relative;z-index:1;}
+.sector-banner-title{font-family:'Orbitron',monospace;font-size:clamp(20px,3vw,34px);font-weight:700;color:#f4ecff;letter-spacing:.18em;text-shadow:0 0 20px rgba(190,50,255,.7),0 0 60px rgba(190,50,255,.3);white-space:nowrap;}
+.sector-banner-sub{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00d2f0;letter-spacing:.28em;opacity:.8;text-shadow:0 0 12px rgba(0,210,240,.6);}
+
+/* COMING SOON content area */
+.coming-wrap{max-width:900px;margin:4rem auto;padding:0 2.5rem;text-align:center;}
+.coming-inner{border:1px solid rgba(190,50,255,.18);background:rgba(190,50,255,.04);border-radius:8px;padding:4rem 2rem;position:relative;overflow:hidden;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));}
+.coming-inner::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='70'%3E%3Cpath d='M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/svg%3E");background-size:40px 70px;pointer-events:none;}
+.coming-label{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,210,240,.5);letter-spacing:.25em;margin-bottom:1.2rem;display:block;}
+.coming-title{font-family:'Orbitron',monospace;font-size:clamp(18px,3vw,32px);font-weight:700;color:#f4ecff;letter-spacing:.1em;text-shadow:0 0 30px rgba(190,50,255,.3);}
+.coming-title span{color:#be32ff;}
+.coming-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,#be32ff,transparent);margin:1.4rem auto;}
+.coming-desc{font-family:'Roboto',sans-serif;font-size:13px;color:#5a4868;max-width:400px;margin:0 auto;line-height:1.8;}
 </style>
 </head>
 <body>
 <div class="page">
+
 <nav>
   <a href="javascript:window.close()" class="nav-back">
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
     BACK TO PORTFOLIO
   </a>
-  <div class="nav-meta">AALEDAANDRO MORA — <span>UX DESIGNER</span></div>
+  <div class="nav-meta">ALEJANDRO MORA — <span>UX DESIGNER</span></div>
 </nav>
+
+<!-- HERO -->
 <div class="hero">
-  <div class="kicker">// PROJECT CASE STUDY</div>
-  <h1>Lucas Horror Game</h1>
-  <p class="coming">// CONTENT COMING SOON</p>
+  <h1>Lucas Horror Game <span style="font-size:clamp(11px,1.2vw,15px);font-family:'Share Tech Mono',monospace;color:rgba(190,50,255,.5);letter-spacing:.15em;font-weight:400;">(Code Name)</span></h1>
+  <div class="game-type">Horror Game</div>
+  <div class="platforms-row">
+    <span class="platforms-title">PLATFORMS</span>
+    <span class="platform-tag">STEAM</span>
+  </div>
 </div>
+
+<!-- INTRO TEXT -->
+<div class="section-wrap">
+  <p class="intro-text">A personal project born from my passion for games and the opportunity to build something meaningful alongside my brother. Through this project, we aim to create and share experiences that evoke tension and fear, exploring how games can make players truly feel.</p>
+</div>
+
+<!-- COMING SOON BANNER -->
+<div class="sector-banner">
+  <div class="sector-banner-inner">
+    <span class="sector-banner-title">COMING SOON</span>
+    <span class="sector-banner-sub">// CASE STUDY IN PROGRESS</span>
+  </div>
+</div>
+
+<!-- COMING SOON CONTENT -->
+<div class="coming-wrap">
+  <div class="coming-inner">
+    <div class="coming-title"><span>// LOADING...</span></div>
+    <div class="coming-line"></div>
+    <p class="coming-desc">This project is actively in development. The full case study documenting design decisions, mechanics, and process will be available soon.</p>
+  </div>
+</div>
+
 </div>
 </body>
 </html>
