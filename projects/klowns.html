@@ -164,6 +164,40 @@ h1 em{color:#be32ff;font-style:normal;}
   color:#be32ff;letter-spacing:.22em;font-weight:600;
 }
 .outcomes-frame::before{content:'';width:16px;height:1px;background:#be32ff;}
+
+/* ── LEARNINGS ── */
+.learnings-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch;}
+.learning-sticker{position:relative;background:linear-gradient(135deg,#0e0420 0%,#060115 55%,#0a0418 100%);border:1px solid rgba(190,50,255,.38);clip-path:polygon(20px 0%,100% 0%,calc(100% - 20px) 100%,0% 100%);padding:2rem 2.4rem;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+.learning-sticker:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(190,50,255,.15);}
+.learning-sticker.cy{border-color:rgba(0,210,240,.38);background:linear-gradient(135deg,#02141e 0%,#010b12 55%,#011018 100%);}
+.learning-sticker.cy:hover{box-shadow:0 8px 30px rgba(0,210,240,.15);}
+.learning-sticker::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 4%,rgba(190,50,255,.9) 30%,rgba(190,50,255,.55) 70%,transparent 96%);}
+.learning-sticker.cy::before{background:linear-gradient(90deg,transparent 4%,rgba(0,210,240,.85) 30%,rgba(0,210,240,.5) 70%,transparent 96%);}
+.learning-sticker::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.25),transparent);}
+.learning-sticker.cy::after{background:linear-gradient(90deg,transparent,rgba(0,210,240,.22),transparent);}
+.ls-scan{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,transparent,rgba(190,50,255,.04),transparent);pointer-events:none;}
+.ls-glow{position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 85% 25%,rgba(190,50,255,.08) 0%,transparent 60%);pointer-events:none;}
+.learning-sticker.cy .ls-scan{background:linear-gradient(to bottom,transparent,rgba(0,210,240,.04),transparent);}
+.learning-sticker.cy .ls-glow{background:radial-gradient(ellipse at 85% 25%,rgba(0,210,240,.08) 0%,transparent 60%);}
+.ls-c{position:absolute;width:10px;height:10px;}
+.ls-c.tl{top:8px;left:8px;border-top:1.5px solid rgba(0,210,240,.5);border-left:1.5px solid rgba(0,210,240,.5);}
+.ls-c.tr{top:8px;right:8px;border-top:1.5px solid rgba(0,210,240,.5);border-right:1.5px solid rgba(0,210,240,.5);}
+.ls-c.bl{bottom:8px;left:8px;border-bottom:1.5px solid rgba(190,50,255,.4);border-left:1.5px solid rgba(190,50,255,.4);}
+.ls-c.br{bottom:8px;right:8px;border-bottom:1.5px solid rgba(190,50,255,.4);border-right:1.5px solid rgba(190,50,255,.4);}
+.learning-sticker.cy .ls-c.tl,.learning-sticker.cy .ls-c.tr{border-color:rgba(190,50,255,.5);}
+.learning-sticker.cy .ls-c.bl,.learning-sticker.cy .ls-c.br{border-color:rgba(0,210,240,.4);}
+.ls-badge{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.22em;color:#be32ff;margin-bottom:.5rem;display:flex;align-items:center;gap:7px;}
+.ls-badge::before{content:'';width:14px;height:1px;background:#be32ff;box-shadow:0 0 5px rgba(190,50,255,.8);}
+.learning-sticker.cy .ls-badge{color:#00d2f0;}
+.learning-sticker.cy .ls-badge::before{background:#00d2f0;box-shadow:0 0 5px rgba(0,210,240,.8);}
+.ls-num{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(190,50,255,.4);letter-spacing:.14em;margin-bottom:.6rem;}
+.learning-sticker.cy .ls-num{color:rgba(0,210,240,.4);}
+.ls-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#f4ecff;line-height:1.45;margin-bottom:.75rem;padding-bottom:.65rem;border-bottom:1px solid rgba(190,50,255,.18);}
+.learning-sticker.cy .ls-title{border-bottom-color:rgba(0,210,240,.2);}
+.ls-text{font-family:'Roboto',sans-serif;font-size:12.5px;color:#6a5880;line-height:1.75;margin-bottom:1rem;}
+.ls-dots{display:flex;flex-wrap:wrap;gap:4px;}
+.ls-dot{width:4px;height:4px;border-radius:50%;background:#be32ff;opacity:.25;}
+.learning-sticker.cy .ls-dot{background:#00d2f0;}
 </style>
 </head>
 <body>
@@ -223,7 +257,7 @@ h1 em{color:#be32ff;font-style:normal;}
       <div class="role-img-wrap">
         <div class="role-corner tl"></div><div class="role-corner tr"></div>
         <div class="role-corner bl"></div><div class="role-corner br"></div>
-        <img src="img/KKFOS_Image/KKFOS_Image01.png" alt="Killer Klowns gameplay screenshot"/>
+        <img src="../img/KKFOS_Image/KKFOS_Image01.png" alt="Killer Klowns gameplay screenshot"/>
       </div>
       <div>
         <div class="deliverables-frame"><span>DELIVERABLES</span></div>
@@ -260,7 +294,7 @@ h1 em{color:#be32ff;font-style:normal;}
       <div class="breaking-card">
         <div class="breaking-img">
           <div class="bc tl"></div><div class="bc tr"></div><div class="bc bl"></div><div class="bc br"></div>
-          <img src="img/KKFOS_Image/KKFOS_Image02.png" alt="Match pacing" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8) saturate(.85);"/>
+          <img src="../img/KKFOS_Image/KKFOS_Image02.png" alt="Match pacing" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8) saturate(.85);"/>
         </div>
         <div class="breaking-card-title">Match pacing lost intensity over time</div>
         <div class="breaking-card-text">The scale of the map and the number of objectives slowed down the gameplay loop, reducing tension during longer matches.</div>
@@ -268,7 +302,7 @@ h1 em{color:#be32ff;font-style:normal;}
       <div class="breaking-card">
         <div class="breaking-img">
           <div class="bc tl"></div><div class="bc tr"></div><div class="bc bl"></div><div class="bc br"></div>
-          <img src="img/KKFOS_Image/KKFOS_Image03.png" alt="Unclear direction" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8) saturate(.85);"/>
+          <img src="../img/KKFOS_Image/KKFOS_Image03.png" alt="Unclear direction" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8) saturate(.85);"/>
         </div>
         <div class="breaking-card-title">Unclear direction for human players</div>
         <div class="breaking-card-text">While one team had clear goals, human players often struggled to understand how to progress, survive, or escape.</div>
@@ -283,7 +317,7 @@ h1 em{color:#be32ff;font-style:normal;}
       <div class="reveal-img-wrap">
         <div class="role-corner tl"></div><div class="role-corner tr"></div>
         <div class="role-corner bl"></div><div class="role-corner br"></div>
-        <img src="img/KKFOS_Image/KKFOS_Image04.png" alt="Players reveal" style="width:100%;height:100%;object-fit:cover;display:block;min-height:340px;filter:brightness(.85) saturate(.9);"/>
+        <img src="../img/KKFOS_Image/KKFOS_Image04.png" alt="Players reveal" style="width:100%;height:100%;object-fit:cover;display:block;min-height:340px;filter:brightness(.85) saturate(.9);"/>
       </div>
       <div class="insights-col">
         <div class="insight-card">
@@ -312,7 +346,7 @@ h1 em{color:#be32ff;font-style:normal;}
       <div class="shape-img-wrap">
         <div class="role-corner tl"></div><div class="role-corner tr"></div>
         <div class="role-corner bl"></div><div class="role-corner br"></div>
-        <img src="img/KKFOS_Image/KKFOS_Image05.jpg" alt="How this shaped the experience" style="width:100%;height:100%;object-fit:cover;display:block;min-height:220px;filter:brightness(.85) saturate(.9);"/>
+        <img src="../img/KKFOS_Image/KKFOS_Image05.jpg" alt="How this shaped the experience" style="width:100%;height:100%;object-fit:cover;display:block;min-height:220px;filter:brightness(.85) saturate(.9);"/>
       </div>
       <div class="shape-text">
         <div class="outcomes-frame"><span>OUTCOMES</span></div>
@@ -322,6 +356,48 @@ h1 em{color:#be32ff;font-style:normal;}
     </div>
   </div>
 
+<!-- LEARNINGS DIVIDER -->
+<div class="divider-bar" style="margin-top:2.5rem;">
+  <div class="sec-div">
+    <div class="sdt">LEARNINGS</div>
+    <div class="sdl"></div>
+  </div>
+</div>
+
+<div class="section-wrap" style="padding-bottom:4rem;margin-top:2rem;">
+  <div class="learnings-grid">
+
+    <div class="learning-sticker">
+      <div class="ls-glow"></div><div class="ls-scan"></div>
+      <span class="ls-c tl"></span><span class="ls-c tr"></span>
+      <span class="ls-c bl"></span><span class="ls-c br"></span>
+      <div class="ls-badge">LEARNING 01</div>
+      <div class="ls-num">// TENSION & CLARITY</div>
+      <div class="ls-title">Clarity is what<br>sustains tension</div>
+      <div class="ls-text">In asymmetrical multiplayer, tension doesn't come only from mechanics or pacing, but from players clearly understanding what they should do next. When direction is lost, engagement quickly drops.</div>
+      <div class="ls-dots">
+        <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+        <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+        <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+      </div>
+    </div>
+
+    <div class="learning-sticker cy">
+      <div class="ls-glow"></div><div class="ls-scan"></div>
+      <span class="ls-c tl"></span><span class="ls-c tr"></span>
+      <span class="ls-c bl"></span><span class="ls-c br"></span>
+      <div class="ls-badge">LEARNING 02</div>
+      <div class="ls-num">// ASYMMETRIC DESIGN</div>
+      <div class="ls-title">Asymmetry must feel<br>equally readable</div>
+      <div class="ls-text">Different roles don't justify different levels of understanding. Both sides need clear and actionable goals, or the experience becomes unbalanced and less engaging.</div>
+      <div class="ls-dots">
+        <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+        <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+        <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 </div>
