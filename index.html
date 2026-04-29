@@ -614,6 +614,10 @@ p, .about-text p, .pro-card-desc, .hero3-desc, .pf-desc, .ptdesc, .cbox3 p,
   font-family: var(--font-body) !important;
 }
 
+/* About image hover hint */
+.about-img-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:9px;color:rgba(244,236,255,.55);letter-spacing:.2em;z-index:3;pointer-events:none;transition:opacity .3s;text-align:center;white-space:nowrap;text-shadow:0 0 12px rgba(190,50,255,.4);}
+.about-img:hover .about-img-hint{opacity:0;}
+
 /* Personal project card — cyan highlight */
 .pro-card-personal:hover {
   border-color: rgba(0,210,240,.7) !important;
@@ -674,14 +678,14 @@ p, .about-text p, .pro-card-desc, .hero3-desc, .pf-desc, .ptdesc, .cbox3 p,
     <span class="tag3 t3p">GDD</span>
   </div>
   <div class="btns3">
-    <button class="bp3" onclick="document.getElementById('prof-projects').scrollIntoView({behavior:'smooth'})">&#9654; VER PROYECTOS</button>
-    <button class="bs3">DESCARGAR CV</button>
+    <button class="bp3" onclick="document.getElementById('prof-projects').scrollIntoView({behavior:'smooth'})">&#9654; VIEW PROJECTS</button>
+    <button class="bs3" onclick="window.open('projects/CV_AlejandroMora.pdf','_blank')">DOWNLOAD CV</button>
   </div>
 </div>
 
 <!-- ══════════ STATS ══════════ -->
 <div class="stats3">
-  <div class="s3c"><div class="s3n">3</div><div class="s3l">PROJECTS</div></div>
+  <div class="s3c"><div class="s3n">4</div><div class="s3l">PROJECTS</div></div>
   <div class="s3c"><div class="s3n cy">3.5 YRS</div><div class="s3l">EXPERIENCE</div></div>
   <div class="s3c"><div class="s3n">MID 2</div><div class="s3l">SENIORITY</div></div>
 </div>
@@ -862,7 +866,7 @@ p, .about-text p, .pro-card-desc, .hero3-desc, .pf-desc, .ptdesc, .cbox3 p,
         <p>
           I believe game experiences are built across multiple layers, where systems, interactions, and spaces come together to guide player behavior. What I enjoy most is designing those systems and environments that create <strong>meaningful moments for players</strong> — crafting spaces that feel intentional, readable, and alive through the way players interact with them.
         </p>
-        <a class="cv-btn" href="#" onclick="alert('Replace this link with your CV PDF URL'); return false;">
+        <a class="cv-btn" href="projects/CV_AlejandroMora.pdf" target="_blank">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           DOWNLOAD CV
         </a>
@@ -874,6 +878,9 @@ p, .about-text p, .pro-card-desc, .hero3-desc, .pf-desc, .ptdesc, .cbox3 p,
             <div class="r3c tl"></div><div class="r3c tr"></div><div class="r3c bl"></div><div class="r3c br"></div>
             <img src="img/project-01.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;border-radius:6px;" alt="Alejandro Mora" />
             <div class="about-img-sub">// ALEJANDRO MORA</div>
+
+            <!-- Always-visible hint, hidden on hover -->
+            <div class="about-img-hint">// HOVER TO SEE STATS</div>
 
             <!-- Stats overlay on hover -->
             <div class="about-stats-overlay">
@@ -904,7 +911,7 @@ p, .about-text p, .pro-card-desc, .hero3-desc, .pf-desc, .ptdesc, .cbox3 p,
                 <div class="aso-bar"><div class="aso-fill-p" style="width:70%"></div></div>
               </div>
 
-              <div class="aso-hint" style="margin-top:.6rem;">↑ HOVER TO SEE STATS</div>
+              <div class="aso-hint" style="margin-top:.6rem;display:none;"></div>
             </div>
           </div>
         </div>
