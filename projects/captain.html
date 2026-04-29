@@ -506,6 +506,55 @@ h1{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,44px);font-weight
 .learning-sticker.cy .ls-dot{background:#00d2f0;}
 
 .img-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0e0618,#04020c);font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.15em;min-height:200px;}
+
+/* ── RESPONSIVE MOBILE ≤ 768px ─────────────────────────────────── */
+@media(max-width:768px){
+  /* Nav */
+  nav{padding:.75rem 1.2rem;}
+  .nav-meta{display:none;}
+
+  /* Hero */
+  .hero{padding:2.2rem 1.2rem 1.4rem;}
+  .platforms-row{gap:.5rem;}
+
+  /* Section wrappers */
+  .section-wrap{padding:0 1.2rem;}
+  .intro-text{padding:1.2rem 1.2rem;font-size:13.5px;margin-top:1.4rem;}
+
+  /* Role grid → 1 col */
+  .role-grid{grid-template-columns:1fr;}
+  .role-img-wrap{height:200px;}
+
+  /* Sector banner */
+  .sector-banner{padding:2rem 0;margin:2rem 0 0;}
+  .sector-banner-title{white-space:normal;text-align:center;letter-spacing:.1em;}
+  .sector-banner-inner{padding:0 1.2rem;}
+
+  /* Sector frame & fw-section */
+  .sector-frame{padding:2rem 0 2.5rem;border-left:none;border-right:none;}
+  .fw-section{padding:2rem 1.2rem;}
+
+  /* Challenge card */
+  .challenge-overlay-text{padding:1.2rem 1.2rem 1.4rem;}
+  .challenge-overlay-text p{font-size:12.5px;}
+
+  /* Wrist rows → stacked column */
+  .wrist-outer{padding:1.2rem .8rem;}
+  .wrist-row{grid-template-columns:1fr!important;min-height:unset;}
+  .wrist-row > *:first-child{min-height:220px;}
+  .wrist-text-cell{padding:1.2rem 1rem;}
+
+  /* Proto items (Exploration) → 1 col */
+  .proto-item{grid-template-columns:1fr;}
+  .proto-item.bullets-left{direction:ltr;}
+
+  /* Alert grid → 1 col */
+  .alert-grid{grid-template-columns:1fr;}
+
+  /* Learnings grid → 1 col */
+  .learnings-grid{grid-template-columns:1fr;}
+  .learning-sticker{clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);}
+}
 </style>
 </head>
 <body>

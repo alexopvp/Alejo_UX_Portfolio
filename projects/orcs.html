@@ -172,6 +172,59 @@ h1 em{color:#be32ff;font-style:normal;}
 /* PARRY SLIDER */
 .parry-slider{display:flex;width:200%;height:100%;transition:transform .7s cubic-bezier(.77,0,.18,1);}
 .parry-slide{width:50%;height:100%;object-fit:cover;flex-shrink:0;display:block;}
+
+/* ── RESPONSIVE MOBILE ≤ 768px ─────────────────────────────────── */
+@media(max-width:768px){
+  /* Nav */
+  nav{padding:.75rem 1.2rem;}
+  .nav-meta{display:none;}
+
+  /* Hero */
+  .hero{padding:2.2rem 1.2rem 1.4rem;}
+  .platforms-row{gap:.5rem;}
+
+  /* Section wrappers */
+  .section-wrap{padding:0 1.2rem;}
+  .intro-text{padding:1.2rem 1.2rem;font-size:13.5px;margin-top:1.4rem;}
+
+  /* Role grid: 2 cols → 1 col */
+  .role-grid{grid-template-columns:1fr;}
+  .role-img-wrap{height:200px;}
+
+  /* Sector banner */
+  .sector-banner{padding:2rem 0;margin:2rem 0 0;}
+  .sector-banner-title{white-space:normal;text-align:center;letter-spacing:.1em;}
+  .sector-banner-inner{padding:0 1.2rem;}
+
+  /* Sector frame & fw-section */
+  .sector-frame{padding:2rem 0 2.5rem;border-left:none;border-right:none;}
+  .fw-section{padding:2rem 1.2rem;}
+
+  /* Challenge card overlay text */
+  .challenge-overlay-text{padding:1.2rem 1.2rem 1.4rem;}
+  .challenge-overlay-text p{font-size:12.5px;}
+
+  /* Wrist rows: fixed 500px col → full column stack */
+  .wrist-outer{padding:1.2rem .8rem;}
+  .wrist-row{grid-template-columns:1fr!important;min-height:unset;}
+  .wrist-row > *:first-child{min-height:220px;}
+  .wrist-text-cell{padding:1.2rem 1rem;}
+
+  /* Section dividers */
+  .q-label{flex-wrap:wrap;}
+
+  /* Learnings grid: 2 cols → 1 col */
+  .learnings-grid{grid-template-columns:1fr;}
+
+  /* Learning sticker clip path simplify */
+  .learning-sticker{clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);}
+
+  /* img placeholder height */
+  .img-ph{min-height:220px;}
+
+  /* Parry slider container height */
+  .wrist-row > div[style*="overflow:hidden"]{min-height:220px!important;}
+}
 </style>
 </head>
 <body>
