@@ -117,6 +117,27 @@
 .cf-tag.p{border:1px solid hsl(var(--accent-h) / .45);color:var(--accent);background:hsl(var(--accent-h) / .08);}
 .cf-tag.c{border:1px solid hsl(var(--cyan-h) / .35);color:var(--cyan);background:hsl(var(--cyan-h) / .07);}
 
+/* Big contact links */
+.cf-link-big{display:flex;align-items:center;gap:12px;padding:.75rem 1rem;border:1px solid;border-radius:4px;text-decoration:none;transition:all .2s;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+.cf-link-big.mail{border-color:hsl(var(--accent-h) / .25);background:hsl(var(--accent-h) / .04);}
+.cf-link-big.mail:hover{border-color:hsl(var(--accent-h) / .6);background:hsl(var(--accent-h) / .1);}
+.cf-link-big.li{border-color:hsl(var(--cyan-h) / .22);background:hsl(var(--cyan-h) / .04);}
+.cf-link-big.li:hover{border-color:hsl(var(--cyan-h) / .55);background:hsl(var(--cyan-h) / .1);}
+.cf-link-icon{width:36px;height:36px;border:1px solid;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cf-link-text{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0;}
+.cf-link-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;opacity:.8;}
+.cf-link-val{font-family:var(--font-mono);font-size:11px;color:var(--text-bright-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cf-link-arrow{color:var(--text-dim-2);flex-shrink:0;transition:transform .2s;}
+.cf-link-big:hover .cf-link-arrow{transform:translateX(3px);}
+
+/* Tool logos */
+.cf-tools{display:flex;gap:8px;flex-wrap:wrap;}
+.cf-tool{display:flex;flex-direction:column;align-items:center;gap:4px;padding:.5rem .6rem;border:1px solid hsl(var(--accent-h) / .14);background:hsl(var(--accent-h) / .04);border-radius:4px;transition:all .2s;cursor:default;}
+.cf-tool:hover{border-color:hsl(var(--cyan-h) / .35);background:hsl(var(--cyan-h) / .07);}
+.cf-tool img{width:22px;height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:.45;transition:opacity .2s;}
+.cf-tool:hover img{opacity:.9;}
+.cf-tool span{font-family:var(--font-mono);font-size:8px;color:var(--text-dim-2);letter-spacing:.1em;}
+
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;}
@@ -615,7 +636,7 @@ p, .about-text p, .pro-card-desc, .hero3-desc, .pf-desc, .ptdesc, .cbox3 p,
     <li><a href="#prof-projects">PROFESSIONAL PROJECTS</a></li>
     <li><a href="#pers-projects">PERSONAL PROJECTS</a></li>
     <li><a href="#about">ABOUT ME</a></li>
-    <li><a href="#contact" class="nav-contact">CONTACTO</a></li>
+    <li><a href="#contact" class="nav-contact">CONTACT</a></li>
   </ul>
 </nav>
 
@@ -729,30 +750,23 @@ p, .about-text p, .pro-card-desc, .hero3-desc, .pf-desc, .ptdesc, .cbox3 p,
               <div class="aso-title">// DESIGNER STATS</div>
 
               <div class="aso-stat">
-                <div class="aso-row"><span class="aso-label">UX Designer Mid 2</span><span class="aso-val-p">65</span></div>
+                <div class="aso-row"><span class="aso-label">Mid Level 2</span></div>
                 <div class="aso-bar"><div class="aso-fill-p" style="width:65%"></div></div>
               </div>
-
-              <div style="height:1px;background:hsl(var(--accent-h) / .18);margin:.5rem 0;"></div>
-
               <div class="aso-stat">
-                <div class="aso-row"><span class="aso-label">System Design</span><span class="aso-val-p">85</span></div>
+                <div class="aso-row"><span class="aso-label">System Design</span></div>
                 <div class="aso-bar"><div class="aso-fill-p" style="width:85%"></div></div>
               </div>
               <div class="aso-stat">
-                <div class="aso-row"><span class="aso-label">Player Empathy</span><span class="aso-val-c">75</span></div>
+                <div class="aso-row"><span class="aso-label">Player Empathy</span></div>
                 <div class="aso-bar"><div class="aso-fill-c" style="width:75%"></div></div>
               </div>
               <div class="aso-stat">
-                <div class="aso-row"><span class="aso-label">Interaction Clarity</span><span class="aso-val-p">85</span></div>
+                <div class="aso-row"><span class="aso-label">Interaction Clarity</span></div>
                 <div class="aso-bar"><div class="aso-fill-p" style="width:85%"></div></div>
               </div>
               <div class="aso-stat">
-                <div class="aso-row"><span class="aso-label">Challenge Design</span><span class="aso-val-c">75</span></div>
-                <div class="aso-bar"><div class="aso-fill-c" style="width:75%"></div></div>
-              </div>
-              <div class="aso-stat">
-                <div class="aso-row"><span class="aso-label">World Integration</span><span class="aso-val-p">70</span></div>
+                <div class="aso-row"><span class="aso-label">World Integration</span></div>
                 <div class="aso-bar"><div class="aso-fill-p" style="width:70%"></div></div>
               </div>
 
@@ -917,7 +931,7 @@ p, .about-text p, .pro-card-desc, .hero3-desc, .pf-desc, .ptdesc, .cbox3 p,
 <div id="contact">
   <div class="sec-div">
     <div class="sdl"></div>
-    <div class="sdt cy">PERFIL & CONTACTO</div>
+    <div class="sdt cy">PROFILE & CONTACT</div>
     <div class="sdl"></div>
   </div>
 
@@ -928,71 +942,109 @@ p, .about-text p, .pro-card-desc, .hero3-desc, .pf-desc, .ptdesc, .cbox3 p,
       <span class="cf-corner tl"></span><span class="cf-corner tr"></span>
       <span class="cf-corner bl"></span><span class="cf-corner br"></span>
 
-      <!-- LEFT: stats -->
+      <!-- LEFT: name + contact -->
       <div class="cf-left">
         <div class="cf-head">
           <div class="cf-avatar">AM</div>
           <div>
             <div class="cf-name">Alejandro Mora</div>
             <div class="cf-role">GAME UX DESIGNER</div>
+            <div class="cf-tags" style="margin-top:.5rem;">
+              <span class="cf-tag p">MID LEVEL 2</span>
+              <span class="cf-tag c">UX DESIGN</span>
+              <span class="cf-tag c">LEVEL DESIGN</span>
+            </div>
           </div>
         </div>
 
-        <div class="skill-bar">
-          <div class="row first"><span>UX Designer Mid 2</span><span class="v-p">65</span></div>
-          <div class="track"><div class="fill fill-p" style="width:65%"></div></div>
+        <div class="cf-sep"></div>
+
+        <div>
+          <div class="cf-title">LET'S COLLABORATE</div>
+          <div class="cf-desc">Looking for projects where UX and level design go hand in hand. Let's talk about your game.</div>
+        </div>
+
+        <a class="cf-link-big mail" href="mailto:a.moras@uniandes.edu.co">
+          <div class="cf-link-icon" style="background:hsl(var(--accent-h) / .12);border-color:hsl(var(--accent-h) / .35);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          </div>
+          <div class="cf-link-text">
+            <span class="cf-link-label" style="color:var(--accent);">EMAIL</span>
+            <span class="cf-link-val">a.moras@uniandes.edu.co</span>
+          </div>
+          <svg class="cf-link-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+        <a class="cf-link-big li" href="https://www.linkedin.com/in/alejandro-mora-salinas/" target="_blank" rel="noopener">
+          <div class="cf-link-icon" style="background:hsl(var(--cyan-h) / .10);border-color:hsl(var(--cyan-h) / .3);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--cyan)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div class="cf-link-text">
+            <span class="cf-link-label" style="color:var(--cyan);">LINKEDIN</span>
+            <span class="cf-link-val">/in/alejandro-mora-salinas</span>
+          </div>
+          <svg class="cf-link-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- RIGHT: stats + tools -->
+      <div class="cf-right">
+
+        <!-- Mid Level 2 — large primary bar -->
+        <div class="skill-bar" style="margin-bottom:.6rem;">
+          <div class="row first" style="font-size:11px;"><span>Mid Level 2</span></div>
+          <div class="track" style="height:5px;"><div class="fill fill-p" style="width:65%"></div></div>
         </div>
         <div class="skill-divider"></div>
 
         <div class="skill-bar">
-          <div class="row"><span>System Design</span><span class="v-p">85</span></div>
+          <div class="row"><span>System Design</span></div>
           <div class="track"><div class="fill fill-p" style="width:85%"></div></div>
         </div>
         <div class="skill-bar">
-          <div class="row"><span>Player Empathy</span><span class="v-c">75</span></div>
+          <div class="row"><span>Player Empathy</span></div>
           <div class="track"><div class="fill fill-c" style="width:75%"></div></div>
         </div>
         <div class="skill-bar">
-          <div class="row"><span>Interaction Clarity</span><span class="v-p">85</span></div>
+          <div class="row"><span>Interaction Clarity</span></div>
           <div class="track"><div class="fill fill-p" style="width:85%"></div></div>
         </div>
         <div class="skill-bar">
-          <div class="row"><span>Challenge Design</span><span class="v-c">75</span></div>
-          <div class="track"><div class="fill fill-c" style="width:75%"></div></div>
-        </div>
-        <div class="skill-bar">
-          <div class="row"><span>World Integration</span><span class="v-p">70</span></div>
+          <div class="row"><span>World Integration</span></div>
           <div class="track"><div class="fill fill-p" style="width:70%"></div></div>
         </div>
 
-        <div class="cf-xp">
-          <div class="row"><span class="label">MID LEVEL 2</span><span>UX Design · Game Design</span></div>
-          <div class="track"><div class="fill" style="width:65%"></div></div>
-        </div>
-      </div>
+        <div class="cf-sep" style="margin-top:.8rem;"></div>
 
-      <!-- RIGHT: contact -->
-      <div class="cf-right">
-        <div>
-          <div class="cf-title">COLABORAMOS?</div>
-          <div class="cf-desc">Busco proyectos donde UX y level design vayan de la mano. Hablemos de tu juego.</div>
+        <!-- Tool logos with real images -->
+        <div style="font-family:var(--font-mono);font-size:9px;color:var(--text-dim-2);letter-spacing:.18em;margin-bottom:.7rem;">// TOOLS</div>
+        <div class="cf-tools">
+          <div class="cf-tool" title="Unreal Engine">
+            <img src="img/UE_Image.png" alt="Unreal Engine"/>
+            <span>UNREAL</span>
+          </div>
+          <div class="cf-tool" title="Unity">
+            <img src="img/Unity_Image.png" alt="Unity"/>
+            <span>UNITY</span>
+          </div>
+          <div class="cf-tool" title="Figma">
+            <img src="img/Figma_Image.png" alt="Figma"/>
+            <span>FIGMA</span>
+          </div>
+          <div class="cf-tool" title="Photoshop">
+            <img src="img/PS_Image.png" alt="Photoshop"/>
+            <span>PHOTOSHOP</span>
+          </div>
+          <div class="cf-tool" title="Illustrator">
+            <img src="img/AI_Image.png" alt="Illustrator"/>
+            <span>ILLUSTRATOR</span>
+          </div>
+          <div class="cf-tool" title="Claude">
+            <img src="img/Claude_Image.png" alt="Claude"/>
+            <span>CLAUDE</span>
+          </div>
         </div>
-        <div class="cf-sep"></div>
-        <div class="cf-links">
-          <a class="cf-link mail" href="mailto:a.moras@uniandes.edu.co">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-            a.moras@uniandes.edu.co
-          </a>
-          <a class="cf-link li" href="https://www.linkedin.com/in/alejandro-mora-salinas/" target="_blank" rel="noopener">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            /in/alejandro-mora-salinas
-          </a>
-        </div>
-        <div class="cf-tags">
-          <span class="cf-tag p">MID LEVEL 2</span>
-          <span class="cf-tag c">UX DESIGN</span>
-          <span class="cf-tag c">LEVEL DESIGN</span>
-        </div>
+
       </div>
     </div>
   </div>
