@@ -550,6 +550,124 @@ h1 em{color:#be32ff;font-style:normal;}
     </div>
   </div>
 
+  <!-- FINAL DESIGN -->
+  <div class="fw-section">
+    <div class="q-label">
+      <div class="q-label-sdt cy">FINAL DESIGN</div>
+      <div class="q-label-line" style="background:linear-gradient(90deg,transparent,rgba(0,210,240,.35));"></div>
+    </div>
+    <div style="position:relative;width:100%;background:#03010a;border:1px solid rgba(0,210,240,.2);border-radius:6px;overflow:hidden;">
+      <video id="fd-video" src="../img/OMD_Vid/OMD_Vid08.mp4" style="width:100%;display:block;" preload="metadata"></video>
+
+      <!-- Custom controls -->
+      <div id="fd-controls" style="position:absolute;bottom:0;left:0;right:0;padding:.7rem 1rem .8rem;background:linear-gradient(to top,rgba(4,2,12,.95) 0%,rgba(4,2,12,.6) 70%,transparent 100%);display:flex;flex-direction:column;gap:.5rem;opacity:0;transition:opacity .25s;">
+
+        <!-- Progress bar -->
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span id="fd-cur" style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#00d2f0;min-width:34px;">0:00</span>
+          <div id="fd-track" style="flex:1;height:3px;background:rgba(255,255,255,.15);border-radius:2px;cursor:pointer;position:relative;">
+            <div id="fd-progress" style="height:100%;width:0%;background:linear-gradient(90deg,#be32ff,#00d2f0);border-radius:2px;pointer-events:none;"></div>
+            <div id="fd-thumb" style="position:absolute;top:50%;right:-1px;transform:translateY(-50%);width:8px;height:8px;background:#00d2f0;border-radius:50%;pointer-events:none;box-shadow:0 0 6px rgba(0,210,240,.7);"></div>
+          </div>
+          <span id="fd-dur" style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(244,236,255,.4);min-width:34px;text-align:right;">0:00</span>
+        </div>
+
+        <!-- Buttons -->
+        <div style="display:flex;align-items:center;gap:10px;">
+          <button id="fd-back" style="background:none;border:1px solid rgba(0,210,240,.3);color:#00d2f0;font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 8px;cursor:pointer;letter-spacing:.1em;border-radius:2px;">◀◀ 10s</button>
+          <button id="fd-play" style="background:rgba(0,210,240,.12);border:1px solid rgba(0,210,240,.5);color:#00d2f0;font-family:'Share Tech Mono',monospace;font-size:10px;padding:4px 14px;cursor:pointer;letter-spacing:.12em;border-radius:2px;min-width:60px;">▶ PLAY</button>
+          <button id="fd-fwd" style="background:none;border:1px solid rgba(0,210,240,.3);color:#00d2f0;font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 8px;cursor:pointer;letter-spacing:.1em;border-radius:2px;">10s ▶▶</button>
+          <div style="flex:1;"></div>
+          <button id="fd-mute" style="background:none;border:1px solid rgba(190,50,255,.3);color:#be32ff;font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 8px;cursor:pointer;letter-spacing:.1em;border-radius:2px;">🔊</button>
+          <button id="fd-fs" style="background:none;border:1px solid rgba(190,50,255,.3);color:#be32ff;font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 8px;cursor:pointer;border-radius:2px;">⛶</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var wrap = document.querySelector('#fd-video').parentElement;
+  var vid = document.getElementById('fd-video');
+  var ctrl = document.getElementById('fd-controls');
+  var playBtn = document.getElementById('fd-play');
+  var backBtn = document.getElementById('fd-back');
+  var fwdBtn = document.getElementById('fd-fwd');
+  var muteBtn = document.getElementById('fd-mute');
+  var fsBtn = document.getElementById('fd-fs');
+  var track = document.getElementById('fd-track');
+  var progress = document.getElementById('fd-progress');
+  var thumb = document.getElementById('fd-thumb');
+  var curEl = document.getElementById('fd-cur');
+  var durEl = document.getElementById('fd-dur');
+
+  function fmt(s){ var m=Math.floor(s/60); var ss=Math.floor(s%60); return m+':'+(ss<10?'0':'')+ss; }
+
+  // Show/hide controls on hover
+  wrap.addEventListener('mouseenter', function(){ ctrl.style.opacity='1'; });
+  wrap.addEventListener('mouseleave', function(){ ctrl.style.opacity='0'; });
+
+  // Play/pause
+  playBtn.addEventListener('click', function(){
+    if(vid.paused){ vid.play(); playBtn.textContent='⏸ PAUSE'; }
+    else { vid.pause(); playBtn.textContent='▶ PLAY'; }
+  });
+
+  // Skip
+  backBtn.addEventListener('click', function(){ vid.currentTime = Math.max(0, vid.currentTime-10); });
+  fwdBtn.addEventListener('click', function(){ vid.currentTime = Math.min(vid.duration, vid.currentTime+10); });
+
+  // Mute
+  muteBtn.addEventListener('click', function(){
+    vid.muted = !vid.muted;
+    muteBtn.textContent = vid.muted ? '🔇' : '🔊';
+  });
+
+  // Fullscreen
+  fsBtn.addEventListener('click', function(){
+    if(wrap.requestFullscreen) wrap.requestFullscreen();
+    else if(wrap.webkitRequestFullscreen) wrap.webkitRequestFullscreen();
+  });
+
+  // Time update
+  vid.addEventListener('timeupdate', function(){
+    if(!vid.duration) return;
+    var pct = (vid.currentTime / vid.duration) * 100;
+    progress.style.width = pct + '%';
+    thumb.style.left = pct + '%';
+    thumb.style.right = 'auto';
+    curEl.textContent = fmt(vid.currentTime);
+  });
+
+  vid.addEventListener('loadedmetadata', function(){
+    durEl.textContent = fmt(vid.duration);
+  });
+
+  vid.addEventListener('ended', function(){
+    playBtn.textContent='▶ PLAY';
+  });
+
+  // Seek on track click
+  track.addEventListener('click', function(e){
+    var rect = track.getBoundingClientRect();
+    var pct = (e.clientX - rect.left) / rect.width;
+    vid.currentTime = pct * vid.duration;
+  });
+
+  // Drag seek
+  var dragging = false;
+  track.addEventListener('mousedown', function(){ dragging=true; });
+  document.addEventListener('mousemove', function(e){
+    if(!dragging) return;
+    var rect = track.getBoundingClientRect();
+    var pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    vid.currentTime = pct * vid.duration;
+  });
+  document.addEventListener('mouseup', function(){ dragging=false; });
+})();
+</script>
+
   <!-- 3. LEARNINGS -->
   <div class="fw-section">
     <div class="q-label">
