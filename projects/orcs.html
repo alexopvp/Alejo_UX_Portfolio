@@ -15,6 +15,9 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;border-bottom:1px solid rgba(190,50,255,.16);background:rgba(7,5,13,.97);position:sticky;top:0;z-index:100;}
 .nav-back{display:flex;align-items:center;gap:8px;color:#be32ff;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;text-decoration:none;border:1px solid rgba(190,50,255,.35);background:rgba(190,50,255,.07);padding:6px 14px;border-radius:3px;clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%);transition:all .2s;}
 .nav-back:hover{background:rgba(190,50,255,.16);border-color:#be32ff;}
+.nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.nav-link{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.1em;color:#9a88b0;text-decoration:none;padding:7px 12px;border:1px solid rgba(190,50,255,.2);border-radius:3px;transition:all .2s;white-space:nowrap;}
+.nav-link:hover{color:#be32ff;border-color:rgba(190,50,255,.5);background:rgba(190,50,255,.08);}
 .nav-meta{font-family:'Share Tech Mono',monospace;font-size:10px;color:#3a2848;letter-spacing:.08em;}
 .nav-meta span{color:#be32ff;}
 
@@ -239,8 +242,10 @@ h1 em{color:#be32ff;font-style:normal;}
 /* ── RESPONSIVE MOBILE ≤ 768px ─────────────────────────────────── */
 @media(max-width:768px){
   /* Nav */
-  nav{padding:.75rem 1.2rem;}
+  nav{padding:.75rem 1.2rem;flex-wrap:wrap;gap:.6rem;}
   .nav-meta{display:none;}
+  .nav-links{gap:6px;}
+  .nav-link{font-size:8px;padding:6px 9px;}
 
   /* Hero */
   .hero{padding:2.2rem 1.2rem 1.4rem;}
@@ -306,15 +311,22 @@ h1 em{color:#be32ff;font-style:normal;}
 
 <!-- NAV -->
 <nav>
-  <a href="javascript:window.close()" class="nav-back">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    BACK TO PORTFOLIO
-  </a>
+  <div class="nav-links">
+    <a href="../index.html" class="nav-back">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      BACK TO PORTFOLIO
+    </a>
+    <a href="#page-top" class="nav-link">HOME</a>
+    <a href="#inventory" class="nav-link">INVENTORY</a>
+    <a href="#hud" class="nav-link">HUD</a>
+    <a href="#combat-language" class="nav-link">COMBAT LANGUAGE</a>
+    <a href="#level-selector" class="nav-link">LEVEL SELECTOR</a>
+  </div>
   <div class="nav-meta">ALEJANDRO MORA — <span>UX DESIGNER</span></div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="page-top">
   <h1>Orcs Must Die! <em>By the Blade</em></h1>
   <div class="game-type">VR Action-Adventure</div>
 </div>
@@ -554,7 +566,7 @@ function setFilter(f){
     <div class="q-label-line"></div>
   </div>
   <div style="position:relative;width:100%;background:#03010a;border:1px solid rgba(190,50,255,.2);border-radius:6px;overflow:hidden;">
-    <video id="fd2-video" src="../img/OMD_Vid/OMD_Inventory_Final.mp4" style="width:100%;display:block;" preload="metadata"></video>
+    <video id="fd2-video" src="../img/OMD_Vid/OMD_Inventory_VF.mp4" style="width:100%;display:block;" preload="metadata"></video>
     <div id="fd2-controls" style="position:absolute;bottom:0;left:0;right:0;padding:.7rem 1rem .8rem;background:linear-gradient(to top,rgba(4,2,12,.95) 0%,rgba(4,2,12,.6) 70%,transparent 100%);display:flex;flex-direction:column;gap:.5rem;opacity:0;transition:opacity .25s;">
       <div style="display:flex;align-items:center;gap:8px;">
         <span id="fd2-cur" style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#be32ff;min-width:34px;">0:00</span>
@@ -572,6 +584,18 @@ function setFilter(f){
         <button id="fd2-mute" style="background:none;border:1px solid rgba(0,210,240,.3);color:#00d2f0;font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 8px;cursor:pointer;letter-spacing:.1em;border-radius:2px;">🔊</button>
         <button id="fd2-fs" style="background:none;border:1px solid rgba(0,210,240,.3);color:#00d2f0;font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 8px;cursor:pointer;border-radius:2px;">⛶</button>
       </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.4rem;">
+    <div class="explore-group-label">Results</div>
+    <div class="wrist-bullet">
+      <div class="wrist-bullet-dot"></div>
+      <div class="wrist-bullet-text">Thanks to these improvements, the game's rating rose to 4 stars.</div>
+    </div>
+    <div class="wrist-bullet">
+      <div class="wrist-bullet-dot"></div>
+      <div class="wrist-bullet-text">Created a clear flow for the inventory, and for when and how it should be visually represented.</div>
     </div>
   </div>
 </div>
@@ -641,9 +665,9 @@ function setFilter(f){
       <span class="ls-c tl"></span><span class="ls-c tr"></span>
       <span class="ls-c bl"></span><span class="ls-c br"></span>
       <div class="ls-badge">LEARNING 01</div>
-      <div class="ls-num">// STATE OVER STATIC</div>
-      <div class="ls-title">A single always-visible<br>view adds noise</div>
-      <div class="ls-text">State-driven UI, tied to what the player is actually doing, communicates more with less than a static, always-on display.</div>
+      <div class="ls-num">// SIGNAL VS NOISE</div>
+      <div class="ls-title">Not everything needs<br>to be shown at once</div>
+      <div class="ls-text">During combat, player attention is focused entirely on the fight, not on what's being displayed. Information that isn't relevant in that moment just becomes noise.</div>
       <div class="ls-dots">
         <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
         <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
@@ -655,9 +679,9 @@ function setFilter(f){
       <span class="ls-c tl"></span><span class="ls-c tr"></span>
       <span class="ls-c bl"></span><span class="ls-c br"></span>
       <div class="ls-badge">LEARNING 02</div>
-      <div class="ls-num">// BODY-RELATIVE UI</div>
-      <div class="ls-title">Anchor it to the<br>player's own hands</div>
-      <div class="ls-text">In VR, tying interface to the player's body makes interaction feel native, instead of feeling like a menu overlaid on the game.</div>
+      <div class="ls-num">// MUSCLE MEMORY</div>
+      <div class="ls-title">Bodily references make<br>VR feel intuitive</div>
+      <div class="ls-text">Giving players consistent physical reference points reinforces muscle memory, letting them act more intuitively instead of consciously searching for information.</div>
       <div class="ls-dots">
         <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
         <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
@@ -669,9 +693,9 @@ function setFilter(f){
       <span class="ls-c tl"></span><span class="ls-c tr"></span>
       <span class="ls-c bl"></span><span class="ls-c br"></span>
       <div class="ls-badge">LEARNING 03</div>
-      <div class="ls-num">// SIMPLICITY SCALES</div>
-      <div class="ls-title">Fewer, clearer slots<br>beat a "complete" system</div>
-      <div class="ls-text">Cutting traps and one extra slot made the inventory easier to read and act on instantly, without losing what players actually needed.</div>
+      <div class="ls-num">// LESS TO MANAGE</div>
+      <div class="ls-title">Let the slot carry<br>its own feedback</div>
+      <div class="ls-text">Making each slot responsible for showing its own state helped the overall flow, because it's less information the player has to hold onto at once.</div>
       <div class="ls-dots">
         <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
         <div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div><div class="ls-dot"></div>
