@@ -97,6 +97,8 @@ h1 em{color:#be32ff;font-style:normal;}
 /* CHALLENGE CARD */
 .challenge-card{position:relative;border:1px solid rgba(190,50,255,.25);border-radius:14px;overflow:hidden;background:#03010a;}
 .challenge-card.no-img{min-height:280px;background:linear-gradient(135deg,#0e0618,#04020c);}
+.challenge-card.subtle-bg{min-height:280px;background-image:url('../img/OMD_Image/OMD_Inventory_Challenge.png');background-size:cover;background-position:center;}
+.challenge-card.subtle-bg::before{content:'';position:absolute;inset:0;background:rgba(6,3,14,.8);}
 .challenge-card img{width:100%;display:block;max-height:600px;object-fit:cover;object-position:center;}
 .challenge-q{font-family:'Orbitron',monospace;font-weight:700;font-size:clamp(17px,2.4vw,27px);color:#f4ecff;line-height:1.4;letter-spacing:.02em;text-shadow:0 0 24px rgba(190,50,255,.45);max-width:620px;}
 .challenge-q.cy{text-shadow:0 0 24px rgba(0,210,240,.45);}
@@ -429,7 +431,7 @@ function setFilter(f){
     <div class="q-label-sdt">WHAT WAS THE CHALLENGE?</div>
     <div class="q-label-line"></div>
   </div>
-  <div class="challenge-card no-img">
+  <div class="challenge-card subtle-bg">
     <div class="cc tl"></div><div class="cc tr"></div>
     <div class="cc bl"></div><div class="cc br"></div>
     <div class="challenge-overlay-text">
