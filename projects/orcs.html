@@ -93,7 +93,28 @@ h1 em{color:#be32ff;font-style:normal;}
 
 /* CHALLENGE CARD */
 .challenge-card{position:relative;border:1px solid rgba(190,50,255,.25);border-radius:14px;overflow:hidden;background:#03010a;}
+.challenge-card.no-img{min-height:280px;background:linear-gradient(135deg,#0e0618,#04020c);}
 .challenge-card img{width:100%;display:block;max-height:600px;object-fit:cover;object-position:center;}
+.challenge-q{font-family:'Orbitron',monospace;font-weight:700;font-size:clamp(17px,2.4vw,27px);color:#f4ecff;line-height:1.4;letter-spacing:.02em;text-shadow:0 0 24px rgba(190,50,255,.45);max-width:620px;}
+.challenge-q.cy{text-shadow:0 0 24px rgba(0,210,240,.45);}
+.challenge-sub{font-family:'Roboto',sans-serif;font-size:13px;color:#9a88b0;line-height:1.75;margin-top:.9rem;max-width:520px;}
+
+/* DESIGN PRINCIPLES (reusable) */
+.dp-section{padding:2.4rem 2.5rem 0;position:relative;max-width:900px;margin:0 auto;}
+.dp-label{font-family:'Share Tech Mono',monospace;font-size:10px;color:#be32ff;letter-spacing:.28em;opacity:.7;display:block;margin-bottom:1.4rem;text-align:center;}
+.dp-label.cy{color:#00d2f0;}
+.dp-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:0;}
+.dp-item{text-align:center;padding:1.6rem 1.6rem;border:1px solid rgba(190,50,255,.18);background:rgba(190,50,255,.04);}
+.dp-item.left{border-right:none;clip-path:polygon(0 0,100% 0,100% 100%,16px 100%,0 calc(100% - 16px));}
+.dp-item.right{border-left:none;clip-path:polygon(0 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%);}
+.dp-item.center{border:1px solid rgba(0,210,240,.4);background:rgba(0,210,240,.06);padding:2rem 2rem;position:relative;z-index:1;box-shadow:0 0 30px rgba(0,210,240,.08);}
+.dp-num{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.2em;opacity:.6;margin-bottom:.7rem;color:#be32ff;}
+.dp-item.center .dp-num{color:#00d2f0;opacity:.7;}
+.dp-text{font-family:'Orbitron',monospace;font-size:clamp(11px,1.3vw,14px);font-weight:700;color:#f4ecff;letter-spacing:.05em;line-height:1.6;text-shadow:0 0 20px rgba(190,50,255,.35);}
+.dp-item.center .dp-text{font-size:clamp(13px,1.8vw,18px);text-shadow:0 0 30px rgba(190,50,255,.4),0 0 60px rgba(0,210,240,.2);}
+.dp-item.center .dp-text .hl{color:#00d2f0;text-shadow:0 0 20px rgba(0,210,240,.6);}
+.dp-hr{margin-top:1rem;width:40px;height:1px;background:linear-gradient(90deg,transparent,#00d2f0,transparent);margin-left:auto;margin-right:auto;}
+.dp-bottom-line{margin-top:1.8rem;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.3),rgba(0,210,240,.3),rgba(190,50,255,.3),transparent);}
 .challenge-card::after{content:'';position:absolute;left:0;right:0;bottom:0;top:0;background:linear-gradient(to bottom,rgba(7,5,13,.0) 0%,rgba(7,5,13,.10) 20%,rgba(7,5,13,.45) 48%,rgba(7,5,13,.78) 68%,rgba(7,5,13,.93) 100%);pointer-events:none;}
 .challenge-overlay-text{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:1.8rem 2.2rem 2.2rem;}
 .challenge-overlay-text p{font-family:'Roboto',sans-serif;font-size:13.5px;color:#d0c0e8;line-height:1.85;}
@@ -263,6 +284,12 @@ h1 em{color:#be32ff;font-style:normal;}
   .sd-grid{grid-template-columns:1fr 1fr;gap:.8rem;}
   .module-stub{padding:0 1.2rem;}
   .module-stub-inner{padding:1.8rem 1.2rem;}
+
+  /* Design principles: 3 cols → stacked */
+  .dp-section{padding:1.8rem 1.2rem 0;}
+  .dp-grid{grid-template-columns:1fr;gap:.9rem;}
+  .dp-item.left,.dp-item.right{clip-path:none;border:1px solid rgba(190,50,255,.18);}
+  .dp-item.center{order:-1;}
 }
 </style>
 </head>
@@ -377,10 +404,44 @@ function setFilter(f){
     <span class="sector-banner-sub">UX / UI DESIGN</span>
   </div>
 </div>
-<div class="module-stub">
+<div class="module-stub" style="max-width:900px;margin:2.5rem auto 0;padding:0 2.5rem;">
+  <div class="q-label">
+    <div class="q-label-sdt">WHAT WAS THE CHALLENGE?</div>
+    <div class="q-label-line"></div>
+  </div>
+  <div class="challenge-card no-img">
+    <div class="cc tl"></div><div class="cc tr"></div>
+    <div class="cc bl"></div><div class="cc br"></div>
+    <div class="challenge-overlay-text">
+      <div class="challenge-q">How do you give players loadout info without ever breaking combat?</div>
+      <div class="challenge-sub">Check gear from before the run, and stow weapons or trinkets mid-fight, without ever pulling focus from the fight.</div>
+    </div>
+  </div>
+</div>
+
+<div class="dp-section">
+  <span class="dp-label">// DESIGN PRINCIPLES</span>
+  <div class="dp-grid">
+    <div class="dp-item left">
+      <div class="dp-num">01</div>
+      <p class="dp-text">Responds to the player's<br>own body, leveraging VR</p>
+    </div>
+    <div class="dp-item center">
+      <div class="dp-num">02</div>
+      <p class="dp-text">Zero friction.<br><span class="hl">Every weapon and trinket</span><br>reachable without hesitation</p>
+      <div class="dp-hr"></div>
+    </div>
+    <div class="dp-item right">
+      <div class="dp-num">03</div>
+      <p class="dp-text">Independently responsive<br>to each of the player's hands</p>
+    </div>
+  </div>
+  <div class="dp-bottom-line"></div>
+</div>
+<div class="module-stub" style="margin-top:2rem;">
   <div class="module-stub-inner">
     <span class="module-stub-label">// IN PROGRESS</span>
-    <p class="module-stub-desc">Case study covering the state-driven inventory HUD, designed to stay out of the way during combat and surface only what the player needs. Wireframes, final captures, and gameplay footage coming soon.</p>
+    <p class="module-stub-desc">Process, final design, and results coming soon — wireframes, final captures, and gameplay footage.</p>
   </div>
 </div>
 
@@ -391,10 +452,24 @@ function setFilter(f){
     <span class="sector-banner-sub">UX / UI DESIGN</span>
   </div>
 </div>
-<div class="module-stub">
+<div class="module-stub" style="max-width:900px;margin:2.5rem auto 0;padding:0 2.5rem;">
+  <div class="q-label">
+    <div class="q-label-sdt">WHAT WAS THE CHALLENGE?</div>
+    <div class="q-label-line"></div>
+  </div>
+  <div class="challenge-card no-img">
+    <div class="cc tl"></div><div class="cc tr"></div>
+    <div class="cc bl"></div><div class="cc br"></div>
+    <div class="challenge-overlay-text">
+      <div class="challenge-q">How do you keep players aware of the game's state without pulling them out of combat?</div>
+      <div class="challenge-sub">Critical info needs to stay visible at all times, without ever competing with combat readability.</div>
+    </div>
+  </div>
+</div>
+<div class="module-stub" style="margin-top:2rem;">
   <div class="module-stub-inner">
     <span class="module-stub-label">// IN PROGRESS</span>
-    <p class="module-stub-desc">Case study covering the player status HUD — alerts, notifications, and real-time readability. Wireframes and final captures coming soon.</p>
+    <p class="module-stub-desc">Process, final design, and results coming soon — wireframes and final captures.</p>
   </div>
 </div>
 
@@ -403,36 +478,6 @@ function setFilter(f){
   <div class="sector-banner-inner">
     <span class="sector-banner-title">COMBAT LANGUAGE</span>
     <span class="sector-banner-sub">GAME DESIGN</span>
-  </div>
-</div>
-
-<!-- COMBAT QUOTE -->
-<div style="padding:2.8rem 2.5rem 0;background:#07050d;position:relative;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#be32ff;letter-spacing:.28em;opacity:.7;display:block;margin-bottom:1.4rem;text-align:center;">// DESIGN PRINCIPLES</span>
-    <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:0;">
-
-      <!-- Left principle -->
-      <div style="text-align:center;padding:1.6rem 2rem;border:1px solid rgba(190,50,255,.18);border-right:none;background:rgba(190,50,255,.04);clip-path:polygon(0 0,100% 0,100% 100%,16px 100%,0 calc(100% - 16px));">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#be32ff;letter-spacing:.2em;opacity:.6;margin-bottom:.7rem;">01</div>
-        <p style="font-family:'Orbitron',monospace;font-size:clamp(11px,1.3vw,14px);font-weight:700;color:#f4ecff;letter-spacing:.05em;line-height:1.6;text-shadow:0 0 20px rgba(190,50,255,.35);">Make the player feel<br>powerful and in control</p>
-      </div>
-
-      <!-- Center principle — highlighted -->
-      <div style="text-align:center;padding:2rem 2.4rem;border:1px solid rgba(0,210,240,.4);background:rgba(0,210,240,.06);position:relative;z-index:1;box-shadow:0 0 30px rgba(0,210,240,.08);">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#00d2f0;letter-spacing:.2em;opacity:.7;margin-bottom:.7rem;">02</div>
-        <p style="font-family:'Orbitron',monospace;font-size:clamp(13px,1.8vw,18px);font-weight:700;color:#f4ecff;letter-spacing:.06em;line-height:1.6;text-shadow:0 0 30px rgba(190,50,255,.4),0 0 60px rgba(0,210,240,.2);">Every hit must be felt.<br><span style="color:#00d2f0;text-shadow:0 0 20px rgba(0,210,240,.6);">Every threat must be read.</span><br>Every response must be possible.</p>
-        <div style="margin-top:1rem;width:40px;height:1px;background:linear-gradient(90deg,transparent,#00d2f0,transparent);margin-left:auto;margin-right:auto;"></div>
-      </div>
-
-      <!-- Right principle -->
-      <div style="text-align:center;padding:1.6rem 2rem;border:1px solid rgba(190,50,255,.18);border-left:none;background:rgba(190,50,255,.04);clip-path:polygon(0 0,100% 0,calc(100% - 0px) calc(100% - 16px),calc(100% - 16px) 100%,0 100%);">
-        <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#be32ff;letter-spacing:.2em;opacity:.6;margin-bottom:.7rem;">03</div>
-        <p style="font-family:'Orbitron',monospace;font-size:clamp(11px,1.3vw,14px);font-weight:700;color:#f4ecff;letter-spacing:.05em;line-height:1.6;text-shadow:0 0 20px rgba(190,50,255,.35);">Physicality and immersion<br>must be one</p>
-      </div>
-
-    </div>
-    <div style="margin-top:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(190,50,255,.3),rgba(0,210,240,.3),rgba(190,50,255,.3),transparent);"></div>
   </div>
 </div>
 
@@ -452,6 +497,26 @@ function setFilter(f){
       <div class="challenge-overlay-text">
         <p><strong>How do you make combat readable when players are fully engaged with their bodies in motion?</strong><br><br>Transitioning from a strategy-driven experience to a physically driven one required redefining how combat is communicated.<br><br>The system needed to convey impact, damage, and defensive opportunities in real time — without overwhelming the player or breaking the pace of combat.</p>
       </div>
+    </div>
+
+    <div class="dp-section" style="padding-top:2rem;">
+      <span class="dp-label">// DESIGN PRINCIPLES</span>
+      <div class="dp-grid">
+        <div class="dp-item left">
+          <div class="dp-num">01</div>
+          <p class="dp-text">Make the player feel<br>powerful and in control</p>
+        </div>
+        <div class="dp-item center">
+          <div class="dp-num">02</div>
+          <p class="dp-text">Every hit must be felt.<br><span class="hl">Every threat must be read.</span><br>Every response must be possible.</p>
+          <div class="dp-hr"></div>
+        </div>
+        <div class="dp-item right">
+          <div class="dp-num">03</div>
+          <p class="dp-text">Physicality and immersion<br>must be one</p>
+        </div>
+      </div>
+      <div class="dp-bottom-line"></div>
     </div>
   </div>
 
@@ -889,10 +954,24 @@ function setFilter(f){
     <span class="sector-banner-sub">GAME DESIGN</span>
   </div>
 </div>
-<div class="module-stub">
+<div class="module-stub" style="max-width:900px;margin:2.5rem auto 0;padding:0 2.5rem;">
+  <div class="q-label">
+    <div class="q-label-sdt cy">WHAT WAS THE CHALLENGE?</div>
+    <div class="q-label-line" style="background:linear-gradient(90deg,transparent,rgba(0,210,240,.35));"></div>
+  </div>
+  <div class="challenge-card no-img">
+    <div class="cc tl"></div><div class="cc tr"></div>
+    <div class="cc bl"></div><div class="cc br"></div>
+    <div class="challenge-overlay-text">
+      <div class="challenge-q cy">How do you turn a level-select screen into something native to VR?</div>
+      <div class="challenge-sub">Choosing a level needed to feel like a physical, spatial action, consistent with how players already moved in VR — not a menu breaking immersion.</div>
+    </div>
+  </div>
+</div>
+<div class="module-stub" style="margin-top:2rem;">
   <div class="module-stub-inner">
     <span class="module-stub-label">// IN PROGRESS</span>
-    <p class="module-stub-desc">Case study covering the VR-native level selector and the player-facing lobby flow — armory, loadout, and co-op entry. Wireframes and final captures coming soon.</p>
+    <p class="module-stub-desc">Process, final design, and results coming soon — wireframes and final captures.</p>
   </div>
 </div>
 
