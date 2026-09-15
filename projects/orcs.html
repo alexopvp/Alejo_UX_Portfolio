@@ -70,6 +70,9 @@ h1 em{color:#be32ff;font-style:normal;}
 @keyframes scan{0%{left:-55%;}100%{left:140%;}}
 .sector-banner-inner{max-width:900px;margin:0 auto;padding:0 2.5rem;display:flex;flex-direction:column;align-items:center;gap:.55rem;position:relative;z-index:1;}
 .sector-banner-title{font-family:'Orbitron',monospace;font-size:clamp(20px,3vw,34px);font-weight:700;color:#f4ecff;letter-spacing:.18em;text-shadow:0 0 20px rgba(190,50,255,.7),0 0 60px rgba(190,50,255,.3);white-space:nowrap;}
+.sector-banner.cy{background:radial-gradient(ellipse 80% 100% at 50% 50%,rgba(6,42,58,.98) 0%,#07050d 100%);border-top-color:rgba(0,210,240,.5);border-bottom-color:rgba(0,210,240,.5);box-shadow:0 -8px 40px rgba(0,210,240,.12),0 8px 40px rgba(0,210,240,.12),inset 0 1px 0 rgba(255,255,255,.04),inset 0 -1px 0 rgba(190,50,255,.08);}
+.sector-banner.cy::after{background:linear-gradient(90deg,transparent,rgba(190,50,255,.16),rgba(0,210,240,.04),transparent);}
+.sector-banner.cy .sector-banner-title{text-shadow:0 0 20px rgba(0,210,240,.7),0 0 60px rgba(0,210,240,.3);}
 .sector-banner-sub{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00d2f0;letter-spacing:.28em;opacity:.8;text-shadow:0 0 12px rgba(0,210,240,.6);}
 
 /* SECTOR FRAME */
@@ -169,6 +172,37 @@ h1 em{color:#be32ff;font-style:normal;}
 
 .img-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0e0618,#04020c);font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.15em;min-height:380px;}
 
+/* DISCIPLINE FILTER BUTTONS */
+.disc-filters{display:flex;gap:10px;margin-top:.3rem;width:100%;}
+.disc-btn{flex:1;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.12em;padding:14px 16px;background:none;cursor:pointer;transition:all .2s;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,0 100%);text-align:center;}
+.disc-btn.ui{border:1px solid rgba(190,50,255,.4);color:#be32ff;}
+.disc-btn.ui:hover{background:rgba(190,50,255,.08);}
+.disc-btn.ui.active{background:rgba(190,50,255,.16);border-color:#be32ff;box-shadow:0 0 14px rgba(190,50,255,.25);}
+.disc-btn.gd{border:1px solid rgba(0,210,240,.4);color:#00d2f0;}
+.disc-btn.gd:hover{background:rgba(0,210,240,.08);}
+.disc-btn.gd.active{background:rgba(0,210,240,.16);border-color:#00d2f0;box-shadow:0 0 14px rgba(0,210,240,.25);}
+.disc-btn.all{border:1px solid rgba(216,200,240,.3);color:#d8c8f0;}
+.disc-btn.all:hover{background:rgba(216,200,240,.08);}
+.disc-btn.all.active{background:rgba(216,200,240,.14);border-color:#d8c8f0;box-shadow:0 0 14px rgba(216,200,240,.18);}
+
+/* SPECIFIC DESIGNS GRID */
+.sd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:1.6rem;}
+.sd-card{position:relative;border:1px solid rgba(190,50,255,.2);background:rgba(10,6,20,.6);padding:1.5rem 1.2rem;cursor:pointer;transition:all .25s;clip-path:polygon(14px 0%,100% 0%,100% calc(100% - 14px),calc(100% - 14px) 100%,0% 100%,0% 14px);}
+.sd-card:hover{border-color:rgba(190,50,255,.55);background:rgba(190,50,255,.06);transform:translateY(-3px);}
+.sd-card.dim{opacity:.3;}
+.sd-card-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#f4ecff;letter-spacing:.05em;margin-bottom:.7rem;}
+.sd-card.cy{border-color:rgba(0,210,240,.2);}
+.sd-card.cy:hover{border-color:rgba(0,210,240,.55);background:rgba(0,210,240,.06);}
+.sd-card-preview{width:100%;height:110px;margin-bottom:.9rem;overflow:hidden;border-radius:4px;}
+.sd-card-preview img{width:100%;height:100%;object-fit:cover;display:block;}
+.sd-card-preview-ph{width:100%;height:110px;margin-bottom:.9rem;border-radius:4px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0e0618,#04020c);font-family:'Share Tech Mono',monospace;font-size:9px;color:#3a2848;letter-spacing:.15em;}
+
+/* MODULE STUB (in-progress sections) */
+.module-stub{max-width:900px;margin:2rem auto 0;padding:0 2.5rem;}
+.module-stub-inner{border:1px solid rgba(190,50,255,.16);background:rgba(190,50,255,.03);padding:2.4rem 2rem;text-align:center;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));}
+.module-stub-label{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,210,240,.55);letter-spacing:.24em;margin-bottom:1rem;display:block;}
+.module-stub-desc{font-family:'Roboto',sans-serif;font-size:12.5px;color:#5a4868;max-width:440px;margin:0 auto;line-height:1.8;}
+
 /* PARRY SLIDER */
 .parry-slider{display:flex;width:200%;height:100%;transition:transform .7s cubic-bezier(.77,0,.18,1);}
 .parry-slide{width:50%;height:100%;object-fit:cover;flex-shrink:0;display:block;}
@@ -224,6 +258,11 @@ h1 em{color:#be32ff;font-style:normal;}
 
   /* Parry slider container height */
   .wrist-row > div[style*="overflow:hidden"]{min-height:220px!important;}
+
+  /* Specific designs grid: 4 cols → 2 cols */
+  .sd-grid{grid-template-columns:1fr 1fr;gap:.8rem;}
+  .module-stub{padding:0 1.2rem;}
+  .module-stub-inner{padding:1.8rem 1.2rem;}
 }
 </style>
 </head>
@@ -281,25 +320,89 @@ h1 em{color:#be32ff;font-style:normal;}
         <img src="../img/OMD_Image/OMD_ProjectImage04.png" alt="Orcs Must Die gameplay" style="object-position:center 20%;"/>
       </div>
       <div>
-        <div class="deliverables-frame"><span>DELIVERABLES</span></div>
-        <div class="deliverable-item"><div class="deliverable-dot"></div><div class="deliverable-text">Combat Language System</div></div>
-        <div class="deliverable-item"><div class="deliverable-dot"></div><div class="deliverable-text">Player Feedback Design</div></div>
-        <div class="deliverable-item"><div class="deliverable-dot"></div><div class="deliverable-text">Block &amp; Parry Mechanics</div></div>
+        <div class="disc-filters" id="discFilters">
+          <button class="disc-btn ui" data-filter="ui" onclick="setFilter('ui')">UX / UI DESIGN</button>
+          <button class="disc-btn gd" data-filter="gd" onclick="setFilter('gd')">GAME DESIGN</button>
+          <button class="disc-btn all active" data-filter="all" onclick="setFilter('all')">ALL</button>
+        </div>
       </div>
     </div>
     <div>
       <div class="role-question">What was I working on?</div>
       <div class="role-subtitle">// UX DESIGNER</div>
-      <p class="desc">Orcs Must Die! By the Blade is a VR action-adventure adaptation of the Orcs Must Die! franchise, originally known for its tower defense gameplay on PC.<br><br>In this version, combat shifts from strategic placement to direct, physical interaction — requiring players to engage enemies through movement, timing, and spatial awareness.<br><br>As a UX Designer, I defined the combat language — a system of signifiers, feedback, and mechanics that makes combat readable, responsive, and grounded in the player's physical actions.</p>
+      <p class="desc">Orcs Must Die! By the Blade is a VR action-adventure adaptation of the Orcs Must Die! franchise, originally known for its tower defense gameplay on PC.<br><br>In this version, combat shifts from strategic placement to direct, physical interaction — requiring players to engage enemies through movement, timing, and spatial awareness.<br><br>As a UX Designer, I was responsible for making combat and the overall gameplay experience feel immersive and legible, so players could truly feel inside the game.</p>
+    </div>
+  </div>
+
+  <!-- SPECIFIC DESIGNS -->
+  <div class="sd-grid" id="sdGrid">
+    <div class="sd-card" data-tags="ui" onclick="location.hash='inventory'">
+      <div class="sd-card-preview-ph">PREVIEW</div>
+      <div class="sd-card-title">Inventory</div>
+    </div>
+    <div class="sd-card" data-tags="ui" onclick="location.hash='hud'">
+      <div class="sd-card-preview-ph">PREVIEW</div>
+      <div class="sd-card-title">HUD</div>
+    </div>
+    <div class="sd-card cy" data-tags="gd" onclick="location.hash='combat-language'">
+      <div class="sd-card-preview"><img src="../img/OMD_Image/OMD_ProjectImage05.png" alt="Combat Language preview"/></div>
+      <div class="sd-card-title">Combat Language</div>
+    </div>
+    <div class="sd-card cy" data-tags="gd" onclick="location.hash='level-selector'">
+      <div class="sd-card-preview-ph">PREVIEW</div>
+      <div class="sd-card-title">Level Selector</div>
     </div>
   </div>
 </div>
 
+<script>
+var activeFilter = 'all';
+function setFilter(f){
+  activeFilter = f;
+  document.querySelectorAll('.disc-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.filter === f);
+  });
+  document.querySelectorAll('.sd-card').forEach(function(c){
+    var tags = c.dataset.tags.split(' ');
+    var show = f === 'all' || tags.indexOf(f) !== -1;
+    c.classList.toggle('dim', !show);
+  });
+}
+</script>
+
+<!-- INVENTORY MODULE -->
+<div class="sector-banner" id="inventory">
+  <div class="sector-banner-inner">
+    <span class="sector-banner-title">INVENTORY</span>
+    <span class="sector-banner-sub">UX / UI DESIGN</span>
+  </div>
+</div>
+<div class="module-stub">
+  <div class="module-stub-inner">
+    <span class="module-stub-label">// IN PROGRESS</span>
+    <p class="module-stub-desc">Case study covering the state-driven inventory HUD, designed to stay out of the way during combat and surface only what the player needs. Wireframes, final captures, and gameplay footage coming soon.</p>
+  </div>
+</div>
+
+<!-- HUD MODULE -->
+<div class="sector-banner" id="hud">
+  <div class="sector-banner-inner">
+    <span class="sector-banner-title">HUD</span>
+    <span class="sector-banner-sub">UX / UI DESIGN</span>
+  </div>
+</div>
+<div class="module-stub">
+  <div class="module-stub-inner">
+    <span class="module-stub-label">// IN PROGRESS</span>
+    <p class="module-stub-desc">Case study covering the player status HUD — alerts, notifications, and real-time readability. Wireframes and final captures coming soon.</p>
+  </div>
+</div>
+
 <!-- COMBAT LANGUAGE BANNER -->
-<div class="sector-banner">
+<div class="sector-banner cy" id="combat-language">
   <div class="sector-banner-inner">
     <span class="sector-banner-title">COMBAT LANGUAGE</span>
-    <span class="sector-banner-sub">DESIGN PROCESS</span>
+    <span class="sector-banner-sub">GAME DESIGN</span>
   </div>
 </div>
 
@@ -778,6 +881,21 @@ h1 em{color:#be32ff;font-style:normal;}
   </div>
 
 </div><!-- /sector-frame -->
+
+<!-- LEVEL SELECTOR MODULE -->
+<div class="sector-banner cy" id="level-selector">
+  <div class="sector-banner-inner">
+    <span class="sector-banner-title">LEVEL SELECTOR</span>
+    <span class="sector-banner-sub">GAME DESIGN</span>
+  </div>
+</div>
+<div class="module-stub">
+  <div class="module-stub-inner">
+    <span class="module-stub-label">// IN PROGRESS</span>
+    <p class="module-stub-desc">Case study covering the VR-native level selector and the player-facing lobby flow — armory, loadout, and co-op entry. Wireframes and final captures coming soon.</p>
+  </div>
+</div>
+
 </div><!-- /page -->
 
 <script>
