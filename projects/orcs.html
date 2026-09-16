@@ -97,8 +97,9 @@ h1 em{color:#be32ff;font-style:normal;}
 /* CHALLENGE CARD */
 .challenge-card{position:relative;border:1px solid rgba(190,50,255,.25);border-radius:14px;overflow:hidden;background:#03010a;}
 .challenge-card.no-img{min-height:280px;background:linear-gradient(135deg,#0e0618,#04020c);}
-.challenge-card.subtle-bg{min-height:280px;background-image:url('../img/OMD_Image/OMD_Inventory_Challenge.png');background-size:cover;background-position:center;}
+.challenge-card.subtle-bg{min-height:280px;background-size:cover;background-position:center;}
 .challenge-card.subtle-bg::before{content:'';position:absolute;inset:0;background:rgba(6,3,14,.8);}
+.challenge-card.subtle-bg.cy::before{background:rgba(3,10,14,.8);}
 .challenge-card img{width:100%;display:block;max-height:600px;object-fit:cover;object-position:center;}
 .challenge-q{font-family:'Orbitron',monospace;font-weight:700;font-size:clamp(17px,2.4vw,27px);color:#f4ecff;line-height:1.4;letter-spacing:.02em;text-shadow:0 0 24px rgba(190,50,255,.45);max-width:620px;}
 .challenge-q.cy{text-shadow:0 0 24px rgba(0,210,240,.45);}
@@ -154,6 +155,9 @@ h1 em{color:#be32ff;font-style:normal;}
 .wrist-bullet{display:flex;align-items:flex-start;gap:12px;}
 .wrist-bullet-dot{width:6px;height:6px;border-radius:50%;background:#be32ff;flex-shrink:0;margin-top:6px;box-shadow:0 0 6px rgba(190,50,255,.6);}
 .wrist-bullet-text{font-family:'Roboto',sans-serif;font-size:13px;color:#8070a0;line-height:1.75;}
+.callout-text{font-family:'Roboto',sans-serif;font-size:15px;font-weight:500;color:#f4ecff;line-height:1.75;padding:1rem 1.2rem;border-left:3px solid rgba(190,50,255,.5);background:rgba(190,50,255,.05);border-radius:0 8px 8px 0;}
+.callout-text.cy{border-left-color:rgba(0,210,240,.5);background:rgba(0,210,240,.05);}
+.callout-text b{color:#00d2f0;}
 .explore-group-label{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:#f4ecff;letter-spacing:.08em;padding-bottom:.55rem;margin-bottom:1.6rem;border-bottom:1px solid rgba(190,50,255,.2);text-align:center;}
 
 /* FINAL DESIGN */
@@ -386,7 +390,7 @@ h1 em{color:#be32ff;font-style:normal;}
   <!-- SPECIFIC DESIGNS -->
   <div class="sd-grid" id="sdGrid">
     <div class="sd-card" data-tags="ui" onclick="location.hash='inventory'">
-      <div class="sd-card-preview-ph">PREVIEW</div>
+      <div class="sd-card-preview"><img src="../img/OMD_Image/OMD_Inventory_Challenge.png" alt="Inventory preview"/></div>
       <div class="sd-card-title">Inventory</div>
     </div>
     <div class="sd-card" data-tags="ui" onclick="location.hash='hud'">
@@ -398,7 +402,7 @@ h1 em{color:#be32ff;font-style:normal;}
       <div class="sd-card-title">Combat Language</div>
     </div>
     <div class="sd-card cy" data-tags="gd" onclick="location.hash='level-selector'">
-      <div class="sd-card-preview-ph">PREVIEW</div>
+      <div class="sd-card-preview"><img src="../img/OMD_Image/Level%20Selector/OMD_LevelSelector_Challenge.webp" alt="Level Selector preview"/></div>
       <div class="sd-card-title">Level Selector</div>
     </div>
   </div>
@@ -431,7 +435,7 @@ function setFilter(f){
     <div class="q-label-sdt">WHAT WAS THE CHALLENGE?</div>
     <div class="q-label-line"></div>
   </div>
-  <div class="challenge-card subtle-bg">
+  <div class="challenge-card subtle-bg" style="background-image:url('../img/OMD_Image/OMD_Inventory_Challenge.png');">
     <div class="cc tl"></div><div class="cc tr"></div>
     <div class="cc bl"></div><div class="cc br"></div>
     <div class="challenge-overlay-text">
@@ -1221,7 +1225,7 @@ function setFilter(f){
     <div class="q-label-sdt cy">WHAT WAS THE CHALLENGE?</div>
     <div class="q-label-line" style="background:linear-gradient(90deg,transparent,rgba(0,210,240,.35));"></div>
   </div>
-  <div class="challenge-card no-img">
+  <div class="challenge-card subtle-bg cy" style="background-image:url('../img/OMD_Image/Level%20Selector/OMD_LevelSelector_Challenge.webp');">
     <div class="cc tl"></div><div class="cc tr"></div>
     <div class="cc bl"></div><div class="cc br"></div>
     <div class="challenge-overlay-text">
@@ -1313,23 +1317,14 @@ function setFilter(f){
   <div class="sub-img cy" style="margin-bottom:.9rem;">
     <img class="lightbox-trigger" src="../img/OMD_Image/Level%20Selector/OMD_LevelSelector_Statue.png" alt="Player statue used to select a level" style="width:100%;display:block;"/>
   </div>
-  <div class="wrist-bullet" style="margin-bottom:1.6rem;">
-    <div class="wrist-bullet-dot"></div>
-    <div class="wrist-bullet-text">The statue is how players select a level — they grab it and place it into a level slot to make that selection.</div>
-  </div>
+  <div class="callout-text cy" style="margin-bottom:1.6rem;">The statue is how players select a level — they grab it and place it into a level slot to make that selection.</div>
 
   <div class="explore-group-label">Level States</div>
   <div class="sub-img cy" style="margin-bottom:.9rem;">
     <img class="lightbox-trigger" src="../img/OMD_Image/Level%20Selector/OMD_LevelSelector_LevelStates.png" alt="Level states, locked and playable" style="width:100%;display:block;"/>
   </div>
-  <div class="wrist-bullet">
-    <div class="wrist-bullet-dot"></div>
-    <div class="wrist-bullet-text">Locked — the portal appears black.</div>
-  </div>
-  <div class="wrist-bullet">
-    <div class="wrist-bullet-dot"></div>
-    <div class="wrist-bullet-text">Playable — the level itself is visible inside the portal.</div>
-  </div>
+  <div class="callout-text cy" style="margin-bottom:.8rem;"><b>Playable</b> — the level itself is visible inside the portal, and its medallion glows blue.</div>
+  <div class="callout-text cy">Locked — the portal appears black, and its medallion glows red with a locked icon.</div>
 </div>
 
 <!-- IMPLEMENTATION -->
@@ -1350,8 +1345,11 @@ function setFilter(f){
   </div>
 
   <div class="explore-group-label">Stage Selector</div>
-  <div style="position:relative;width:100%;background:#03010a;border:1px solid rgba(0,210,240,.2);border-radius:6px;overflow:hidden;margin-bottom:1rem;">
-    <div class="img-ph" style="min-height:220px;"><!-- swap for stage selector knob video -->STAGE SELECTOR — VIDEO</div>
+  <div class="sub-img cy" style="position:relative;margin-bottom:1rem;">
+    <img class="lightbox-trigger" src="../img/OMD_Image/Level%20Selector/OMD_LevelSelector_StageSelector.png" alt="Stage selector knob" style="width:100%;display:block;"/>
+    <div style="position:absolute;bottom:14px;right:14px;width:130px;border:2px solid rgba(0,210,240,.5);border-radius:6px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.65);opacity:.85;">
+      <img src="../img/OMD_Image/Level%20Selector/OMD_LevelSelector_CrankGif.gif" alt="Stage selector crank in motion" style="width:100%;display:block;"/>
+    </div>
   </div>
   <div class="wrist-bullet">
     <div class="wrist-bullet-dot"></div>
@@ -1384,6 +1382,18 @@ function setFilter(f){
         <button id="fd3-mute" style="background:none;border:1px solid rgba(190,50,255,.3);color:#be32ff;font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 8px;cursor:pointer;letter-spacing:.1em;border-radius:2px;">🔊</button>
         <button id="fd3-fs" style="background:none;border:1px solid rgba(190,50,255,.3);color:#be32ff;font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 8px;cursor:pointer;border-radius:2px;">⛶</button>
       </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.4rem;">
+    <div class="explore-group-label">Results</div>
+    <div class="wrist-bullet">
+      <div class="wrist-bullet-dot"></div>
+      <div class="wrist-bullet-text">Replaced a traditional menu with a fully VR-native selection flow, reinforcing immersion instead of breaking it.</div>
+    </div>
+    <div class="wrist-bullet">
+      <div class="wrist-bullet-dot"></div>
+      <div class="wrist-bullet-text">Made stage and level selection equally accessible for left- and right-handed players, without compromising the physical interaction.</div>
     </div>
   </div>
 </div>
