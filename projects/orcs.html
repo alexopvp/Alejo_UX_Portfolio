@@ -241,6 +241,13 @@ h1 em{color:#be32ff;font-style:normal;}
 .lightbox-close:hover{background:rgba(190,50,255,.16);}
 .lightbox-trigger{cursor:zoom-in;}
 
+/* MEDIA MOSAIC */
+.media-mosaic{display:grid;gap:.9rem;margin-bottom:1.1rem;}
+.media-cell{position:relative;border:1px solid rgba(190,50,255,.2);border-radius:10px;overflow:hidden;background:#03010a;}
+.media-cell.cy{border-color:rgba(0,210,240,.2);}
+.media-cell video,.media-cell img{width:100%;height:100%;object-fit:cover;display:block;}
+.media-cap{position:absolute;bottom:0;left:0;right:0;padding:.5rem .7rem;background:linear-gradient(to top,rgba(4,2,12,.92),transparent);font-family:'Share Tech Mono',monospace;font-size:8.5px;letter-spacing:.12em;color:#f4ecff;}
+
 /* PARRY SLIDER */
 .parry-slider{display:flex;width:200%;height:100%;transition:transform .7s cubic-bezier(.77,0,.18,1);}
 .parry-slide{width:50%;height:100%;object-fit:cover;flex-shrink:0;display:block;}
@@ -994,7 +1001,8 @@ function setFilter(f){
       <div class="cc bl"></div><div class="cc br"></div>
       <img class="lightbox-trigger" src="../img/OMD_Image/OMD_ProjectImage05.png" alt="What was the challenge"/>
       <div class="challenge-overlay-text">
-        <p><strong>How do you make combat readable when players are fully engaged with their bodies in motion?</strong><br><br>Transitioning from a strategy-driven experience to a physically driven one required redefining how combat is communicated.<br><br>The system needed to convey impact, damage, and defensive opportunities in real time — without overwhelming the player or breaking the pace of combat.</p>
+        <div class="challenge-q cy">How do you make combat readable when players are fully engaged with their bodies in motion?</div>
+        <div class="challenge-sub">The system needed to convey impact, damage, and defensive opportunities in real time, without overwhelming the player or breaking the pace of combat.</div>
       </div>
     </div>
 
@@ -1037,237 +1045,90 @@ function setFilter(f){
       <div class="q-label-line"></div>
     </div>
 
-    <div class="wrist-outer">
-
-      <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#1a0545 0%,#2a0870 40%,#0d1a4a 70%,#0a0e35 100%);border-bottom:1px solid rgba(190,50,255,.35);">
-        <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
-        <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
-        <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
-          <span style="width:22px;height:1px;background:#be32ff;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(190,50,255,.6);"></span>
-          <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(190,50,255,.5);">PLAYER FEEDBACK</span>
-        </div>
+    <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#1a0545 0%,#2a0870 40%,#0d1a4a 70%,#0a0e35 100%);border-bottom:1px solid rgba(190,50,255,.35);">
+      <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
+      <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
+      <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
+        <span style="width:22px;height:1px;background:#be32ff;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(190,50,255,.6);"></span>
+        <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(190,50,255,.5);">PLAYER FEEDBACK</span>
       </div>
-
-      <!-- Taking Damage — image left, text right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-img-cell fade-right">
-            <img class="lightbox-trigger" src="../img/OMD_Image/OMD_ProjectImage01.png" alt="Taking Damage — directional feedback prototype"/>
-          </div>
-          <div class="wrist-text-cell">
-            <div class="explore-group-label">Taking Damage</div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Feedback was designed to clearly communicate when and from where the player was hit, without breaking immersion.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Directional cues and screen effects helped players quickly understand incoming threats, while a critical state intensified the visual feedback — shifting the player's vision and increasing tension during combat.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dealing Damage — text left, image right -->
-      <div class="wrist-para">
-        <div class="wrist-row" style="grid-template-columns:1fr 500px;">
-          <div class="wrist-text-cell">
-            <div class="explore-group-label">Dealing Damage</div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Outgoing damage needed to feel immediate and rewarding. Early iterations relied on enemy color shifts and health indicators, but this was expanded through VFX to differentiate damage types more clearly.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Combined with haptic feedback, these cues reinforced the physicality of combat, allowing players to feel the impact of their actions.</div>
-            </div>
-          </div>
-          <div class="wrist-img-cell fade-left">
-            <video src="../img/OMD_Vid/OMD_Vid01.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
-          </div>
-        </div>
-      </div>
-
     </div>
+
+    <div class="media-mosaic" style="grid-template-columns:1fr 1fr;height:260px;">
+      <div class="media-cell">
+        <img class="lightbox-trigger" src="../img/OMD_Image/OMD_ProjectImage01.png" alt="Taking Damage — directional feedback prototype"/>
+        <div class="media-cap">TAKING DAMAGE</div>
+      </div>
+      <div class="media-cell">
+        <video src="../img/OMD_Vid/OMD_Vid01.mp4" autoplay loop muted playsinline></video>
+        <div class="media-cap">DEALING DAMAGE</div>
+      </div>
+    </div>
+    <div class="callout-text">Feedback for taking and dealing damage needed to be immediate and readable — directional cues and screen effects for incoming hits, VFX and haptics for outgoing ones — without ever breaking the pace of combat.</div>
   </div>
 
   <!-- DAMAGE TYPES (part of Exploration & Prototyping) -->
   <div class="fw-section" style="border-top:none;padding-top:0;">
     <div style="margin-bottom:1.8rem;"></div>
 
-    <div class="wrist-outer">
-
-      <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#001a2e 0%,#003050 40%,#001a35 70%,#000e1a 100%);border-bottom:1px solid rgba(0,210,240,.35);">
-        <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
-        <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(0,210,240,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(0,210,240,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
-        <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
-          <span style="width:22px;height:1px;background:#00d2f0;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(0,210,240,.6);"></span>
-          <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(0,210,240,.5);">DAMAGE TYPES</span>
-        </div>
+    <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#001a2e 0%,#003050 40%,#001a35 70%,#000e1a 100%);border-bottom:1px solid rgba(0,210,240,.35);">
+      <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
+      <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(0,210,240,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(0,210,240,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
+      <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
+        <span style="width:22px;height:1px;background:#00d2f0;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(0,210,240,.6);"></span>
+        <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(0,210,240,.5);">DAMAGE TYPES</span>
       </div>
-
-      <!-- Intro text -->
-      <p style="font-family:'Roboto',sans-serif;font-size:13px;color:#5a4870;font-style:italic;text-align:center;line-height:1.8;padding:.4rem 1rem 1.2rem;">Each damage type was designed to create a distinct combat behavior, balancing speed, impact, risk, and distance.</p>
-
-      <!-- Slashing — image left, text right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-img-cell fade-right">
-            <video src="../img/OMD_Vid/OMD_Vid03.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
-          </div>
-          <div class="wrist-text-cell">
-            <div class="explore-group-label">Slashing Damage</div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Designed for speed and flow, slashing attacks allow players to hit multiple enemies in a single motion.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">This type reinforces fast, continuous combat, making it effective for crowd control and maintaining momentum.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bludgeoning — text left, image right -->
-      <div class="wrist-para">
-        <div class="wrist-row" style="grid-template-columns:1fr 500px;">
-          <div class="wrist-text-cell">
-            <div class="explore-group-label">Bludgeoning Damage</div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Focused on impact and weight, bludgeoning attacks deliver strong, deliberate hits that affect a single target.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">These attacks generate knockback and are especially effective against armored enemies, rewarding precision over speed.</div>
-            </div>
-          </div>
-          <div class="wrist-img-cell fade-left">
-            <video src="../img/OMD_Vid/OMD_Vid04.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
-          </div>
-        </div>
-      </div>
-
-      <!-- Piercing — image left, text right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-img-cell fade-right">
-            <video src="../img/OMD_Vid/OMD_Vid05.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
-          </div>
-          <div class="wrist-text-cell">
-            <div class="explore-group-label">Piercing Damage</div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Piercing attacks emphasize precision and physical engagement, allowing players to stab enemies directly.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">While riskier due to close-range interaction, they deal higher damage and strengthen the sense of physical presence in combat.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ranged — text left, image right -->
-      <div class="wrist-para">
-        <div class="wrist-row" style="grid-template-columns:1fr 500px;">
-          <div class="wrist-text-cell">
-            <div class="explore-group-label">Ranged Damage</div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Ranged weapons provide distance and control, allowing players to deal damage without direct engagement.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">This type adds strategic flexibility, enabling players to respond to threats across space using crossbows and firearms.</div>
-            </div>
-          </div>
-          <div class="wrist-img-cell fade-left">
-            <video src="../img/OMD_Vid/OMD_Vid06.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
-          </div>
-        </div>
-      </div>
-
     </div>
+
+    <div class="media-mosaic" style="grid-template-columns:1fr 1fr;">
+      <div class="media-cell cy" style="height:190px;">
+        <video src="../img/OMD_Vid/OMD_Vid03.mp4" autoplay loop muted playsinline></video>
+        <div class="media-cap">SLASHING</div>
+      </div>
+      <div class="media-cell cy" style="height:190px;">
+        <video src="../img/OMD_Vid/OMD_Vid04.mp4" autoplay loop muted playsinline></video>
+        <div class="media-cap">BLUDGEONING</div>
+      </div>
+      <div class="media-cell cy" style="height:190px;">
+        <video src="../img/OMD_Vid/OMD_Vid05.mp4" autoplay loop muted playsinline></video>
+        <div class="media-cap">PIERCING</div>
+      </div>
+      <div class="media-cell cy" style="height:190px;">
+        <video src="../img/OMD_Vid/OMD_Vid06.mp4" autoplay loop muted playsinline></video>
+        <div class="media-cap">RANGED</div>
+      </div>
+    </div>
+    <div class="callout-text cy">Each damage type creates a distinct combat behavior — Slashing rewards speed and crowd control, Bludgeoning trades speed for weight and knockback, Piercing rewards risky close-range precision, and Ranged offers safer, strategic distance.</div>
   </div>
 
   <!-- BLOCK & PARRY (part of Exploration & Prototyping) -->
   <div class="fw-section" style="border-top:none;padding-top:0;">
 
-    <div class="wrist-outer">
-
-      <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#1a0545 0%,#2a0870 40%,#0d1a4a 70%,#0a0e35 100%);border-bottom:1px solid rgba(190,50,255,.35);">
-        <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
-        <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
-        <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
-          <span style="width:22px;height:1px;background:#be32ff;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(190,50,255,.6);"></span>
-          <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(190,50,255,.5);">BLOCK &amp; PARRY</span>
-        </div>
+    <div style="position:relative;margin:-2rem -1rem 1.2rem -1rem;padding:1rem 1.8rem;overflow:hidden;background:repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255,255,255,.03) 4px,rgba(255,255,255,.03) 5px),repeating-linear-gradient(0deg,transparent,transparent 8px,rgba(0,210,240,.04) 8px,rgba(0,210,240,.04) 9px),linear-gradient(110deg,#1a0545 0%,#2a0870 40%,#0d1a4a 70%,#0a0e35 100%);border-bottom:1px solid rgba(190,50,255,.35);">
+      <div style="position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);animation:scan 3.5s ease-in-out infinite;pointer-events:none;"></div>
+      <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2270%22%3E%3Cpath d=%22M20 2 L38 12 L38 32 L20 42 L2 32 L2 12 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3Cpath d=%22M20 32 L38 42 L38 62 L20 72 L2 62 L2 42 Z%22 fill=%22none%22 stroke=%22rgba(255,255,255,0.06)%22 stroke-width=%221%22/%3E%3C/svg%3E');background-size:40px 70px;pointer-events:none;opacity:.9;"></div>
+      <div style="position:relative;z-index:1;display:flex;align-items:center;gap:12px;">
+        <span style="width:22px;height:1px;background:#be32ff;display:inline-block;flex-shrink:0;box-shadow:0 0 6px rgba(190,50,255,.6);"></span>
+        <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:#f4ecff;letter-spacing:.22em;text-shadow:0 0 14px rgba(190,50,255,.5);">BLOCK &amp; PARRY</span>
       </div>
-
-      <!-- Block — image left, text right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-img-cell fade-right">
-            <video src="../img/OMD_Vid/OMD_Vid02.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
-          </div>
-          <div class="wrist-text-cell">
-            <div class="explore-group-label">Block</div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Block provides a reliable way to mitigate incoming damage, allowing players to defend by physically placing their weapon or shield in the path of an attack.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">A white flash on impact signals a successful block, reinforcing clarity without interrupting the flow of combat.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Parry — text left, sliding carousel right -->
-      <div class="wrist-para">
-        <div class="wrist-row" style="grid-template-columns:1fr 500px;">
-          <div class="wrist-text-cell">
-            <div class="explore-group-label">Parry</div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Parry transforms defense into skill expression, requiring players to not only intercept the attack, but respond with the correct timing, force, and direction.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">When executed correctly, it creates a moment of control within combat, opening a window for a powerful counter.</div>
-            </div>
-          </div>
-          <div class="wrist-img-cell fade-left parry-lightbox-trigger" style="overflow:hidden;position:relative;cursor:zoom-in;">
-            <img src="../img/OMD_Image/OMD_ProjectImage02.png" alt="Parry mechanic diagram" class="parry-fade" id="parry-img-a" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .9s ease;"/>
-            <img src="../img/OMD_Image/OMD_ProjectImage03.png" alt="Parry prototype in engine" class="parry-fade" id="parry-img-b" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;"/>
-          </div>
-        </div>
-      </div>
-
-      <!-- Glory Kill — image left, text right -->
-      <div class="wrist-para">
-        <div class="wrist-row">
-          <div class="wrist-img-cell fade-right">
-            <video src="../img/OMD_Vid/OMD_Vid07.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
-          </div>
-          <div class="wrist-text-cell">
-            <div class="explore-group-label">Glory Kill</div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Successfully parrying an enemy enables a context-based finishing move.</div>
-            </div>
-            <div class="wrist-bullet">
-              <div class="wrist-bullet-dot"></div>
-              <div class="wrist-bullet-text">Each weapon unlocks a specific gesture that, when performed correctly, eliminates the enemy instantly — reinforcing mastery through physical interaction.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
+
+    <div class="media-mosaic" style="grid-template-columns:1fr 1fr 1fr;height:230px;">
+      <div class="media-cell">
+        <video src="../img/OMD_Vid/OMD_Vid02.mp4" autoplay loop muted playsinline></video>
+        <div class="media-cap">BLOCK</div>
+      </div>
+      <div class="media-cell parry-lightbox-trigger" style="cursor:zoom-in;">
+        <img src="../img/OMD_Image/OMD_ProjectImage02.png" alt="Parry mechanic diagram" class="parry-fade" id="parry-img-a" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .9s ease;"/>
+        <img src="../img/OMD_Image/OMD_ProjectImage03.png" alt="Parry prototype in engine" class="parry-fade" id="parry-img-b" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;"/>
+        <div class="media-cap">PARRY</div>
+      </div>
+      <div class="media-cell">
+        <video src="../img/OMD_Vid/OMD_Vid07.mp4" autoplay loop muted playsinline></video>
+        <div class="media-cap">GLORY KILL</div>
+      </div>
+    </div>
+    <div class="callout-text">Block lets players physically intercept an attack. Parry rewards precise timing with a counter window. A successful Parry unlocks a weapon-specific Glory Kill finisher.</div>
   </div>
 
   <!-- FINAL DESIGN -->
@@ -1303,6 +1164,12 @@ function setFilter(f){
         </div>
 
       </div>
+    </div>
+
+    <div style="margin-top:1.4rem;">
+      <div class="explore-group-label">Results</div>
+      <div class="callout-text cy" style="margin-bottom:.7rem;">Combat started to feel more engaging, with impact, threats, and opportunities communicated clearly in the moment.</div>
+      <div class="callout-text cy">Increased fun during combat sessions, as players could read and react to the fight instead of fighting the interface.</div>
     </div>
   </div>
 
