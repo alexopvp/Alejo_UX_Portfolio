@@ -454,5 +454,76 @@ function loadVideo() {
   document.querySelector('.video-thumb').style.display = 'none';
 }
 </script>
+
+<!-- ═══ MEDIA LIGHTBOX: click any image, GIF or video to enlarge ═══ -->
+<style>
+.mlb-overlay{position:fixed;inset:0;background:rgba(4,1,10,.94);display:none;align-items:center;justify-content:center;z-index:1000;cursor:zoom-out;padding:3rem 2rem;}
+.mlb-overlay.active{display:flex;}
+.mlb-stage{display:contents;}
+.mlb-overlay img,.mlb-overlay video{max-width:92vw;max-height:88vh;object-fit:contain;border:1px solid rgba(190,50,255,.4);box-shadow:0 0 60px rgba(190,50,255,.25);border-radius:4px;cursor:default;background:#03010a;}
+.mlb-close{position:absolute;top:22px;right:30px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(190,50,255,.4);border-radius:3px;color:#be32ff;font-family:'Share Tech Mono',monospace;font-size:16px;cursor:pointer;background:rgba(190,50,255,.06);transition:all .2s;}
+.mlb-close:hover{background:rgba(190,50,255,.16);}
+.mlb-zoom{cursor:zoom-in;}
+@media(max-width:768px){.mlb-overlay{padding:3.5rem .8rem 1.5rem;}.mlb-close{top:12px;right:12px;}}
+</style>
+<script>
+(function(){
+  var overlay = document.createElement('div');
+  overlay.className = 'mlb-overlay';
+  overlay.innerHTML = '<div class="mlb-close">✕</div><div class="mlb-stage"></div>';
+  document.body.appendChild(overlay);
+  var stage = overlay.querySelector('.mlb-stage');
+
+  function close(){
+    var v = stage.querySelector('video');
+    if(v) v.pause();
+    stage.innerHTML = '';
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay || e.target.classList.contains('mlb-close')) close();
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+
+  function open(src){
+    var target = src;
+    // Crossfading images (e.g. Parry): open the one currently visible
+    if(src.classList.contains('parry-fade')){
+      src.parentElement.querySelectorAll('img.parry-fade').forEach(function(im){
+        if(parseFloat(getComputedStyle(im).opacity) > 0.5) target = im;
+      });
+    }
+    stage.innerHTML = '';
+    if(target.tagName === 'VIDEO'){
+      var v = document.createElement('video');
+      v.src = target.currentSrc || target.src;
+      v.controls = true; v.autoplay = true; v.playsInline = true;
+      v.loop = target.loop; v.muted = target.muted;
+      var t = target.currentTime || 0;
+      v.addEventListener('loadedmetadata', function(){ try{ v.currentTime = t; }catch(e){} });
+      if(!target.loop) target.pause();
+      stage.appendChild(v);
+    } else {
+      var im = document.createElement('img');
+      im.src = target.currentSrc || target.src;
+      im.alt = target.alt || '';
+      stage.appendChild(im);
+    }
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  document.querySelectorAll('img, video').forEach(function(el){
+    if(el.closest('nav, .iframe-wrap, .mlb-overlay') || el.classList.contains('video-thumb')) return;
+    el.classList.add('mlb-zoom');
+    el.addEventListener('click', function(e){
+      e.stopPropagation();
+      open(el);
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
